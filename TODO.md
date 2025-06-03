@@ -25,4 +25,4 @@ These functions go in `sort.rs` and sort the data and order it neatly.
 These functions go in `enumerate.rs` and enumerate [sort and count] the data.
 
 - [X] Implement `sum()` (sum of all values)
-- [ ] Implement `count()` (number of values)
+- [X] Implement `count()` (number of values)
