@@ -2,6 +2,13 @@
 use std::env;
 use std::process::exit;
 
+// Load modules
+mod enumerate;
+mod round;
+
+// Use functions from modules
+use round::mean;
+
 fn userError() {
 	eprintln!("ERROR: Invalid usage");
 	exit(1);
@@ -23,5 +30,15 @@ fn getArgs() -> Vec<String> {
 
 fn main() {
 	let args = getArgs();
+	let data: Vec<f64> = args[2..].to_vec()
+		.iter()
+		.filter_map(|x| x.parse::<f64>().ok())
+		.collect();
 	
+	if args[1] == "round" {
+		if args[2] == "mean" {
+			let result = mean(&data);
+			println!("{}", result)
+		}
+	}
 }
