@@ -30,6 +30,10 @@ fn getArgs() -> Vec<String> {
 
 fn main() {
 	let args = getArgs();
+	if args.len() < 4 {
+		help();
+		userError();
+	}
 	let data: Vec<f64> = args[2..].to_vec()
 		.iter()
 		.filter_map(|x| x.parse::<f64>().ok())
