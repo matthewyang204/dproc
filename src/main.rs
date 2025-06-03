@@ -16,6 +16,12 @@ fn help() {
 	println!("Unimplemented STUB");
 }
 
+fn getArgs() -> Vec<String> {
+	let args: Vec<String> = env::args().collect();
+	return args;
+}
+
 fn main() {
-	println!("Unimplemented STUB");
+	let args = getArgs();
+	
 }
