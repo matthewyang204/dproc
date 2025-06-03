@@ -44,7 +44,6 @@ fn main() {
 	if args[1] == "round" {
 		if args[2] == "mean" {
 			let result = mean(&data);
-			println!("{}", result)
 			println!("{}", result);
 		}
 	} else if args[1] == "organize" {
