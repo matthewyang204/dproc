@@ -15,3 +15,7 @@ fn help() {
 	version();
 	println!("Unimplemented STUB");
 }
+
+fn main() {
+	println!("Unimplemented STUB");
+}
