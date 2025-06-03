@@ -10,6 +10,8 @@ mod sort;
 // Use functions from modules
 use round::mean;
 use sort::sort;
+use enumerate::sum;
+use enumerate::count;
 
 fn userError() {
 	eprintln!("ERROR: Invalid usage");
@@ -53,6 +55,14 @@ fn main() {
 				print!("{} ", value);
 			}
 			println!();
+		}
+	} else if args[1] == "enumerate" {
+		if args[2] == "sum" {
+			let result = sum(&data);
+			println!("{}", result);
+		} else if args[2] == "count" {
+			let result = count(&data);
+			println!("{}", result);
 		}
 	}
 }
