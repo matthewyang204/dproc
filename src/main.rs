@@ -6,3 +6,12 @@ fn userError() {
 	println!("ERROR: Invalid usage");
 	exit(1);
 }
+
+fn version() {
+	println!("Unimplemented STUB");
+}
+
+fn help() {
+	version();
+	println!("Unimplemented STUB");
+}
