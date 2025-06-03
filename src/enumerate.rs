@@ -5,3 +5,7 @@ pub fn sum(data: &[f64]) -> f64 {
 	}
 	sum
 }
+
+pub fn count(data: &[f64]) -> f64 {
+	data.len() as f64
+}
