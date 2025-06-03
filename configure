@@ -22,16 +22,5 @@ else
     echo "found"
 fi
 
-# Check for gpg
-printf "Checking for gpg..."
-if ! command -v gpg &> /dev/null
-then
-    echo "not found"
-    echo "gpg not found. Please install it to continue."
-    exit 1
-else
-    echo "found"
-fi
-
 touch .configured
 echo "Configuration complete. Run 'make' to build."
