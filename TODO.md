@@ -18,7 +18,7 @@ These functions go in `deviate.rs` and deal mostly with deviations of data, etc.
 ## Sorting & Ordering
 These functions go in `sort.rs` and sort the data and order it neatly.
 
-- [ ] Implement `sort()` (sort in numerical order)
+- [X] Implement `sort()` (sort in numerical order)
 - [ ] Implement `rank()` (determine position in sorted list)
 
 ## Summations & Counts
