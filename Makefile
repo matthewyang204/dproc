@@ -5,14 +5,14 @@ endif
 
 RC = rustc
 RFLAGS = -C opt-level=3
-BIN = bin/gpgde
+BIN = bin/dproc
 BINDIR = bin
 SRC = src/main.rs
 PREFIX ?= /usr/local
 
 all: build
 
-build: $(SRC) src/decrypter.rs src/encrypter.rs
+build: src/*
 	mkdir -p bin
 	$(RC) $(RFLAGS) $(SRC) -o $(BIN)
 	
