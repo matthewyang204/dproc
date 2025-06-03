@@ -5,9 +5,11 @@ use std::process::exit;
 // Load modules
 mod enumerate;
 mod round;
+mod sort;
 
 // Use functions from modules
 use round::mean;
+use sort::sort;
 
 fn userError() {
 	eprintln!("ERROR: Invalid usage");
@@ -43,6 +45,15 @@ fn main() {
 		if args[2] == "mean" {
 			let result = mean(&data);
 			println!("{}", result)
+			println!("{}", result);
+		}
+	} else if args[1] == "organize" {
+		if args[2] == "sort" {
+			let result = sort(&data);
+			for value in result {
+				print!("{} ", value);
+			}
+			println!();
 		}
 	}
 }
