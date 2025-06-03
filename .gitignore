@@ -1,0 +1,17 @@
+# macOS annoyances
+.DS_Store
+._*
+*DS_Store
+
+# GNU nano annoyances
+*.swp
+*.save
+
+# Configure files
+.configured
+
+# Build junk
+bin/
+
+# JetBrains annoyances
+.idea
