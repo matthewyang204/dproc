@@ -3,7 +3,7 @@ use std::env;
 use std::process::exit;
 
 fn userError() {
-	println!("ERROR: Invalid usage");
+	eprintln!("ERROR: Invalid usage");
 	exit(1);
 }
 
