@@ -1,7 +1,7 @@
 ## Averages & Central Tendency
 These functions go in `round.rs` and handle averages and such.
 
-- [ ] Implement `mean()` (arithmetic average)
+- [X] Implement `mean()` (arithmetic average)
 - [ ] Implement `median()`
 - [ ] Implement `mode()` (most frequent value)
 - [ ] Implement `round_nearest()` (round to nearest integer)
@@ -25,5 +25,5 @@ These functions go in `sort.rs` and sort the data and order it neatly.
 ## Summations & Counts
 These functions go in `enumerate.rs` and enumerate [sort and count] the data.
 
-- [ ] Implement `sum()` (sum of all values)
+- [X] Implement `sum()` (sum of all values)
 - [ ] Implement `count()` (number of values)
