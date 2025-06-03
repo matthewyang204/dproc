@@ -5,6 +5,7 @@ mod enumerate;
 use enumerate::sum;
 
 fn mean(data: &[f64]) -> f64 {
+pub fn mean(data: &[f64]) -> f64 {
 	if data.is_empty() {
 		eprintln!("WARNING: Your data is empty, so your value is also empty.");
 		return 0.0;
