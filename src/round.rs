@@ -16,4 +16,6 @@ pub fn median(data: &[f64]) -> f64 {
 		return 0.0;
 	}
 	println!("Unimplemented STUB");
+	println!("Returning 1 to catch STUB");
+	return 1.0;
 }
