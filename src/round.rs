@@ -1,5 +1,6 @@
 // Load toplevel modules properly; this is a submodule
 use crate::enumerate::sum;
+use crate::sort::count;
 
 pub fn mean(data: &[f64]) -> f64 {
 	if data.is_empty() {
