@@ -2,7 +2,7 @@
 These functions go in `round.rs` and handle averages and such.
 
 - [X] Implement `mean()` (arithmetic average)
-- [ ] Implement `median()`
+- [X] Implement `median()`
 - [ ] Implement `mode()` (most frequent value)
 - [ ] Implement `round_nearest()` (round to nearest integer)
 - [ ] Implement `round_decimal_places()` (round to specific decimal places)
