@@ -1,3 +1,6 @@
+// Load required modules
+use std::collections::HashMap;
+
 // Load toplevel modules properly; this is a submodule
 use crate::enumerate::sum;
 use crate::sort::sort;
@@ -27,4 +30,23 @@ pub fn median(data: &[f64]) -> f64 {
 	println!("Unimplemented STUB");
 	println!("Returning 1 to catch STUB");
 	return 1.0;
+}
+
+pub fn mode(data: &[f64]) -> Vec<String> {
+	let stringData: Vec<String> = data.iter().map(|x| x.to_string()).collect();
+	let mut occurrences = HashMap::new();
+	let mut max_count = 0;
+
+	for value in stringData {
+		let count = occurrences.entry(value).or_insert(0);
+		*count += 1;
+		if *count > max_count {
+        		max_count = *count;
+		}
+	}
+	
+	occurrences
+	    .into_iter()
+	    .filter_map(|(val, count)| if count == max_count { Some(val) } else { None })
+	    .collect()
 }
