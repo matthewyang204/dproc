@@ -9,6 +9,7 @@ mod sort;
 
 // Use functions from modules
 use round::mean;
+use round::median;
 use sort::sort;
 use enumerate::sum;
 use enumerate::count;
@@ -46,6 +47,9 @@ fn main() {
 	if args[1] == "round" {
 		if args[2] == "mean" {
 			let result = mean(&data);
+			println!("{}", result);
+		} else if args[2] == "median" {
+			let result = median(&data);
 			println!("{}", result);
 		}
 	} else if args[1] == "organize" {
