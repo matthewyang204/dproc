@@ -27,9 +27,6 @@ pub fn median(data: &[f64]) -> f64 {
 		let mid2 = sortedData[(data.len() / 2) - 1];
 		return (mid1 + mid2) / 2.0;
 	}
-	println!("Unimplemented STUB");
-	println!("Returning 1 to catch STUB");
-	return 1.0;
 }
 
 pub fn mode(data: &[f64]) -> Vec<String> {
