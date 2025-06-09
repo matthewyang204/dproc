@@ -64,6 +64,16 @@ fn main() {
 			let value: f64 = args[3].parse().expect("Not a valid floating point number");
 			let result = format!("{:.1$}", value, precision);
 			println!("{}", result);
+		} else if args[2] == "integer" {
+			let mut result = vec![];
+			for value in data {
+				let rounded = value.round();
+				result.push(rounded);
+			}
+			for value in result {
+				print!("{} ", value);
+			}
+			println!();
 		}
 	} else if args[1] == "organize" {
 		if args[2] == "sort" {
