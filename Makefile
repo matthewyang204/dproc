@@ -5,6 +5,7 @@ endif
 
 RC = rustc
 RFLAGS = -C opt-level=3
+RUSTFLAGS=-Anon_snake_case
 BIN = bin/dproc
 BINDIR = bin
 SRC = src/main.rs
@@ -14,7 +15,7 @@ all: build
 
 build: src/*
 	mkdir -p bin
-	$(RC) $(RFLAGS) $(SRC) -o $(BIN)
+	$(RC) $(RFLAGS) $(RUSTFLAGS) $(SRC) -o $(BIN)
 	
 clean:
 	rm -rf $(BINDIR)
