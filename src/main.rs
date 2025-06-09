@@ -58,6 +58,12 @@ fn main() {
 				print!("{}", value);
 			}
 			println!();
+		} else if args[2] == "decimal" {
+			// let precisionString: f64 = args[4].parse().expect("Invalid number");
+			let precision: usize = args[4].parse().expect("Not a valid integer");
+			let value: f64 = args[3].parse().expect("Not a valid floating point number");
+			let result = format!("{:.1$}", value, precision);
+			println!("{}", result);
 		}
 	} else if args[1] == "organize" {
 		if args[2] == "sort" {

@@ -5,7 +5,7 @@ These functions go in `round.rs` and handle averages and such.
 - [X] Implement `median()`
 - [X] Implement `mode()` (most frequent value)
 - [ ] Implement `round_nearest()` (round to nearest integer)
-- [ ] Implement `round_decimal_places()` (round to specific decimal places)
+- [X] Implement `round_decimal_places()` (round to specific decimal places)
 
 ## Measures of Spread / Deviation
 These functions go in `deviate.rs` and deal mostly with deviations of data, etc.
