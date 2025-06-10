@@ -6,11 +6,13 @@ use std::process::exit;
 mod enumerate;
 mod round;
 mod sort;
+mod deviate;
 
 // Use functions from modules
 use round::mean;
 use round::median;
 use round::mode;
+use deviate::range;
 use sort::sort;
 use enumerate::sum;
 use enumerate::count;
@@ -74,6 +76,11 @@ fn main() {
 				print!("{} ", value);
 			}
 			println!();
+		}
+	} else if args[1] == "deviate" {
+		if args[2] == "range" {
+			let result = range(&data);
+			println!("{}", result);
 		}
 	} else if args[1] == "organize" {
 		if args[2] == "sort" {
