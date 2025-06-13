@@ -35,7 +35,4 @@ pub fn variance(data: &[f64]) -> f64 {
 		varianceVal = sum / (diffSq.len() as f64 - 1.0);
 	}
 	return varianceVal;
-	println!("Unimplemented STUB");
-	println!("Returning 1.0 to handle STUB");
-	return 1.0;
 }
