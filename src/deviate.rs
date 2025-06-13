@@ -1,6 +1,7 @@
 // Load toplevel modules properly; this is a submodule
 use crate::sort::sort;
 use crate::round::mean;
+use crate::round::median;
 use crate::coreFuncs::input;
 use crate::enumerate::sum;
 
