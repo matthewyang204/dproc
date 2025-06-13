@@ -17,6 +17,7 @@ use deviate::range;
 use deviate::variance;
 use deviate::sd;
 use deviate::meanAD;
+use deviate::medianAD;
 use sort::sort;
 use enumerate::sum;
 use enumerate::count;
@@ -93,6 +94,9 @@ fn main() {
 			println!("{}", result);
 		} else if args[2] == "meanAbsolute" {
 			let result = meanAD(&data);
+			println!("{}", result);
+		} else if args[2] == "medianAbsolute" {
+			let result = medianAD(&data);
 			println!("{}", result);
 		}
 	} else if args[1] == "organize" {
