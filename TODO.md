@@ -10,7 +10,7 @@ These functions go in `round.rs` and handle averages and such.
 ## Measures of Spread / Deviation
 These functions go in `deviate.rs` and deal mostly with deviations of data, etc.
 
-- [ ] Implement `range()` (max - min)
+- [X] Implement `range()` (max - min)
 - [ ] Implement `variance()`
 - [ ] Implement `std_dev()` (standard deviation)
 - [ ] Implement `mad()` (median absolute deviation)
