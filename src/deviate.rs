@@ -42,3 +42,16 @@ pub fn sd(data: &[f64]) -> f64 {
 	let standardDev = varianceVal.sqrt();
 	return standardDev;
 }
+
+pub fn meanAD(data: &[f64]) -> f64 {
+	let meanData = mean(data);
+	let mut deviations = vec![];
+	let mut tempStore: f64 = 0.0;
+	for value in data {
+		tempStore = value - meanData;
+		tempStore = tempStore.abs();
+		deviations.push(tempStore);
+	}
+	let MAD = sum(&deviations) / deviations.len() as f64;
+	return MAD;
+}
