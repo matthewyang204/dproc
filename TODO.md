@@ -11,7 +11,7 @@ These functions go in `round.rs` and handle averages and such.
 These functions go in `deviate.rs` and deal mostly with deviations of data, etc.
 
 - [X] Implement `range()` (max - min)
-- [ ] Implement `variance()`
+- [X] Implement `variance()`
 - [ ] Implement `sd()` (standard deviation)
 - [ ] Implement `mad()` (median absolute deviation)
 
