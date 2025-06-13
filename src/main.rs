@@ -7,12 +7,14 @@ mod enumerate;
 mod round;
 mod sort;
 mod deviate;
+mod coreFuncs;
 
 // Use functions from modules
 use round::mean;
 use round::median;
 use round::mode;
 use deviate::range;
+use deviate::variance;
 use sort::sort;
 use enumerate::sum;
 use enumerate::count;
@@ -80,6 +82,9 @@ fn main() {
 	} else if args[1] == "deviate" {
 		if args[2] == "range" {
 			let result = range(&data);
+			println!("{}", result);
+		} else if args[2] == "variance" {
+			let result = variance(&data);
 			println!("{}", result);
 		}
 	} else if args[1] == "organize" {
