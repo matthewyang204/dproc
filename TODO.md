@@ -13,7 +13,7 @@ These functions go in `deviate.rs` and deal mostly with deviations of data, etc.
 - [X] Implement `range()` (max - min)
 - [X] Implement `variance()`
 - [X] Implement `sd()` (standard deviation)
-- [ ] Implement `mad()` (median absolute deviation)
+- [ ] Implement `mad()` (mean absolute deviation)
 
 ## Sorting & Ordering
 These functions go in `sort.rs` and sort the data and order it neatly.
