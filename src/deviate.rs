@@ -36,3 +36,9 @@ pub fn variance(data: &[f64]) -> f64 {
 	}
 	return varianceVal;
 }
+
+pub fn sd(data: &[f64]) -> f64 {
+	let varianceVal = variance(data);
+	let standardDev = varianceVal.sqrt();
+	return standardDev;
+}
