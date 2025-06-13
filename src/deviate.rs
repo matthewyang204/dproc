@@ -55,3 +55,16 @@ pub fn meanAD(data: &[f64]) -> f64 {
 	let MAD = sum(&deviations) / deviations.len() as f64;
 	return MAD;
 }
+
+pub fn medianAD(data: &[f64]) -> f64 {
+        let medianData = median(data);
+        let mut deviations = vec![];
+        let mut tempStore: f64 = 0.0;
+        for value in data {
+                tempStore = value - medianData;
+                tempStore = tempStore.abs();
+                deviations.push(tempStore);
+        }
+        let MAD = median(&deviations);
+        return MAD;
+}
