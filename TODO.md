@@ -12,7 +12,7 @@ These functions go in `deviate.rs` and deal mostly with deviations of data, etc.
 
 - [X] Implement `range()` (max - min)
 - [ ] Implement `variance()`
-- [ ] Implement `std_dev()` (standard deviation)
+- [ ] Implement `sd()` (standard deviation)
 - [ ] Implement `mad()` (median absolute deviation)
 
 ## Sorting & Ordering
