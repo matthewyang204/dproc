@@ -16,6 +16,7 @@ use round::mode;
 use deviate::range;
 use deviate::variance;
 use deviate::sd;
+use deviate::meanAD;
 use sort::sort;
 use enumerate::sum;
 use enumerate::count;
@@ -89,6 +90,9 @@ fn main() {
 			println!("{}", result);
 		} else if args[2] == "standard" {
 			let result = sd(&data);
+			println!("{}", result);
+		} else if args[2] == "meanAbsolute" {
+			let result = meanAD(&data);
 			println!("{}", result);
 		}
 	} else if args[1] == "organize" {
