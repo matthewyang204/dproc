@@ -1,6 +1,6 @@
 use std::io::{self, Write};
 
-fn input(prompt: &str) -> String {
+pub fn input(prompt: &str) -> String {
 	print!("{}", prompt);
 	io::stdout().flush().unwrap();
 
