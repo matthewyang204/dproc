@@ -81,7 +81,10 @@ fn main() {
 				print!("{} ", value);
 			}
 			println!();
-		}
+		} else {
+                        help();
+                        userError();
+                }
 	} else if args[1] == "deviate" {
 		if args[2] == "range" {
 			let result = range(&data);
