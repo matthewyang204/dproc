@@ -106,7 +106,10 @@ fn main() {
 				print!("{} ", value);
 			}
 			println!();
-		}
+		} else {
+                        help();
+                        userError();
+                }
 	} else if args[1] == "enumerate" {
 		if args[2] == "sum" {
 			let result = sum(&data);
