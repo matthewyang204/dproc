@@ -28,7 +28,7 @@ These functions go in `enumerate.rs` and enumerate [sort and count] the data.
 - [X] Implement `count()` (number of values)
 
 ## Organization & Stabilizing
-- [ ] Create handlers for user error in main
+- [X] Create handlers for user error in main
 - [ ] Create handlers for user error in `deviate.rs`
 - [ ] Create handlers for user error in `enumerate.rs`
 - [ ] Create handlers for user error in `round.rs`
