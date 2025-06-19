@@ -115,5 +115,8 @@ fn main() {
 			let result = count(&data);
 			println!("{}", result);
 		}
+	} else {
+		help();
+		userError();
 	}
 }
