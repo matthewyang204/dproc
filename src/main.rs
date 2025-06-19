@@ -98,7 +98,10 @@ fn main() {
 		} else if args[2] == "medianAbsolute" {
 			let result = medianAD(&data);
 			println!("{}", result);
-		}
+		} else {
+                        help();
+                        userError();
+                }
 	} else if args[1] == "organize" {
 		if args[2] == "sort" {
 			let result = sort(&data);
