@@ -114,6 +114,9 @@ fn main() {
 		} else if args[2] == "count" {
 			let result = count(&data);
 			println!("{}", result);
+		} else {
+			help();
+			userError();
 		}
 	} else {
 		help();
