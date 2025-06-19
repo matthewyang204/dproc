@@ -26,3 +26,14 @@ These functions go in `enumerate.rs` and enumerate [sort and count] the data.
 
 - [X] Implement `sum()` (sum of all values)
 - [X] Implement `count()` (number of values)
+
+## Organization & Stabilizing
+- [ ] Create handlers for user error in main
+- [ ] Create handlers for user error in `deviate.rs`
+- [ ] Create handlers for user error in `enumerate.rs`
+- [ ] Create handlers for user error in `round.rs`
+- [ ] Create handlers for user error in `sort.rs`
+
+## Getting ready for a release
+- [ ] Write a usage in `README.md`
+- [ ] Remove useless STUB printlns and other unused/unreachable functions
