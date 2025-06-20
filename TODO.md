@@ -30,9 +30,7 @@ These functions go in `enumerate.rs` and enumerate [sort and count] the data.
 ## Organization & Stabilizing
 - [X] Create handlers for user error in main
 - [ ] Create handlers for user error in `deviate.rs`
-- [ ] Create handlers for user error in `enumerate.rs`
-- [ ] Create handlers for user error in `round.rs`
-- [ ] Create handlers for user error in `sort.rs`
+- [X] Prevent users from entering non-number values
 
 ## Getting ready for a release
 - [ ] Write a usage in `README.md`
