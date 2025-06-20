@@ -31,7 +31,6 @@ fn version() {
 	println!("dproc, version 1.0.0");
 	println!("(C) 2025 Matthew Yang");
 	return;
-	println!("Unimplemented STUB");
 }
 
 fn help() {
