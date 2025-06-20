@@ -29,9 +29,10 @@ These functions go in `enumerate.rs` and enumerate [sort and count] the data.
 
 ## Organization & Stabilizing
 - [X] Create handlers for user error in main
-- [ ] Create handlers for user error in `deviate.rs`
+- [X] Create handlers for user error in `deviate.rs`
 - [X] Prevent users from entering non-number values
 
 ## Getting ready for a release
 - [ ] Write a usage in `README.md`
 - [ ] Remove useless STUB printlns and other unused/unreachable functions
+- [ ] Write help and version info
