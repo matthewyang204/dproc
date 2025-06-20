@@ -35,4 +35,5 @@ These functions go in `enumerate.rs` and enumerate [sort and count] the data.
 ## Getting ready for a release
 - [ ] Write a usage in `README.md`
 - [ ] Remove useless STUB printlns and other unused/unreachable functions
-- [ ] Write help and version info
+- [ ] Write help 
+- [ ] Write version info
