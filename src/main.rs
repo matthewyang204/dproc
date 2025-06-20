@@ -53,7 +53,7 @@ fn main() {
 		.collect::<Result<Vec<_>, _>>()
 		.unwrap_or_else(|_| {
 			eprintln!("ERROR: There can only be valid numbers values in the dataset, exiting...");
-			std::process::exit(1);
+			exit(1);
 		});
 	
 	if args[1] == "round" {
