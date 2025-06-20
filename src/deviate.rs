@@ -1,3 +1,6 @@
+//Regular imports
+use std::process::exit;
+
 // Load toplevel modules properly; this is a submodule
 use crate::sort::sort;
 use crate::round::mean;
@@ -34,6 +37,9 @@ pub fn variance(data: &[f64]) -> f64 {
 	} else if response1.to_lowercase() == "s" {
 		let sum = sum(&diffSq);
 		varianceVal = sum / (diffSq.len() as f64 - 1.0);
+	} else {
+		eprintln!("ERROR: Response invalid, exiting...");
+		exit(1);
 	}
 	return varianceVal;
 }
