@@ -47,10 +47,14 @@ fn main() {
 		help();
 		userError();
 	}
-	let data: Vec<f64> = args[2..].to_vec()
+	let data: Vec<f64> = args[2..]
 		.iter()
-		.filter_map(|x| x.parse::<f64>().ok())
-		.collect();
+		.map(|x| x.parse::<f64>())
+		.collect::<Result<Vec<_>, _>>()
+		.unwrap_or_else(|_| {
+			eprintln!("ERROR: There can only be valid numbers values in the dataset, exiting...");
+			std::process::exit(1);
+		});
 	
 	if args[1] == "round" {
 		if args[2] == "mean" {
