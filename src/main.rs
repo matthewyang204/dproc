@@ -36,6 +36,8 @@ fn version() {
 
 fn help() {
 	version();
+	
+	println!();
 	println!("Unimplemented STUB");
 }
 
