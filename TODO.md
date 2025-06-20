@@ -37,3 +37,4 @@ These functions go in `enumerate.rs` and enumerate [sort and count] the data.
 - [ ] Remove useless STUB printlns and other unused/unreachable functions
 - [ ] Write help 
 - [ ] Write version info
+- [ ] Write handlers in main
