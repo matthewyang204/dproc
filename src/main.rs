@@ -57,7 +57,7 @@ fn main() {
 		help();
 		userError();
         }
-	let data: Vec<f64> = args[2..]
+	let data: Vec<f64> = args[3..]
 		.iter()
 		.map(|x| x.parse::<f64>())
 		.collect::<Result<Vec<_>, _>>()
