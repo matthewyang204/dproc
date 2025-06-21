@@ -48,6 +48,11 @@ fn getArgs() -> Vec<String> {
 fn main() {
 	let args = getArgs();
 	
+	if args.len() < 2 {
+                help();
+                userError();
+        }
+
 	if args[1] == "--version" || args[1] == "-v" || args[1] == "version" || args[1] == "v" {
 		version();
 		exit(0);
@@ -57,6 +62,7 @@ fn main() {
 		help();
 		userError();
         }
+
 	let data: Vec<f64> = args[3..]
 		.iter()
 		.map(|x| x.parse::<f64>())
