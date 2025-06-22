@@ -38,7 +38,7 @@ fn help() {
 	
 	println!();
 	println!("");
-	println!("Usage: dproc [SUBCMD1] [SUBCMD2] {yourdata}");
+	println!("Usage: dproc [SUBCMD1] [SUBCMD2] {{yourdata}}");
 	println!("");
 	println!("SUBCMD1 options:");
 	println!("  round        functions for rounding, getting averages, etc");
@@ -69,7 +69,7 @@ fn help() {
 	println!("    sum            get the sum of the data");
 	println!("    count          get the number of values in the data");
 	println!("");
-	println!("Place your data, values separated by spaces, in the place of {yourdata}.");
+	println!("Place your data, values separated by spaces, in the place of {{yourdata}}.");
 	return;
 	println!("Unimplemented STUB");
 }
