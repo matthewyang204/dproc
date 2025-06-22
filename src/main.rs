@@ -90,6 +90,9 @@ fn main() {
 	if args[1] == "--version" || args[1] == "-v" || args[1] == "version" || args[1] == "v" {
 		version();
 		exit(0);
+	} else if args[1] == "--help" || args[1] == "-h" || args[1] == "help" || args[1] == "h" {
+		help();
+		exit(0);
 	}
 	
 	if args.len() < 4 {
