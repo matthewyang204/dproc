@@ -38,3 +38,20 @@ See the [todo list](TODO.md) for more details.
 - `count` get the number of values in the data
 
 Place your data, values separated by spaces, in the place of `{yourdata}`.
+
+# Building
+Requirements:
+- `rustc`
+- `make`
+
+To build:
+1. Download the latest xzipped src tarball and unpack it, or clone the repo, and then `cd` into the resulting folder
+2. Run `./configure`.
+3. Run `make`. Alternatively, to make it run a specified number of jobs, run `make -j{yournumberofjobs}`. Replace `{yournumberofjobs}` with the number of jobs you want to run.
+
+# Installing
+Requirements:
+- `make`
+- A prebuilt tarball downloaded from the releases for your architecture (not available yet, but will add) or a build from the previous section
+
+To install, simply run `make install` in the root of the built binary's folder (root folder of a downloaded-and-built source folder). You can specify where you want to install with the `PREFIX` var. To do this, run `make install PREFIX={yourprefix}`. Replace `{yourprefix}` with your prefix.
