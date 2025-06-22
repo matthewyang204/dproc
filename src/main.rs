@@ -37,6 +37,40 @@ fn help() {
 	version();
 	
 	println!();
+	println!("");
+	println!("Usage: dproc [SUBCMD1] [SUBCMD2] {yourdata}");
+	println!("");
+	println!("SUBCMD1 options:");
+	println!("  round        functions for rounding, getting averages, etc");
+	println!("  deviate      functions for getting deviations and values related to deviations, such as the variance");
+	println!("  organize     functions for organizing the dataset");
+	println!("  enumerate    functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values");
+	println!("");
+	println!("SUBCMD2 options:");
+	println!("");
+	println!("  When SUBCMD1 is round:");
+	println!("    mean           get the mean of the dataset");
+	println!("    median         get the median of the dataset");
+	println!("    mode           get the mode of the dataset");
+	println!("    decimal        round to a decimal place, with the value to be rounded supplied as the first value, and the number of decimal places maintained specified as the second");
+	println!("    integer        round the number to the nearest integer");
+	println!("");
+	println!("  When SUBCMD1 is deviate:");
+	println!("    range          get the range of the data");
+	println!("    variance       get the variance of the data");
+	println!("    standard       get the standard deviation of the data; the program will ask you if the data given is a sample or population");
+	println!("    meanAbsolute   get the mean absolute deviation");
+	println!("    medianAbsolute get the median absolute deviation");
+	println!("");
+	println!("  When SUBCMD1 is organize:");
+	println!("    sort           sort the data from smallest to largest");
+	println!("");
+	println!("  When SUBCMD1 is enumerate:");
+	println!("    sum            get the sum of the data");
+	println!("    count          get the number of values in the data");
+	println!("");
+	println!("Place your data, values separated by spaces, in the place of {yourdata}.");
+	return;
 	println!("Unimplemented STUB");
 }
 
