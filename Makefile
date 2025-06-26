@@ -10,6 +10,13 @@ else
 	TARGETARG:=--target=$(BUILDTARGET)
 endif
 
+BUILDLINKER ?=
+ifeq ($(strip $(BUILDLINKER)),)
+	LINKER:=
+else
+	LINKER:=-C linker=$(BUILDLINKER)
+endif
+
 RC = rustc
 RFLAGS = -C opt-level=3
 RUSTFLAGS=-Anon_snake_case
@@ -22,7 +29,7 @@ all: build
 
 build: src/*
 	mkdir -p bin
-	$(RC) $(RFLAGS) $(RUSTFLAGS) $(TARGETARG) $(SRC) -o $(BIN)
+	$(RC) $(RFLAGS) $(RUSTFLAGS) $(TARGETARG) $(LINKER) $(SRC) -o $(BIN)
 	
 clean:
 	rm -rf $(BINDIR)
