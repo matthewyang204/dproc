@@ -28,7 +28,7 @@ fn userError() {
 }
 
 fn version() {
-	println!("dproc, version 1.0.0");
+	println!("dproc, version 1.0.1");
 	println!("(C) 2025 Matthew Yang");
 	return;
 }
