@@ -69,8 +69,6 @@ fn help() {
 	println!("    count          get the number of values in the data");
 	println!("");
 	println!("Place your data, values separated by spaces, in the place of {{yourdata}}.");
-	return;
-	println!("Unimplemented STUB");
 }
 
 fn getArgs() -> Vec<String> {
