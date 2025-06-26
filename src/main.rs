@@ -37,7 +37,6 @@ fn help() {
 	version();
 	
 	println!();
-	println!("");
 	println!("Usage: dproc [SUBCMD1] [SUBCMD2] {{yourdata}}");
 	println!("");
 	println!("SUBCMD1 options:");
@@ -57,7 +56,7 @@ fn help() {
 	println!("");
 	println!("  When SUBCMD1 is deviate:");
 	println!("    range          get the range of the data");
-	println!("    variance       get the variance of the data");
+	println!("    variance       get the variance of the data; the program will ask you if the data given is a sample or population");
 	println!("    standard       get the standard deviation of the data; the program will ask you if the data given is a sample or population");
 	println!("    meanAbsolute   get the mean absolute deviation");
 	println!("    medianAbsolute get the median absolute deviation");
