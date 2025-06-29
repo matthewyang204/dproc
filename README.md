@@ -50,6 +50,8 @@ To build:
 # Installing
 Requirements:
 - `make`
-- A prebuilt tarball downloaded from the releases for your architecture or a build from the previous section
+- A build from the previous section or a prebuilt binary
 
-To install, simply run `make install` in the root of the built binary's folder (root folder of a downloaded-and-built source folder). You can specify where you want to install with the `PREFIX` var. To do this, run `make install PREFIX={yourprefix}`. Replace `{yourprefix}` with your prefix. Use `sudo` where appropriate.
+To install a custom build, simply run `make install` in the root of the built binary's folder (root folder of a downloaded-and-built source folder). You can specify where you want to install with the `PREFIX` var. To do this, run `make install PREFIX={yourprefix}`. Replace `{yourprefix}` with your prefix. Use `sudo` where appropriate.
+
+If you want to install from a binary downloaded from the releases, simply move the binary to a folder of your choice in your PATH.
