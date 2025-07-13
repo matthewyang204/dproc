@@ -52,3 +52,16 @@ pub fn gcd<T: Integer>(x: T, y: T) -> T {
 pub fn lcm<T: Integer>(x: T, y: T) -> T {
     x.lcm(&y)
 }
+
+// Checks if a number is prime, and a collection of other functions to use it and based around it
+fn generate_primes(limit: usize) -> Vec<usize> {
+    let mut numbers: Vec<usize> = (2..=limit).collect();
+    let mut primes: Vec<usize> = Vec::new();
+
+    while let Some(current_prime) = numbers.first().cloned() {
+        primes.push(current_prime);
+        numbers.retain(|&num| num % current_prime != 0);
+    }
+
+    primes
+}
