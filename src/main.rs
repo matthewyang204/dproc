@@ -204,6 +204,15 @@ fn main() {
 		} else if args[2] == "gcd" || args[2] == "gcf" {
 			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::gcd(a, b)).unwrap();
 			println!("{}", result);
+		} else if args[2] == "prime" {
+			for value in data_integer {
+				if num_integer::is_prime(value as i64) {
+					print!("True ");
+				} else {
+					print!("{} is not prime\n", value);
+				}
+			}
+			println!("{}", result);
 		}
 	} else {
 		help();
