@@ -197,6 +197,9 @@ fn main() {
 		if args[2] == "lcm" {
 			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::lcm(a, b)).unwrap();
 			println!("{}", result);
+		} else if args[2] == "gcd" || args[2] == "gcf" {
+			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::gcd(a, b)).unwrap();
+			println!("{}", result);
 		}
 	} else {
 		help();
