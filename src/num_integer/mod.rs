@@ -54,7 +54,7 @@ pub fn lcm<T: Integer>(x: T, y: T) -> T {
 }
 
 // Checks if a number is prime, and a collection of other functions to use it and based around it
-fn generate_primes(limit: usize) -> Vec<usize> {
+pub fn generate_primes(limit: usize) -> Vec<usize> {
     let mut numbers: Vec<usize> = (2..=limit).collect();
     let mut primes: Vec<usize> = Vec::new();
 
