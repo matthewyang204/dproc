@@ -11,6 +11,7 @@ See the [todo list](TODO.md) for more details.
 - `deviate` functions for getting deviations and values related to deviations, such as the variance
 - `organize` functions for organizing the dataset
 - `enumerate` functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values
+- `math` miscellaneous functions for arbitrary things like gcd and lcm
 
 #### `SUBCMD2` can be:
 
@@ -34,6 +35,10 @@ See the [todo list](TODO.md) for more details.
 *When `SUBCMD1` is `enumerate`:*
 - `sum` get the sum of the data
 - `count` get the number of values in the data
+
+*When `SUBCMD1` is `math`:*
+- `lcm` get the LCM of a dataset
+- `gcd`, `gcf` get the GCD/GCF of a dataset
 
 Place your data, values separated by spaces, in the place of `{yourdata}`.
 
