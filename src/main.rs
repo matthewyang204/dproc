@@ -186,7 +186,18 @@ fn main() {
 			userError();
 		}
 	} else if args[1] == "math"{
-		println!("Unimplemented STUB");
+		let data_integer: Vec<u32> = args[3..]
+			.iter()
+			.map(|x| x.parse::<u32>())
+			.collect::<Result<Vec<_>, _>>()
+			.unwrap_or_else(|_| {
+				eprintln!("ERROR: This program can only calculate the lcm and gcd of integers, exiting...");
+				exit(1);
+			});
+		if args[2] == "lcm" {
+			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::lcm(a, b)).unwrap();
+			println!("{}", result);
+		}
 	} else {
 		help();
 		userError();
