@@ -45,9 +45,9 @@ uninstall:
 	rm -rf $(PREFIX)/$(BIN)
 
 dist: clean
-	mkdir -p dist
 	rm -rf $(GNSRCDIR)
 	cp -R . $(GNSRCDIR)
+	mkdir -p dist
 	find $(GNSRCDIR) -type d -name ".git" -print
 	find $(GNSRCDIR) -type d -name ".git" -exec rm -rf {} +
 	tar -cvJf dist/dproc-1.0.1.tar.xz -C $(GNSRCDIR) .
