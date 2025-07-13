@@ -18,8 +18,8 @@ else
 endif
 
 RC ?= rustc
-RFLAGS = -C opt-level=3
-RUSTFLAGS=-Anon_snake_case
+RFLAGS ?= -C opt-level=3
+RUSTFLAGS ?= -Anon_snake_case
 BIN = bin/dproc
 BINDIR = bin
 SRC = src/main.rs
