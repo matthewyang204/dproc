@@ -17,7 +17,7 @@ else
 	LINKER:=-C linker=$(BUILDLINKER)
 endif
 
-RC = rustc
+RC ?= rustc
 RFLAGS = -C opt-level=3
 RUSTFLAGS=-Anon_snake_case
 BIN = bin/dproc
