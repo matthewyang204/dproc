@@ -44,7 +44,7 @@ install:
 uninstall:
 	rm -rf $(PREFIX)/$(BIN)
 
-dist:
+dist: clean
 	mkdir -p dist
 	rm -rf $(GNSRCDIR)
 	cp -R . $(GNSRCDIR)
