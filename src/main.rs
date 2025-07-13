@@ -181,7 +181,7 @@ fn main() {
 			help();
 			userError();
 		}
-	} else if args[1] == "misc"{
+	} else if args[1] == "math"{
 		println!("Unimplemented STUB");
 	} else {
 		help();
