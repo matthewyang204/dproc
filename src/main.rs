@@ -48,6 +48,7 @@ fn help() {
 	println!("  deviate      functions for getting deviations and values related to deviations, such as the variance");
 	println!("  organize     functions for organizing the dataset");
 	println!("  enumerate    functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values");
+	println!("  math         miscellaneous functions for arbitrary things like gcd and lcm");
 	println!("");
 	println!("SUBCMD2 options:");
 	println!("");
@@ -72,6 +73,9 @@ fn help() {
 	println!("    sum            get the sum of the data");
 	println!("    count          get the number of values in the data");
 	println!("");
+	println!("  When SUBCMD1 is math:");
+	println!("    lcm            get the LCM of a dataset");
+	println!("    gcd, gcf       get the GCD/GCF of a dataset");
 	println!("Place your data, values separated by spaces, in the place of {{yourdata}}.");
 }
 
