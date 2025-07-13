@@ -24,6 +24,7 @@ BIN = bin/dproc
 BINDIR = bin
 SRC = src/main.rs
 PREFIX ?= /usr/local
+GNSRCDIR ?= /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 all: build
 
@@ -33,6 +34,7 @@ build: src/*
 	
 clean:
 	rm -rf $(BINDIR)
+	rm -rf dist
 	
 install:
 	mkdir -p $(PREFIX)/$(BINDIR)
@@ -41,5 +43,14 @@ install:
 	
 uninstall:
 	rm -rf $(PREFIX)/$(BIN)
+
+dist:
+	mkdir -p dist
+	rm -rf $(GNSRCDIR)
+	cp -R . $(GNSRCDIR)
+	find $(GNSRCDIR) -type d -name ".git" -print
+	find $(GNSRCDIR) -type d -name ".git" -exec rm -rf {} +
+	tar -cvJf dist/dproc-1.0.1.tar.xz $(GNSRCDIR)
+	rm -rf $(GNSRCDIR)
 
 .PHONY: all build clean install uninstall
