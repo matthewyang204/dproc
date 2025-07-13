@@ -17,6 +17,7 @@
 // Copyright 2025 Matthew Yang
 // This file is part of dproc.
 // This is the stripped down version of the num-integer crate, only including what is necessary for dproc to function.
+// The main source code of the num-integer crate remains intact in the other files.
 
 // gcd and lcm
 pub trait Integer: Sized + Copy + PartialEq {
