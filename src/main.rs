@@ -22,6 +22,9 @@ use sort::sort;
 use enumerate::sum;
 use enumerate::count;
 
+// Load num-integer crate
+mod num_integer;
+
 fn userError() {
 	eprintln!("ERROR: Invalid usage");
 	exit(1);
