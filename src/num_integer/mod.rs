@@ -65,3 +65,10 @@ pub fn generate_primes(limit: usize) -> Vec<usize> {
 
     primes
 }
+pub fn is_prime(n: i64) -> bool {
+    if n in generate_primes(n as usize) {
+        return true;
+    } else {
+        return false;
+    }
+}
