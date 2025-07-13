@@ -48,7 +48,7 @@ fn help() {
 	println!("  deviate      functions for getting deviations and values related to deviations, such as the variance");
 	println!("  organize     functions for organizing the dataset");
 	println!("  enumerate    functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values");
-	println!("  math         miscellaneous functions for arbitrary things like gcd and lcm");
+	println!("  math         miscellaneous functions for arbitrary things about integers like gcd and lcm");
 	println!("");
 	println!("SUBCMD2 options:");
 	println!("");
@@ -195,7 +195,7 @@ fn main() {
 			.map(|x| x.parse::<u32>())
 			.collect::<Result<Vec<_>, _>>()
 			.unwrap_or_else(|_| {
-				eprintln!("ERROR: This program can only calculate the lcm and gcd of integers, exiting...");
+				eprintln!("ERROR: This program can only calculate math properties of integers, exiting...");
 				exit(1);
 			});
 		if args[2] == "lcm" {

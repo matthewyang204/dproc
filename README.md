@@ -11,7 +11,7 @@ See the [todo list](TODO.md) for more details.
 - `deviate` functions for getting deviations and values related to deviations, such as the variance
 - `organize` functions for organizing the dataset
 - `enumerate` functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values
-- `math` miscellaneous functions for arbitrary things like gcd and lcm
+- `math` miscellaneous functions for arbitrary things about integers like gcd and lcm
 
 #### `SUBCMD2` can be:
 
