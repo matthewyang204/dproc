@@ -12,6 +12,7 @@
 
 # Build junk
 bin/
+build/
 
 # JetBrains annoyances
 .idea
