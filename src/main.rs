@@ -181,6 +181,8 @@ fn main() {
 			help();
 			userError();
 		}
+	} else if args[1] == "misc"{
+		println!("Unimplemented STUB");
 	} else {
 		help();
 		userError();
