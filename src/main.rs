@@ -76,6 +76,7 @@ fn help() {
 	println!("  When SUBCMD1 is math:");
 	println!("    lcm            get the LCM of a dataset");
 	println!("    gcd, gcf       get the GCD/GCF of a dataset");
+	println!("    prime          check whether each number in the dataset is prime");
 	println!("Place your data, values separated by spaces, in the place of {{yourdata}}.");
 }
 

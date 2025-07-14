@@ -39,6 +39,7 @@ See the [todo list](TODO.md) for more details.
 *When `SUBCMD1` is `math`:*
 - `lcm` get the LCM of a dataset
 - `gcd`, `gcf` get the GCD/GCF of a dataset
+- `prime` check whether each number in the dataset is prime
 
 Place your data, values separated by spaces, in the place of `{yourdata}`.
 
