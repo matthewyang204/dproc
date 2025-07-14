@@ -205,8 +205,6 @@ fn main() {
 			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::gcd(a, b)).unwrap();
 			println!("{}", result);
 		} else if args[2] == "prime" {
-			println!("Unimplemented STUB");
-			exit(1);
 			for value in data_integer {
 				if num_integer::is_prime(value as i64) {
 					print!("True ");
