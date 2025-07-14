@@ -211,10 +211,10 @@ fn main() {
 				if num_integer::is_prime(value as i64) {
 					print!("True ");
 				} else {
-					print!("{} is not prime\n", value);
+					print!("False ");
 				}
 			}
-			println!("{}", result);
+			println!();
 		}
 	} else {
 		help();
