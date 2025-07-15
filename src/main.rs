@@ -76,7 +76,7 @@ fn help() {
 	println!("  When SUBCMD1 is math:");
 	println!("    lcm            get the LCM of a dataset");
 	println!("    gcd, gcf       get the GCD/GCF of a dataset");
-	println!("    prime          check whether each number in the dataset is prime");
+	println!("    prime-check    check whether each number in the dataset is prime");
 	println!("Place your data, values separated by spaces, in the place of {{yourdata}}.");
 }
 
@@ -205,7 +205,7 @@ fn main() {
 		} else if args[2] == "gcd" || args[2] == "gcf" {
 			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::gcd(a, b)).unwrap();
 			println!("{}", result);
-		} else if args[2] == "prime" {
+		} else if args[2] == "prime-check" {
 			for value in data_integer {
 				if num_integer::is_prime(value as u32) {
 					print!("True ");
