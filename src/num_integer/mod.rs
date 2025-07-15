@@ -65,10 +65,18 @@ pub fn generate_primes(limit: usize) -> Vec<usize> {
 
     primes
 }
-pub fn is_prime(n: i64) -> bool {
-    if generate_primes(n as usize).contains(&(n as usize)) {
+pub fn is_prime(n: u32) -> bool {
+    if n <= 1 {
+        return false;
+    } else if n == 2 || n == 3 {
         return true;
-    } else {
+    } else if n % 2 == 0 || n % 3 == 0 {
         return false;
     }
+    for a in 2..n.isqrt() {
+        if n % a == 0 {
+            return false;
+        }
+    }
+    return true;
 }
