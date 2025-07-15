@@ -214,6 +214,9 @@ fn main() {
 				}
 			}
 			println!();
+		} else {
+			help();
+			userError();
 		}
 	} else {
 		help();
