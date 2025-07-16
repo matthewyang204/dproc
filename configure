@@ -44,7 +44,8 @@ fi
 
 # Patching Makefile
 echo "Creating usable Makefile..."
-sed -i '' "s|^CC = .*|CC = $CC|" Makefile
+sed -i '/tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea' "s|^CC = .*|CC = $CC|" Makefile
+rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 touch .configured
 echo "Configuration complete. Run 'make' to build."
