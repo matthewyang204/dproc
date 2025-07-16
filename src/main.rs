@@ -25,6 +25,12 @@ use enumerate::count;
 // Load num-integer crate
 mod num_integer;
 
+// Include C functions from libmysolvers
+extern "C" {
+    fn quadratic_single_neg_solver(a: f64, b: f64, c: f64) -> f64;
+    fn quadratic_single_pos_solver(a: f64, b: f64, c: f64) -> f64;
+}
+
 fn userError() {
 	eprintln!("ERROR: Invalid usage");
 	exit(1);
