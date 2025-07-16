@@ -44,7 +44,7 @@ fi
 
 # Patching Makefile
 echo "Creating usable Makefile..."
-sed -i '' "s#@CC@#$CC#g" Makefile
+sed -i '' "s|^CC = .*|CC = $CC|" Makefile
 
 touch .configured
 echo "Configuration complete. Run 'make' to build."
