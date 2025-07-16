@@ -18,6 +18,7 @@ else
 endif
 
 RC ?= rustc
+CC ?= gcc
 RFLAGS ?= -C opt-level=3
 RUSTFLAGS ?= -Anon_snake_case
 BIN = bin/dproc
@@ -30,11 +31,15 @@ all: build
 
 build: src/*
 	mkdir -p bin
-	$(RC) $(RFLAGS) $(RUSTFLAGS) $(TARGETARG) $(LINKER) $(SRC) -o $(BIN)
+	mkdir -p obj
+	$(CC) -c lib/libmysolvers.c -o obj/libmysolvers.o
+	ar rcs obj/libmysolvers.a obj/libmysolvers.o
+	$(RC) $(RFLAGS) $(RUSTFLAGS) $(TARGETARG) $(LINKER) -Lobj -lmysolvers $(SRC) -o $(BIN)
 	
 clean:
 	rm -rf $(BINDIR)
 	rm -rf dist
+	rm -rf obj
 	
 install:
 	mkdir -p $(PREFIX)/$(BINDIR)
