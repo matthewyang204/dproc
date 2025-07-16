@@ -42,5 +42,9 @@ else
     exit 1
 fi
 
+# Patching Makefile
+echo "Creating usable Makefile..."
+sed -i '' "s#@CC@#$CC#g" Makefile
+
 touch .configured
 echo "Configuration complete. Run 'make' to build."
