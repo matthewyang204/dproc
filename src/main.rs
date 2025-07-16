@@ -229,6 +229,8 @@ fn main() {
 			if data.len() < 3 {
 				eprintln!("ERROR: Invalid usage of the quadratic solver");
 				eprintln!("Usage: dproc solve quadratic {{a}} {{b}} {{c}}");
+				eprintln!("Where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0");
+				eprintln!("WARNING: You may have to convert your equation; this does not accept != 0 on the other side of the equation.");
 				exit(1);
 			}
 			let a: f64 = args[3].parse().expect("ERROR: Not a valid floating point number");
