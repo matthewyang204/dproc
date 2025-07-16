@@ -17,6 +17,9 @@ build/
 # JetBrains annoyances
 .idea
 
+# VS Code annoyances
+.vscode/
+
 # source distributions
 dist/
 
