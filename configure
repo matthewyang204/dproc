@@ -22,5 +22,25 @@ else
     echo "found"
 fi
 
+# Check for a C compiler
+printf "Checking for C compiler..."
+if command -v gcc &> /dev/null
+then
+    CC=gcc
+    echo "gcc"
+elif command -v clang &> /dev/null
+then
+    CC=clang
+    echo "clang"
+elif command -v cc &> /dev/null
+then
+    CC=cc
+    echo "cc"
+else
+    echo "not found"
+    echo "No C compiler found. Please install gcc or clang to continue."
+    exit 1
+fi
+
 touch .configured
 echo "Configuration complete. Run 'make' to build."
