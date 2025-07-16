@@ -40,7 +40,7 @@ build: src/*
 	mkdir -p obj
 	$(CC) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
-	$(RC) $(RFLAGS) $(RUSTFLAGS) $(TARGETARG) $(LINKER) -Lobj -lmysolvers $(SRC) -o $(BIN)
+	$(RC) $(RFLAGS) $(RUSTFLAGS) $(TARGETARG) $(LINKER) -Lobj -lstatic=mysolvers $(SRC) -o $(BIN)
 
 upgrade-c-libs:
 	cd lib && \
