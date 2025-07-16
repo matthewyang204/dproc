@@ -51,6 +51,7 @@ Place your data, values separated by spaces, in the place of `{yourdata}`.
 Requirements:
 - `rustc`
 - `make`
+- `gcc`, `clang`, or some other C99-compliant C compiler
 
 To build:
 1. Download the latest xzipped src tarball and unpack it, or clone the repo, and then `cd` into the resulting folder
