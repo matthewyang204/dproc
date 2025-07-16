@@ -29,3 +29,6 @@ dist/
 *.out
 *.dll
 *.lib
+
+# C object files
+*.obj
