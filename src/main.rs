@@ -224,6 +224,24 @@ fn main() {
 			help();
 			userError();
 		}
+	} else if args[1] == "solve"{
+		if args[2] == "quadratic-single" {
+			if data.len() < 3 {
+				eprintln!("ERROR: Invalid usage of the quadratic solver");
+				eprintln!("Usage: dproc solve quadratic {{a}} {{b}} {{c}}");
+				exit(1);
+			}
+			let a: f64 = args[3].parse().expect("ERROR: Not a valid floating point number");
+			let b: f64 = args[4].parse().expect("ERROR: Not a valid floating point number");
+			let c: f64 = args[5].parse().expect("ERROR: Not a valid floating point number");
+			let root1 = unsafe { quadratic_single_pos_solver(a, b, c) };
+			let root2 = unsafe { quadratic_single_neg_solver(a, b, c) };
+			print!("{} ", root1);
+			println!("{}", root2);
+		} else {
+			help();
+			userError();
+		}
 	} else {
 		help();
 		userError();
