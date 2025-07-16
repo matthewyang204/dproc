@@ -42,7 +42,7 @@ See the [todo list](TODO.md) for more details.
 - `gcd`, `gcf` get the GCD/GCF of a dataset
 - `prime-check` check whether each number in the dataset is prime
 
-*When `SUBCMD1` is `math`:*
+*When `SUBCMD1` is `solve`:*
 - `quadratic-single` solve a quadratic equation with the quadratic formula, where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0. Note that you may have to convert your equation; this does not accept != 0 on the other side of the equation.
 
 Place your data, values separated by spaces, in the place of `{yourdata}`.
