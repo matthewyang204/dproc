@@ -20,7 +20,7 @@ endif
 RC ?= rustc
 
 ifeq ($(strip $(BUILDLINKER)),)
-	CC ?= gcc
+	CC ?= @CC@
 else
 	CC ?= $(BUILDLINKER)
 endif
