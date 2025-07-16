@@ -42,9 +42,17 @@ else
     exit 1
 fi
 
+# Check OS type in order to determine proper sed
+# Detect OS and set sed -i syntax
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    SED_INPLACE=("sed" "-i" "'/tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea'")
+else
+    SED_INPLACE=("sed" "-i")
+fi
+
 # Patching Makefile
 echo "Creating usable Makefile..."
-sed -i '/tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea' "s|^CC = .*|CC = $CC|" Makefile
+"${SED_INPLACE[@]}" "s|^CC = .*|CC = $CC|" Makefile
 rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 touch .configured
