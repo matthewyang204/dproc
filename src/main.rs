@@ -55,6 +55,7 @@ fn help() {
 	println!("  organize     functions for organizing the dataset");
 	println!("  enumerate    functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values");
 	println!("  math         miscellaneous functions for arbitrary things about integers like gcd and lcm");
+	println!("  solve        functions for solving equations");
 	println!("");
 	println!("SUBCMD2 options:");
 	println!("");
@@ -83,6 +84,9 @@ fn help() {
 	println!("    lcm            get the LCM of a dataset");
 	println!("    gcd, gcf       get the GCD/GCF of a dataset");
 	println!("    prime-check    check whether each number in the dataset is prime");
+	println!("");
+	println!("  When SUBCMD1 is solve:");
+	println!("    quadratic-single   solve a quadratic equation with the quadratic formula, where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0. Note that you may have to convert your equation; this does not accept != 0 on the other side of the equation.");
 	println!("Place your data, values separated by spaces, in the place of {{yourdata}}.");
 }
 
