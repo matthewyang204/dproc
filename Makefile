@@ -18,7 +18,13 @@ else
 endif
 
 RC ?= rustc
-CC ?= gcc
+
+ifeq ($(strip $(BUILDLINKER)),)
+	CC ?= gcc
+else
+	CC ?= $(BUILDLINKER)
+endif
+
 RFLAGS ?= -C opt-level=3
 RUSTFLAGS ?= -Anon_snake_case
 BIN = bin/dproc
