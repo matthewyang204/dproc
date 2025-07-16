@@ -19,3 +19,13 @@ build/
 
 # source distributions
 dist/
+
+# C build files
+*.o
+*.so
+*.dylib
+*.a
+*.exe
+*.out
+*.dll
+*.lib
