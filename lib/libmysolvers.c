@@ -27,7 +27,7 @@ double quadratic_single_pos_solver(double a, double b, double c) {
 
     double discriminant = (b * b) - (4 * a * c);
     if (discriminant < 0) {
-        fprintf(stderr, "ERRO: The equation has no real roots.\n");
+        fprintf(stderr, "ERROR: The equation has no real roots.\n");
         exit(EXIT_FAILURE);
     }
 
