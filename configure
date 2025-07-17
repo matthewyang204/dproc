@@ -42,6 +42,24 @@ else
     exit 1
 fi
 
+mkdir -p /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea-configure
+cd /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea-configure
+for header in stdio.h stdlib.h math.h; do
+    printf "Checking for $header..."
+    echo "#include <$header>" > test.c
+    echo "int main() { return 0; }" >> test.c
+    if $CC -c test.c -o test.o 2>/dev/null; then
+        echo "found"
+    else
+        echo "not found"
+        echo "Header file $header not found. Please ensure it is installed and in your include path."
+        exit 1
+    fi
+    rm -f test.c test.o
+done
+cd -
+rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea-configure
+
 # Check OS type in order to determine proper sed
 # Detect OS and set sed -i syntax
 if [[ "$OSTYPE" == "darwin"* ]]; then
