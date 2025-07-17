@@ -52,7 +52,7 @@ Requirements:
 - `rustc`
 - `make`
 - `gcc`, `clang`, or some other C99-compliant C compiler
-- `ar` (usually comes with `coreutils`)
+- `ar` (usually comes with `binutils`, or more rarely, `coreutils`)
 
 To build:
 1. Download the latest xzipped src tarball and unpack it, or clone the repo, and then `cd` into the resulting folder
