@@ -55,5 +55,8 @@ echo "Creating usable Makefile..."
 "${SED_INPLACE[@]}" "s#@CC@#$CC#g" Makefile
 rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
+# Setting up
+export CC="$CC"
+
 touch .configured
 echo "Configuration complete. Run 'make' to build."
