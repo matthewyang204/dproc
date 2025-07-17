@@ -20,9 +20,9 @@ endif
 RC ?= rustc
 
 ifeq ($(strip $(BUILDLINKER)),)
-	CC ?= @CC@
+	CC = @CC@
 else
-	CC ?= $(BUILDLINKER)
+	CC = $(BUILDLINKER)
 endif
 
 RFLAGS ?= -C opt-level=3
