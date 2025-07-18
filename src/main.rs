@@ -29,6 +29,8 @@ mod num_integer;
 extern "C" {
     fn quadratic_single_neg_solver(a: f64, b: f64, c: f64) -> f64;
     fn quadratic_single_pos_solver(a: f64, b: f64, c: f64) -> f64;
+
+	fn linear_solver(a1: f64, b1: f64, c1: f64, a2: f64, b2: f64, c2: f64) -> (f64, f64);
 }
 
 fn userError() {
