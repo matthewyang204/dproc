@@ -247,6 +247,23 @@ fn main() {
 			let root2 = unsafe { quadratic_single_neg_solver(a, b, c) };
 			print!("{} ", root1);
 			println!("{}", root2);
+		} else if args[2] == "linear-dual" {
+			if data.len() < 4 {
+				eprintln!("ERROR: Invalid usage of the linear solver");
+				eprintln!("Usage: dproc solve linear-dual {{a1}} {{b1}} {{c1}} {{a2}} {{b2}} {{c2}}");
+				eprintln!("Where a1, b1, c1 are the coefficients of the first linear equation a1x + b1y + c1 = 0 and a2, b2, c2 are the coefficients of the second linear equation a2x + b2y + c2 = 0");
+				exit(1);
+			}
+			let a1: f64 = data[1].parse().expect("ERROR: Not a valid floating point number");
+			let b1: f64 = data[2].parse().expect("ERROR: Not a valid floating point number");
+			let c1: f64 = data[3].parse().expect("ERROR: Not a valid floating point number");
+			let a2: f64 = data[4].parse().expect("ERROR: Not a valid floating point number");
+			let b2: f64 = data[5].parse().expect("ERROR: Not a valid floating point number");
+			let c2: f64 = data[6].parse().expect("ERROR: Not a valid floating point number");
+			let resultX = unsafe { linear_solver(0, b1, c1, a2, b2, c2) };
+			let resultY = unsafe { linear_solver(1, b1, c1, a2, b2, c2) };
+			print!("{} ", resultX);
+			println!("{}", resultY);
 		} else {
 			help();
 			userError();
