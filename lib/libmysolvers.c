@@ -41,7 +41,7 @@ double quadratic_single_pos_solver(double a, double b, double c) {
 }
  // This uses cramer's rule to solve a system of linear equations
  // This can only solve a system of two linear equations with two variables
-double linear_solver(const char* val, double a1, double b1, double c1, double a2, double b2, double c2) {
+double linear_solver(int val, double a1, double b1, double c1, double a2, double b2, double c2) {
     double x;
     double y;
 
@@ -58,9 +58,9 @@ double linear_solver(const char* val, double a1, double b1, double c1, double a2
             exit(EXIT_FAILURE);
         }
     } else {
-        if (strcmp(val, "x") == 0) {
+        if (val == 0) {
             return x;
-        } else if (strcmp(val, "y") == 0) {
+        } else if (val == 1) {
             return y;
         } else {
             fprintf(stderr, "ERROR: Invalid variable name. Use 'x' or 'y'.\n");
