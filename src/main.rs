@@ -30,7 +30,7 @@ extern "C" {
     fn quadratic_single_neg_solver(a: f64, b: f64, c: f64) -> f64;
     fn quadratic_single_pos_solver(a: f64, b: f64, c: f64) -> f64;
 
-	fn linear_solver(val: i64, b1: f64, c1: f64, a2: f64, b2: f64, c2: f64) -> f64;
+	fn linear_solver(val: i64, a1: f64, b1: f64, c1: f64, a2: f64, b2: f64, c2: f64) -> f64;
 }
 
 fn userError() {
@@ -260,8 +260,8 @@ fn main() {
 			let a2: f64 = data[3];
 			let b2: f64 = data[4];
 			let c2: f64 = data[5];
-			let resultX = unsafe { linear_solver(0, b1, c1, a2, b2, c2) };
-			let resultY = unsafe { linear_solver(1, b1, c1, a2, b2, c2) };
+			let resultX = unsafe { linear_solver(0, a1, b1, c1, a2, b2, c2) };
+			let resultY = unsafe { linear_solver(1, a1, b1, c1, a2, b2, c2) };
 			print!("{} ", resultX);
 			println!("{}", resultY);
 		} else {
