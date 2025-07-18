@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 double quadratic_single_neg_solver(double a, double b, double c) {
     if (a == 0) {
@@ -40,7 +41,7 @@ double quadratic_single_pos_solver(double a, double b, double c) {
 }
  // This uses cramer's rule to solve a system of linear equations
  // This can only solve a system of two linear equations with two variables
-double linear_solver(double a1, double b1, double c1, double a2, double b2, double c2) {
+double linear_solver(const char* val, double a1, double b1, double c1, double a2, double b2, double c2) {
     double x;
     double y;
 
@@ -57,6 +58,13 @@ double linear_solver(double a1, double b1, double c1, double a2, double b2, doub
             exit(EXIT_FAILURE);
         }
     } else {
-        return x, y;
+        if (strcmp(val, "x") == 0) {
+            return x;
+        } else if (strcmp(val, "y") == 0) {
+            return y;
+        } else {
+            fprintf(stderr, "ERROR: Invalid variable name. Use 'x' or 'y'.\n");
+            exit(EXIT_FAILURE);
+        }
     }
 }
