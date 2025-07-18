@@ -240,9 +240,9 @@ fn main() {
 				eprintln!("WARNING: You may have to convert your equation; this does not accept != 0 on the other side of the equation.");
 				exit(1);
 			}
-			let a: f64 = data[0]
-			let b: f64 = data[1]
-			let c: f64 = data[2]
+			let a: f64 = data[0];
+			let b: f64 = data[1];
+			let c: f64 = data[2];
 			let root1 = unsafe { quadratic_single_pos_solver(a, b, c) };
 			let root2 = unsafe { quadratic_single_neg_solver(a, b, c) };
 			print!("{} ", root1);
@@ -254,12 +254,12 @@ fn main() {
 				eprintln!("Where a1, b1, c1 are the coefficients of the first linear equation a1x + b1y + c1 = 0 and a2, b2, c2 are the coefficients of the second linear equation a2x + b2y + c2 = 0");
 				exit(1);
 			}
-			let a1: f64 = data[0]
-			let b1: f64 = data[1]
-			let c1: f64 = data[2]
-			let a2: f64 = data[3]
-			let b2: f64 = data[4]
-			let c2: f64 = data[5]
+			let a1: f64 = data[0];
+			let b1: f64 = data[1];
+			let c1: f64 = data[2];
+			let a2: f64 = data[3];
+			let b2: f64 = data[4];
+			let c2: f64 = data[5];
 			let resultX = unsafe { linear_solver(0, b1, c1, a2, b2, c2) };
 			let resultY = unsafe { linear_solver(1, b1, c1, a2, b2, c2) };
 			print!("{} ", resultX);
