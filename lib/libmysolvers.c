@@ -63,7 +63,7 @@ double linear_solver(int val, double a1, double b1, double c1, double a2, double
         } else if (val == 1) {
             return y;
         } else {
-            fprintf(stderr, "ERROR: Invalid variable name. Use 'x' or 'y'.\n");
+            fprintf(stderr, "ERROR: Invalid variable name. Use 0 to get x or 1 to get y.\n");
             exit(EXIT_FAILURE);
         }
     }
