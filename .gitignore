@@ -35,3 +35,6 @@ dist/
 
 # C object files
 *.obj
+
+# Makefiles
+Makefile
