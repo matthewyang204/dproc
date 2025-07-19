@@ -24,7 +24,10 @@ fi
 
 # Check for a C compiler
 printf "Checking for C compiler..."
-if command -v gcc &> /dev/null
+if [ -n "$CC" ] && command -v $CC &> /dev/null
+then
+    echo "$CC"
+elif command -v gcc &> /dev/null
 then
     CC=gcc
     echo "gcc"
