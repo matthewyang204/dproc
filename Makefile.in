@@ -30,7 +30,7 @@ RUSTFLAGS ?= -Anon_snake_case
 BIN = bin/dproc
 BINDIR = bin
 SRC = src/main.rs
-PREFIX ?= /usr/local
+PREFIX ?= @PREFIX@
 GNSRCDIR ?= /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 all: build

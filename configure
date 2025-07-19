@@ -74,6 +74,18 @@ else
     exit 1
 fi
 
+# Check for prefix
+printf "Checking for prefix..."
+if printf '%s\n' "$@" | grep -q -- "^--prefix="; then
+    prefix_arg=$(printf '%s\n' "$@" | grep -m1 '^--prefix=')
+    prefix_path="${prefix_arg#--prefix=}"
+    PREFIX=$prefix_path
+    echo "$PREFIX"
+else
+    PREFIX="/usr/local"
+    echo "$PREFIX"
+fi
+
 # Check OS type in order to determine proper sed
 # Detect OS and set sed -i syntax
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -86,6 +98,7 @@ fi
 echo "Executing depfiles commands..."
 cp Makefile.in Makefile
 "${SED_INPLACE[@]}" "s#@CC@#$CC#g" Makefile
+"${SED_INPLACE[@]}" "s#@PREFIX@#$PREFIX#g" Makefile
 rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 # Setting up
