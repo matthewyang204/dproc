@@ -41,7 +41,7 @@ then
     echo "cc"
 else
     echo "not found"
-    echo "No C compiler found. Please install gcc or clang to continue."
+    echo "No C compiler found. Please install gcc, clang, or some C compiler to continue."
     exit 1
 fi
 
