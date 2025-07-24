@@ -228,14 +228,10 @@ fn main() {
 			userError();
 		}
 	} else if args[1] == "math"{
-		let data_integer: Vec<u32> = args[3..]
+		let data_integer: Vec<u32> = data
 			.iter()
-			.map(|x| x.parse::<u32>())
-			.collect::<Result<Vec<_>, _>>()
-			.unwrap_or_else(|_| {
-				eprintln!("ERROR: This program can only calculate math properties of integers, exiting...");
-				exit(1);
-			});
+			.map(|x| *x as u32)
+			.collect::<Vec<_>>();
 		if args[2] == "lcm" {
 			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::lcm(a, b)).unwrap();
 			println!("{}", result);
