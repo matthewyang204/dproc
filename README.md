@@ -46,7 +46,7 @@ See the [todo list](TODO.md) for more details.
 - `quadratic-single {{a}} {{b}} {{c}}` solve a quadratic equation with the quadratic formula, where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0. Note that you may have to convert your equation; this does not accept != 0 on the other side of the equation.
 - `linear-dual {{a1}} {{b1}} {{c1}} {{a2}} {{b2}} {{c2}}` solve a system of two linear equations with the substitution method, where a1, b1, c1 are the coefficients of the first linear equation a1x + b1y = c1 and a2, b2, c2 are the coefficients of the second linear equation a2x + b2y = c1. Note that this is standard form and you may have to convert your equations to it.
 
-Place your data, values separated by spaces, in the place of `{yourdata}`.
+Place your data, values separated by spaces, in the place of `{yourdata}`. Alternatively, you may put `stdin` or `-` in the place of `{yourdata}` to read from stdin.
 
 # Building
 Requirements:
