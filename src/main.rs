@@ -121,8 +121,25 @@ fn main() {
         }
 	
 	if args[3] == "stdin" || args[3] == "-" {
-		eprintln!("Unimplemented STUB");
-		exit(1);
+		let stdin = io::stdin();
+		let mut lines: Vec<String> = Vec::new();
+
+		for line in stdin.lock().lines() {
+			match line {
+				Ok(content) => lines.push(content),
+				Err(e) => eprintln!("ERROR: Error reading line from stdin: {}", e),
+			}
+		}
+
+		let data: Vec<f64> = lines
+			.iter()
+			.flat_map(|line| line.split_whitespace())
+			.map(|x| x.parse::<f64>())
+			.collect::<Result<Vec<_>, _>>()
+			.unwrap_or_else(|_| {
+				eprintln!("ERROR: There can only be valid numbers values in the dataset, exiting...");
+				exit(1);
+			});
 	} else {
 		let data: Vec<f64> = args[3..]
 			.iter()
