@@ -132,7 +132,7 @@ fn main() {
 			}
 		}
 
-		let data: Vec<f64> = lines
+		data = lines
 			.iter()
 			.flat_map(|line| line.split_whitespace())
 			.map(|x| x.parse::<f64>())
@@ -142,7 +142,7 @@ fn main() {
 				exit(1);
 			});
 	} else {
-		let data: Vec<f64> = args[3..]
+		data = args[3..]
 			.iter()
 			.map(|x| x.parse::<f64>())
 			.collect::<Result<Vec<_>, _>>()
