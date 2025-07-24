@@ -118,15 +118,20 @@ fn main() {
 		help();
 		userError();
         }
-
-	let data: Vec<f64> = args[3..]
-		.iter()
-		.map(|x| x.parse::<f64>())
-		.collect::<Result<Vec<_>, _>>()
-		.unwrap_or_else(|_| {
-			eprintln!("ERROR: There can only be valid numbers values in the dataset, exiting...");
-			exit(1);
-		});
+	
+	if args[3] == "stdin" || args[3] == "-" {
+		eprintln!("Unimplemented STUB");
+		exit(1);
+	} else {
+		let data: Vec<f64> = args[3..]
+			.iter()
+			.map(|x| x.parse::<f64>())
+			.collect::<Result<Vec<_>, _>>()
+			.unwrap_or_else(|_| {
+				eprintln!("ERROR: There can only be valid numbers values in the dataset, exiting...");
+				exit(1);
+			});
+	}
 	
 	if args[1] == "round" {
 		if args[2] == "mean" {
