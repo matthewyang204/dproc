@@ -120,6 +120,7 @@ fn main() {
 		userError();
         }
 	
+	let data: Vec<f64>;
 	if args[3] == "stdin" || args[3] == "-" {
 		let stdin = io::stdin();
 		let mut lines: Vec<String> = Vec::new();
