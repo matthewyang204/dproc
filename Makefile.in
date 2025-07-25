@@ -27,6 +27,9 @@ endif
 
 RFLAGS ?= -C opt-level=3
 RUSTFLAGS ?= -Anon_snake_case
+CPPFLAGS ?=
+CFLAGS ?=
+LDFLAGS ?=
 BIN = bin/dproc
 BINDIR = bin
 SRC = src/main.rs
@@ -38,7 +41,7 @@ all: build
 build: src/*
 	mkdir -p bin
 	mkdir -p obj
-	$(CC) -c lib/libmysolvers.c -o obj/libmysolvers.o
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
 	$(RC) $(RFLAGS) $(RUSTFLAGS) $(TARGETARG) $(LINKER) -Lobj -lstatic=mysolvers $(SRC) -o $(BIN)
 
