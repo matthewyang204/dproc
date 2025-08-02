@@ -1,6 +1,5 @@
 use num_integer::Roots;
 
-// Checks if a number is prime, and a collection of other functions to use it and based around it
 pub fn generate_primes(limit: usize) -> Vec<usize> {
     let mut numbers: Vec<usize> = (2..=limit).collect();
     let mut primes: Vec<usize> = Vec::new();
@@ -12,6 +11,7 @@ pub fn generate_primes(limit: usize) -> Vec<usize> {
 
     primes
 }
+
 pub fn is_prime(n: u32) -> bool {
     if n <= 1 {
         return false;
