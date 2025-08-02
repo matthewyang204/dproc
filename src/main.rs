@@ -243,7 +243,7 @@ fn main() {
 			println!("{}", result);
 		} else if args[2] == "prime-check" {
 			for value in data_integer {
-				if num_integer::is_prime(value as u32) {
+				if is_prime(value as u32) {
 					print!("True ");
 				} else {
 					print!("False ");
