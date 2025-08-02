@@ -44,7 +44,7 @@ build: src/*
 	mkdir -p obj
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
-	$(RC) $(RUSTFLAGS) $(TARGETARG) $(LINKER) -Lobj -lstatic=mysolvers $(SRC) -o $(BIN)
+	RUSTFLAGS="$(RUSTFLAGS)" cargo build $(CONFIG)
 
 upgrade-c-libs:
 	cd lib && \
