@@ -45,6 +45,11 @@ build: src/*
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
 	RUSTFLAGS="$(RUSTFLAGS)" cargo build $(CONFIG)
+ifeq ($(CONFIG),--release)
+	cp target/release/dproc bin/dproc
+else
+	cp target/debug/dproc bin/dproc
+endif
 
 upgrade-c-libs:
 	cd lib && \
@@ -55,6 +60,7 @@ clean:
 	rm -rf $(BINDIR)
 	rm -rf dist
 	rm -rf obj
+	rm -rf target
 	
 install:
 	mkdir -p $(PREFIX)/$(BINDIR)
