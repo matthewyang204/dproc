@@ -20,10 +20,10 @@ endif
 RC ?= rustc
 CC = @CC@
 
-ifeq ($(strip $(BUILDLINKER)),$(CC))
-	# nothing to do here
-else
+ifneq ($(strip $(BUILDLINKER)),)
+ifneq ($(strip $(BUILDLINKER)),$(CC))
 $(warning Your CC and BUILDLINKER do not match. If this is intentional and you know what you're doing, just ignore this. Otherwise, we recommend setting CC and BUILDLINKER to the same thing.)
+endif
 endif
 
 ifeq ($(CONFIG),--release)
