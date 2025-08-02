@@ -4,3 +4,4 @@ version = "1.1.1"
 edition = "2025"
 
 [dependencies]
+num-integer = "0.1"
