@@ -2,24 +2,30 @@
 
 # Check for rustc
 printf "Checking for rustc..."
-if ! command -v rustc &> /dev/null
+if [ -n "$RC" ] && command -v $RC &> /dev/null
+then
+    echo "$RC"
+elif ! command -v rustc &> /dev/null
 then
     echo "not found"
     echo "rustc not found. Please install it to continue."
     exit 1
 else
-    echo "found"
+    echo "rustc"
 fi
 
 # Check for cargo
 printf "Checking for cargo..."
-if ! command -v cargo &> /dev/null
+if [ -n "$CARGO" ] && command -v $CARGO &> /dev/null
+then
+    echo "$CARGO"
+elif ! command -v cargo &> /dev/null
 then
     echo "not found"
     echo "cargo not found. Please install it to continue."
     exit 1
 else
-    echo "found"
+    echo "cargo"
 fi
 
 # Check for make
