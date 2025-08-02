@@ -41,7 +41,6 @@ else
 endif
 
 CARGO ?= cargo
-RUSTFLAGS += -C opt-level=3
 RUSTFLAGS += -Anon_snake_case
 RUSTFLAGS += $(LINKER)
 CONFIG ?=
