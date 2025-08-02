@@ -1,6 +1,8 @@
 // Load required modules
+#[allow(unused_imports)]
 use num_integer::Roots;
 
+#[allow(dead_code)]
 pub fn generate_primes(limit: usize) -> Vec<usize> {
     let mut numbers: Vec<usize> = (2..=limit).collect();
     let mut primes: Vec<usize> = Vec::new();
