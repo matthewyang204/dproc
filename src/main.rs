@@ -26,8 +26,8 @@ use enumerate::count;
 use primes::generate_primes;
 use primes::is_prime;
 
-// Load num-integer crate
-mod num_integer;
+// Load crates
+use num_integer;
 
 // Include C functions from libmysolvers
 unsafe extern "C" {
