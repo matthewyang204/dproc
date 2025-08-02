@@ -25,8 +25,8 @@ else
 	CC = $(BUILDLINKER)
 endif
 
-RFLAGS ?= -C opt-level=3
-RUSTFLAGS ?= -Anon_snake_case
+RUSTFLAGS += -C opt-level=3
+RUSTFLAGS += -Anon_snake_case
 CPPFLAGS ?=
 CFLAGS ?=
 LDFLAGS ?=
@@ -43,7 +43,7 @@ build: src/*
 	mkdir -p obj
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
-	$(RC) $(RFLAGS) $(RUSTFLAGS) $(TARGETARG) $(LINKER) -Lobj -lstatic=mysolvers $(SRC) -o $(BIN)
+	$(RC) $(RUSTFLAGS) $(TARGETARG) $(LINKER) -Lobj -lstatic=mysolvers $(SRC) -o $(BIN)
 
 upgrade-c-libs:
 	cd lib && \
