@@ -18,15 +18,31 @@ else
 endif
 
 RC ?= rustc
+CC = @CC@
 
-ifeq ($(strip $(BUILDLINKER)),)
-	CC = @CC@
+ifeq ($(strip $(BUILDLINKER)),$(CC))
+	# nothing to do here
 else
-	CC = $(BUILDLINKER)
+$(warning Your CC and BUILDLINKER do not match. If this is intentional and you know what you're doing, just ignore this. Otherwise, we recommend setting CC and BUILDLINKER to the same thing.)
+endif
+
+ifeq ($(CONFIG),--release)
+	ifeq ($(strip $(BUILDTARGET)),)
+		COPY_RESULT = cp target/release/dproc bin/dproc
+	else
+		COPY_RESULT = cp target/$(BUILDTARGET)/release/dproc bin/dproc
+	endif
+else
+	ifeq ($(strip $(BUILDTARGET)),)
+		COPY_RESULT = cp target/debug/dproc bin/dproc
+	else
+		COPY_RESULT = cp target/$(BUILDTARGET)/debug/dproc bin/dproc
+	endif
 endif
 
 RUSTFLAGS += -C opt-level=3
 RUSTFLAGS += -Anon_snake_case
+RUSTFLAGS += $(LINKER)
 CONFIG ?=
 CPPFLAGS ?=
 CFLAGS ?=
@@ -44,12 +60,8 @@ build: src/*
 	mkdir -p obj
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
-	RUSTFLAGS="$(RUSTFLAGS)" cargo build $(CONFIG)
-ifeq ($(CONFIG),--release)
-	cp target/release/dproc bin/dproc
-else
-	cp target/debug/dproc bin/dproc
-endif
+	RUSTFLAGS="$(RUSTFLAGS)" cargo build $(TARGETARG) $(CONFIG)
+	$(COPY_RESULT)
 
 upgrade-c-libs:
 	cd lib && \
