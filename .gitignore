@@ -40,5 +40,4 @@ dist/
 Makefile
 
 # Added by cargo
-
 /target
