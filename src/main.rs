@@ -30,7 +30,7 @@ use primes::is_prime;
 mod num_integer;
 
 // Include C functions from libmysolvers
-extern "C" {
+unsafe extern "C" {
     fn quadratic_single_neg_solver(a: f64, b: f64, c: f64) -> f64;
     fn quadratic_single_pos_solver(a: f64, b: f64, c: f64) -> f64;
 
