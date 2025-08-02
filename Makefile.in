@@ -40,6 +40,7 @@ else
 	endif
 endif
 
+CARGO ?= cargo
 RUSTFLAGS += -C opt-level=3
 RUSTFLAGS += -Anon_snake_case
 RUSTFLAGS += $(LINKER)
@@ -60,7 +61,7 @@ build: src/*
 	mkdir -p obj
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
-	RUSTFLAGS="$(RUSTFLAGS)" cargo build $(TARGETARG) $(CONFIG)
+	RUSTFLAGS="$(RUSTFLAGS)" $(CARGO) build $(TARGETARG) $(CONFIG)
 	$(COPY_RESULT)
 
 upgrade-c-libs:
