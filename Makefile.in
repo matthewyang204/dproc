@@ -27,6 +27,7 @@ endif
 
 RUSTFLAGS += -C opt-level=3
 RUSTFLAGS += -Anon_snake_case
+CONFIG ?=
 CPPFLAGS ?=
 CFLAGS ?=
 LDFLAGS ?=
