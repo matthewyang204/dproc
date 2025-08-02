@@ -9,6 +9,7 @@ mod round;
 mod sort;
 mod deviate;
 mod coreFuncs;
+mod primes;
 
 // Use functions from modules
 use round::mean;
@@ -22,12 +23,14 @@ use deviate::medianAD;
 use sort::sort;
 use enumerate::sum;
 use enumerate::count;
+use primes::generate_primes;
+use primes::is_prime;
 
 // Load num-integer crate
 mod num_integer;
 
 // Include C functions from libmysolvers
-extern "C" {
+unsafe extern "C" {
     fn quadratic_single_neg_solver(a: f64, b: f64, c: f64) -> f64;
     fn quadratic_single_pos_solver(a: f64, b: f64, c: f64) -> f64;
 
@@ -240,7 +243,7 @@ fn main() {
 			println!("{}", result);
 		} else if args[2] == "prime-check" {
 			for value in data_integer {
-				if num_integer::is_prime(value as u32) {
+				if is_prime(value as u32) {
 					print!("True ");
 				} else {
 					print!("False ");
