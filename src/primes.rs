@@ -1,3 +1,4 @@
+// Load required modules
 use num_integer::Roots;
 
 pub fn generate_primes(limit: usize) -> Vec<usize> {
