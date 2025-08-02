@@ -9,6 +9,7 @@ mod round;
 mod sort;
 mod deviate;
 mod coreFuncs;
+mod primes;
 
 // Use functions from modules
 use round::mean;
@@ -22,6 +23,8 @@ use deviate::medianAD;
 use sort::sort;
 use enumerate::sum;
 use enumerate::count;
+use primes::generate_primes;
+use primes::is_prime;
 
 // Load num-integer crate
 mod num_integer;
