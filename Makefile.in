@@ -26,6 +26,8 @@ $(warning Your CC and BUILDLINKER do not match. If this is intentional and you k
 endif
 endif
 
+CONFIG ?=
+
 ifeq ($(CONFIG),--release)
 	ifeq ($(strip $(BUILDTARGET)),)
 		COPY_RESULT = cp target/release/dproc bin/dproc
@@ -43,7 +45,6 @@ endif
 CARGO ?= cargo
 RUSTFLAGS += -Anon_snake_case
 RUSTFLAGS += $(LINKER)
-CONFIG ?=
 CPPFLAGS ?=
 CFLAGS ?=
 LDFLAGS ?=
