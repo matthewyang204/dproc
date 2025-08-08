@@ -17,7 +17,7 @@ else
 	LINKER:=-C linker=$(BUILDLINKER)
 endif
 
-RC ?= rustc
+RC ?= @RC@
 CC = @CC@
 
 ifneq ($(strip $(BUILDLINKER)),)
@@ -42,7 +42,7 @@ else
 	endif
 endif
 
-CARGO ?= cargo
+CARGO ?= @CARGO@
 RUSTFLAGS += -Anon_snake_case
 RUSTFLAGS += $(LINKER)
 CPPFLAGS ?=

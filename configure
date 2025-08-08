@@ -116,6 +116,8 @@ echo "Executing depfiles commands..."
 cp Makefile.in Makefile
 "${SED_INPLACE[@]}" "s#@CC@#$CC#g" Makefile
 "${SED_INPLACE[@]}" "s#@PREFIX@#$PREFIX#g" Makefile
+"${SED_INPLACE[@]}" "s#@CARGO@#$CARGO#g" Makefile
+"${SED_INPLACE[@]}" "s#@RC@#$RC#g" Makefile
 rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 # Setting up
