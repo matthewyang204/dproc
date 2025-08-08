@@ -11,6 +11,7 @@ then
     echo "rustc not found. Please install it to continue."
     exit 1
 else
+    RC=rustc
     echo "rustc"
 fi
 
@@ -25,6 +26,7 @@ then
     echo "cargo not found. Please install it to continue."
     exit 1
 else
+    CARGO=cargo
     echo "cargo"
 fi
 
