@@ -245,12 +245,12 @@ fn main() {
 		} else if args[2] == "prime-check" {
 			for value in data_integer {
 				if is_prime(value as u32) {
-					results.push("True");
+					result.push("True");
 				} else {
-					results.push("False");
+					result.push("False");
 				}
 			}
-			for value in results {
+			for value in result {
 				print!("{} ", value);
 			}
 			println!();
