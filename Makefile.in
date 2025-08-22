@@ -77,8 +77,12 @@ clean:
 	
 install:
 	mkdir -p $(PREFIX)/$(BINDIR)
+	mkdir -p $(PREFIX)/include
+	mkdir -p $(PREFIX)/lib
 	rm -rf $(PREFIX)/$(BIN)
 	cp $(BIN) $(PREFIX)/$(BIN)
+	cp lib/libmysolvers.h $(PREFIX)/include/
+	cp obj/libmysolvers.a $(PREFIX)/lib/
 	
 uninstall:
 	rm -rf $(PREFIX)/$(BIN)
