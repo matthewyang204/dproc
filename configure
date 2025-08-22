@@ -5,6 +5,10 @@ printf "Checking for rustc..."
 if [ -n "$RC" ] && command -v $RC &> /dev/null
 then
     echo "$RC"
+elif [ -n "$RUSTC" ] && command -v $RUSTC &> /dev/null
+then
+    echo "$RC"
+    RC=$RUSTC
 elif ! command -v rustc &> /dev/null
 then
     echo "not found"
