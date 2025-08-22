@@ -95,6 +95,10 @@ install:
 
 uninstall:
 	rm -rf $(PREFIX)/$(BIN)
+ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
+	rm -rf $(PREFIX)/include/libmysolvers.h
+	rm -rf $(PREFIX)/lib/libmysolvers.a
+endif
 
 dist: clean
 	rm -rf $(GNSRCDIR)
