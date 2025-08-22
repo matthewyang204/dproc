@@ -42,6 +42,8 @@ else
 	endif
 endif
 
+INCLUDE_LIBMYSOLVERS = @INCLUDE_LIBMYSOLVERS@
+
 CARGO = @CARGO@
 RUSTFLAGS += -Anon_snake_case
 RUSTFLAGS += $(LINKER)
@@ -74,16 +76,23 @@ clean:
 	rm -rf dist
 	rm -rf obj
 	rm -rf target
-	
-install:
-	mkdir -p $(PREFIX)/$(BINDIR)
+
+install_libmysolvers:
+ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
+	echo "Installing libmysolvers to $(PREFIX)..."
 	mkdir -p $(PREFIX)/include
 	mkdir -p $(PREFIX)/lib
-	rm -rf $(PREFIX)/$(BIN)
-	cp $(BIN) $(PREFIX)/$(BIN)
 	cp lib/libmysolvers.h $(PREFIX)/include/
 	cp obj/libmysolvers.a $(PREFIX)/lib/
-	
+endif
+
+install:
+	echo "Installing dproc to $(PREFIX)..."
+	mkdir -p $(PREFIX)/$(BINDIR)
+	rm -rf $(PREFIX)/$(BIN)
+	cp $(BIN) $(PREFIX)/$(BIN)
+	$(MAKE) install_libmysolvers
+
 uninstall:
 	rm -rf $(PREFIX)/$(BIN)
 

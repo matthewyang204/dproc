@@ -97,6 +97,16 @@ else
     exit 1
 fi
 
+printf "Checking if libmysolvers should be included..."
+if [ "$INCLUDE_LIBMYSOLVERS" = "FALSE" ]; then
+    echo "no"
+elif [ "$INCLUDE_LIBMYSOLVERS" = "TRUE" ]; then
+    echo "yes"
+else
+    echo "no"
+    INCLUDE_LIBMYSOLVERS="FALSE"
+fi
+
 # Check for prefix
 printf "Checking for prefix..."
 if printf '%s\n' "$@" | grep -q -- "^--prefix="; then
@@ -124,6 +134,7 @@ cp Makefile.in Makefile
 "${SED_INPLACE[@]}" "s#@PREFIX@#$PREFIX#g" Makefile
 "${SED_INPLACE[@]}" "s#@CARGO@#$CARGO#g" Makefile
 "${SED_INPLACE[@]}" "s#@RC@#$RC#g" Makefile
+"${SED_INPLACE[@]}" "s#@INCLUDE_LIBMYSOLVERS@#$INCLUDE_LIBMYSOLVERS#g" Makefile
 rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 # Setting up
