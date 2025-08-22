@@ -61,7 +61,7 @@ build: src/*
 	mkdir -p obj
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
-	RUSTFLAGS="$(RUSTFLAGS)" $(CARGO) build $(TARGETARG) $(CONFIG)
+	RUSTFLAGS="$(RUSTFLAGS)" RUSTC="$(RC)" $(CARGO) build $(TARGETARG) $(CONFIG)
 	$(COPY_RESULT)
 
 upgrade-c-libs:
