@@ -6,7 +6,8 @@ import sys
 # Initalize some variables
 print("Retrieiving temporary directory...", end='')
 if platform.system() == "Windows":
-    print("Unimplemented STUB")
+    temp = os.getenv('TEMP')
+    print(temp)
 else:
     temp = os.path.join("/tmp")
     print(temp)
