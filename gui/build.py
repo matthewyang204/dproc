@@ -12,7 +12,7 @@ def run_pyinstaller():
             'pyinstaller',
             main_script,
             '-w',  # Makes it windowed
-            '--name', 'dprocgui'
+            '--name', 'dproc-gui'
             '--icon=icon.ico'
         ]
 
