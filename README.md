@@ -56,6 +56,10 @@ Requirements:
 - `gcc`, `clang`, or some other C99-compliant C compiler
 - `ar` (usually comes with `binutils`, or more rarely, `coreutils`)
 
+Additionally, if building the GUI program:
+- `python` 3.6 or later
+- the contents of `requirements.txt` installed in a fresh `venv` or directly in your python installation, noting that `pyinstaller` should be in PATH
+
 To build:
 1. Download the latest xzipped src tarball and unpack it, or clone the repo, and then `cd` into the resulting folder
 2. Run `./configure`.
