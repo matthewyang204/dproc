@@ -44,6 +44,32 @@ class run():
     def process_data(event=None):
         print("Unimplemented STUB")
 
+class clipboard():
+    def cut_text(event=None):
+        text_area.clipboard_clear()
+        text_area.clipboard_append(text_area.get("sel.first", "sel.last"))
+        text_area.delete("sel.first", "sel.last")
+        printlog("Cut option succeeded")
+        return 'break'
+
+    def copy_text(event=None):
+        text_area.clipboard_clear()
+        text_area.clipboard_append(text_area.get("sel.first", "sel.last"))
+        printlog("Text copied to clipboard")
+        return 'break'
+
+
+    def paste_text(event=None):
+        text_area.insert("insert", text_area.clipboard_get())
+        printlog("Text pasted from clipboard")
+        return 'break'
+
+
+    def select_all_text(event=None):
+        text_area.tag_add("sel", "1.0", "end")
+        printlog("Text selected")
+        return 'break'
+
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 
 root.mainloop()
