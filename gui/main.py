@@ -156,6 +156,37 @@ process_button = tk.Button(button_frame, text="Process Data", command=run.proces
 process_button.pack(side=tk.RIGHT, expand=True)
 
 sc1options = ["round", "deviate", "organize", "enumerate", "math", "solve"]
+roundOptions = [
+    "mean",
+    "median",
+    "mode",
+    "decimal",
+    "integer"
+]
+deviateOptions = [
+    "range",
+    "variance",
+    "standard",
+    "meanAbsolute",
+    "medianAbsolute"
+]
+organizeOptions = [
+    "sort"
+]
+enumerateOptions = [
+    "sum",
+    "count"
+]
+mathOptions = [
+    "lcm",
+    "gcd",
+    "gcf"
+]
+solveOptions = [
+    "quadratic-single",
+    "linear-dual"
+]
+
 sc1 = tk.StringVar(root)
 sc1.set(sc1options[0])
 selector1 = tk.OptionMenu(button_frame, sc1, *sc1options)
