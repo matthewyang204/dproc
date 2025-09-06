@@ -144,7 +144,7 @@ class changes():
 
 class about():
     def about(event=None):
-        messagebox.showinfo("About dproc", versionInfo)
+        messagebox.showinfo("About dproc GUI", versionInfo)
 
     def show_license(event=None):
         messagebox.showinfo("License", "This program is licensed under the GNU GPLv3. If you did not receive a copy with this program, go to https://github.com/matthewyang204/dproc or read the LICENSE file in your copy of the source code.")
