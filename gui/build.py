@@ -5,7 +5,7 @@ import os
 
 def run_pyinstaller():
     try:
-        main_script = os.path.join('src', 'main.py')
+        main_script = os.path.join('main.py')
 
         # PyInstaller command to build the executable
         cmd = [
