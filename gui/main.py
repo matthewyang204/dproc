@@ -30,6 +30,7 @@ else:
 print(dproc)
 print("Checking version info...")
 dprocVersionInfo = subprocess.run([dproc, '--version'], capture_output=True, text=True)
+dprocHelpInfo = subprocess.run([dproc, '--help'], capture_output=True, text=True)
 guiVersionInfo = """dproc GUI, version 1.0.0
 (C) 2025 Matthew Yang"""
 versionInfo = f"""dproc GUI:
@@ -152,6 +153,9 @@ class about():
     def show_license(event=None):
         messagebox.showinfo("License", "This program is licensed under the GNU GPLv3. If you did not receive a copy with this program, go to https://github.com/matthewyang204/dproc or read the LICENSE file in your copy of the source code.")
 
+    def help(event=None):
+        messagebox.showinfo("Help", dprocHelpInfo.stdout)
+
 def mutResult(result):
     result_area.config(state="normal")
     result_area.delete("1.0", tk.END)
@@ -264,6 +268,7 @@ about_menu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="About", menu=about_menu)
 about_menu.add_command(label="About dproc GUI", command=about.about)
 about_menu.add_command(label="License", command=about.show_license)
+about_menu.add_command(label="Help", command=about.help)
 
 # Debug only
 # import code
