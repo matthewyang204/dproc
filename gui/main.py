@@ -191,6 +191,8 @@ class selector2_updater:
             self.update([])
 
 selector2_updater = selector2_updater(value=None)
+def update_s2(*args):
+    selector2_updater.service()
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
@@ -269,6 +271,6 @@ about_menu.add_command(label="License", command=about.show_license)
 
 selector2_updater.service()
 
-sc1.trace('w', selector2_updater.service)
+sc1.trace('w', update_s2)
 
 root.mainloop()
