@@ -200,7 +200,7 @@ def update_s2(*args):
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
-process_button = tk.Button(button_frame, text="Process Data", command=run.process_data)
+process_button = tk.Button(button_frame, text="Process Data", command=run.process_data, font=text_font)
 process_button.pack(side=tk.RIGHT, expand=True)
 
 sc1options = ["round", "deviate", "organize", "enumerate", "math", "solve"]
@@ -241,11 +241,13 @@ sc1.set(sc1options[0])
 selector1 = tk.OptionMenu(button_frame, sc1, *sc1options)
 sc2 = tk.StringVar(root)
 selector2 = tk.OptionMenu(button_frame, sc2, *roundOptions)
+selector1.config(font=text_font)
+selector2.config(font=text_font)
 
-toplabel = tk.Label(top_frame, text="Enter data to process ↓")
-midlabel = tk.Label(button_frame, text="Results ↓")
-categorylabel = tk.Label(button_frame, text="Category/SUBCMD1:")
-operationlabel = tk.Label(button_frame, text="Operation/SUBCMD2:")
+toplabel = tk.Label(top_frame, text="Enter data to process ↓", font=text_font)
+midlabel = tk.Label(button_frame, text="Results ↓", font=text_font)
+categorylabel = tk.Label(button_frame, text="Category/SUBCMD1:", font=text_font)
+operationlabel = tk.Label(button_frame, text="Operation/SUBCMD2:", font=text_font)
 
 midlabel.pack(side=tk.LEFT)
 selector1.pack(side=tk.LEFT, expand=True)
