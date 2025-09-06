@@ -37,6 +37,9 @@ scrollbar = tk.Scrollbar(text_frame, orient="vertical", command=text_area.yview)
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 text_area.config(yscrollcommand=scrollbar.set)
 
+def run_dproc(data):
+    print("Unimplemented STUB")
+
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 
 root.mainloop()
