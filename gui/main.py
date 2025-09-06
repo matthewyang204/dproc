@@ -6,8 +6,30 @@ from tkinter import font, messagebox
 import subprocess
 
 # Initalize some variables
+print("Retrieving script directory...", end='')
+script_dir = os.path.dirname(os.path.abspath(__file__))
+exe_dir = os.path.dirname(sys.executable)
+print(script_dir)
+print("Retrieiving executable path...", end='')
+if platform.system() == "Windows":
+    try:
+        executablePath = subprocess.run(['where', 'dproc'], capture_output=True, text=True, check=True)
+        dproc = executablePath.stdout.strip().split('\n')[0]
+    except Exception as e:
+        cwdexe = os.path.join(script_dir, 'dproc.exe')
+        if os.path.isfile(cwdexe):
+            dproc = cwdexe
+        else:
+            if os.path.isfile(os.path.join(exe_dir, 'dproc.exe')):
+                dproc = os.path.join(exe_dir, 'dproc.exe')
+            else:
+                raise FileNotFoundError("Backend executable not found. Reinstalling the program may fix this issue.") from e
+else:
+    print("ERROR: Platform not (yet) supported.")
+    sys.exit(1)
+print(dproc)
 print("Checking version info...")
-dprocVersionInfo = subprocess.run(['dproc', '--version'], capture_output=True, text=True)
+dprocVersionInfo = subprocess.run([dproc, '--version'], capture_output=True, text=True)
 guiVersionInfo = """dproc GUI, version 1.0.0
 (C) 2025 Matthew Yang"""
 versionInfo = f"""dproc GUI:
