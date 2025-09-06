@@ -88,6 +88,9 @@ class changes():
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 
+menu = tk.Menu(root)
+root.config(menu=menu)
+
 edit_menu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="Edit", menu=edit_menu)
 # edit_menu.add_command(label="Jump To Cursor [Debug]", command=text_scroll.to_cursor)
