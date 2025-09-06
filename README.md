@@ -72,7 +72,7 @@ If you want to install from a binary downloaded from the releases, simply move t
 
 On macOS, you can also use Homebrew. To install using Homebrew, first tap my self-hosted tap via `brew tap matthewyang204/homebrew-formulae-casks`. Then, simply install with `brew install dproc`.
 
-## License
+# License
 This project is licensed under the GNU General Public License v3.0 (GPLv3).  
 All past and future versions of `dproc` are covered by this license.  
 See the LICENSE file for full details.
