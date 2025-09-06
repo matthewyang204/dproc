@@ -23,7 +23,13 @@ root.minsize(800, 600)
 root.pack_propagate(False)
 
 text_frame = tk.Frame(root)
-text_frame.pack(fill=tk.BOTH, expand=True)
+text_frame.pack(side=tk.TOP, fill=tk.X, expand=True)
+
+result_frame = tk.Frame(root)
+result_frame.pack(side=tk.BOTTOM, fill=tk.X, expand=True)
+
+button_frame = tk.Frame(root)
+button_frame.pack(side=tk.TOP, fill=tk.X, before=result_frame)
 
 def get_font_for_platform():
     if os.name == 'nt':
@@ -36,10 +42,15 @@ def get_font_for_platform():
 text_font = get_font_for_platform()
 text_area = tk.Text(text_frame, width=100, height=80, wrap=tk.WORD, undo=True)
 text_area.config(font=text_font)
+result_area = tk.Text(result_frame, width=100, height=80, wrap=tk.WORD, undo=True)
+result_area.config(font=text_font)
 
 scrollbar = tk.Scrollbar(text_frame, orient="vertical", command=text_area.yview)
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+resultbar = tk.Scrollbar(result_frame, orient="vertical", command=text_area.yview)
+resultbar.pack(side=tk.RIGHT, fill=tk.Y)
 text_area.config(yscrollcommand=scrollbar.set)
+result_area.config(yscrollcommand=resultbar.set)
 
 class run():
     def run_dproc(data):
@@ -98,6 +109,9 @@ class about():
         messagebox.showinfo("License", "This program is licensed under the GNU GPLv3. If you did not receive a copy with this program, go to https://github.com/matthewyang204/dproc or read the LICENSE file in your copy of the source code.")
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
+result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
+process_button = tk.Button(button_frame, text="Process Data", command=run.process_data)
+process_button.pack(side=tk.BOTTOM)
 
 menu = tk.Menu(root)
 root.config(menu=menu)
