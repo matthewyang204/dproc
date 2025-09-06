@@ -87,7 +87,7 @@ result_area.config(font=text_font)
 
 scrollbar = tk.Scrollbar(text_frame, orient="vertical", command=text_area.yview)
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-resultbar = tk.Scrollbar(result_frame, orient="vertical", command=text_area.yview)
+resultbar = tk.Scrollbar(result_frame, orient="vertical", command=result_area.yview)
 resultbar.pack(side=tk.RIGHT, fill=tk.Y)
 text_area.config(yscrollcommand=scrollbar.set)
 result_area.config(yscrollcommand=resultbar.set)
