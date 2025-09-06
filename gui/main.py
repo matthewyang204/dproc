@@ -3,13 +3,19 @@ import platform
 import os
 import sys
 from tkinter import font, messagebox
+import subprocess
 
 # Initalize some variables
 print("Checking version info...")
-versionInfo = """dproc, version 1.1.1
-(C) 2013-2014 The Rust Project Developers
+dprocVersionInfo = subprocess.run(['dproc', '--version'], capture_output=True, text=True)
+guiVersionInfo = """dproc GUI, version 1.0.0
 (C) 2025 Matthew Yang"""
 print("Retrieiving temporary directory...", end='')
+versionInfo = f"""dproc GUI:
+{guiVersionInfo}
+
+This program uses dproc:
+{dprocVersionInfo.stdout}"""
 if platform.system() == "Windows":
     temp = os.getenv('TEMP')
     print(temp)
@@ -135,7 +141,7 @@ edit_menu.add_command(label="Redo", command=changes.redo)
 
 about_menu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="About", menu=about_menu)
-about_menu.add_command(label="About dproc", command=about.about)
+about_menu.add_command(label="About dproc GUI", command=about.about)
 about_menu.add_command(label="License", command=about.show_license)
 
 root.mainloop()
