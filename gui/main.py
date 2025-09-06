@@ -95,10 +95,13 @@ result_area.config(state="disabled")
 
 class run():
     def run_dproc(data):
-        print("Unimplemented STUB")
+        result = subprocess.run([dproc, sc1.get(), sc2.get(), "stdin"], input=data, capture_output=True, text=True, check=True)
+        return result
     
     def process_data(event=None):
-        print("Unimplemented STUB")
+        input_data = text_area.get("1.0", tk.END).strip()
+        processed_data = run.run_dproc(input_data)
+        mutResult(processed_data.stdout)
 
 class clipboard():
     def cut_text(event=None):
