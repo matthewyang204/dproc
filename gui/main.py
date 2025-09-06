@@ -22,14 +22,20 @@ root.title("dproc GUI")
 root.minsize(800, 600)
 root.pack_propagate(False)
 
-text_frame = tk.Frame(root)
-text_frame.pack(side=tk.TOP, fill=tk.X, expand=True)
+root.grid_rowconfigure(0, weight=40)
+root.grid_rowconfigure(1, weight=0)
+root.grid_rowconfigure(2, weight=40)
+root.grid_columnconfigure(0, weight=1)
 
-result_frame = tk.Frame(root)
-result_frame.pack(side=tk.BOTTOM, fill=tk.X, expand=True)
+text_frame = tk.Frame(root)
+text_frame.grid(row=0, column=0, sticky="nsew")
 
 button_frame = tk.Frame(root)
-button_frame.pack(side=tk.TOP, fill=tk.X, before=result_frame)
+button_frame.configure(height=60) 
+button_frame.grid(row=1, column=0, sticky="nsew")
+
+result_frame = tk.Frame(root)
+result_frame.grid(row=2, column=0, sticky="nsew")
 
 def get_font_for_platform():
     if os.name == 'nt':
