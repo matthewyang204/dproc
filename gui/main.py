@@ -222,7 +222,8 @@ enumerateOptions = [
 mathOptions = [
     "lcm",
     "gcd",
-    "gcf"
+    "gcf",
+    "prime-check"
 ]
 solveOptions = [
     "quadratic-single",
