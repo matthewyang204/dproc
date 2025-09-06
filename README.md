@@ -77,6 +77,8 @@ It's very easy to build a GUI frontend for this program. You can build your own 
 - Manual user interaction frontends - i,e  in similar nature to Git GUI, very close to bare stuff, basic entry boxes, buttons, etc
 - AI middleman - training an AI to use the data processor and run it as subprocess, enhancing the AI's capabilities
 
+However, for typical use, it is recommended to get familiar with the terminal and use it in the CLI where it is the most powerful.
+
 ### dproc GUI
 **This software is still in heavy development and is not ready for production use; use at your own risk.**
 
