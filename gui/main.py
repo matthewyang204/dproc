@@ -2,7 +2,7 @@ import tkinter as tk
 import platform
 import os
 import sys
-from tkinter import font
+from tkinter import font, messagebox
 
 # Initalize some variables
 print("Checking version info...")
