@@ -2,10 +2,11 @@ import subprocess
 import sys
 import os
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
 def run_pyinstaller():
     try:
-        main_script = os.path.join('main.py')
+        main_script = os.path.join(script_dir, 'main.py')
 
         # PyInstaller command to build the executable
         cmd = [
