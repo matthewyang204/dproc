@@ -86,6 +86,7 @@ resultbar = tk.Scrollbar(result_frame, orient="vertical", command=text_area.yvie
 resultbar.pack(side=tk.RIGHT, fill=tk.Y)
 text_area.config(yscrollcommand=scrollbar.set)
 result_area.config(yscrollcommand=resultbar.set)
+result_area.config(state="disabled")
 
 class run():
     def run_dproc(data):
