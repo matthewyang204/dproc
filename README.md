@@ -72,6 +72,16 @@ If you want to install from a binary downloaded from the releases, simply move t
 
 On macOS, you can also use Homebrew. To install using Homebrew, first tap my self-hosted tap via `brew tap matthewyang204/homebrew-formulae-casks`. Then, simply install with `brew install dproc`.
 
+# GUI Frontends
+It's very easy to build a GUI frontend for this program. You can build your own or use the one that comes with it. This processor can be integrated with multiple different types of graphical frontends or even middlemen. Some examples:
+- Manual user interaction frontends - i,e  in similar nature to Git GUI, very close to bare stuff, basic entry boxes, buttons, etc
+- AI middleman - training an AI to use the data processor and run it as subprocess, enhancing the AI's capabilities
+
+### dproc GUI
+**This software is still in heavy development and is not ready for production use; use at your own risk.**
+
+This is the GUI frontend that is disabled by default and enabled only if the user explicitly enables it in the configure script after manually being manually built with its corresponding build script. It will not be provided in prebuilt binaries.
+
 # License
 This project is licensed under the GNU General Public License v3.0 (GPLv3).  
 All past and future versions of `dproc` are covered by this license.  
