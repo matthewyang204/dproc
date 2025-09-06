@@ -80,7 +80,7 @@ It's very easy to build a GUI frontend for this program. You can build your own 
 ### dproc GUI
 **This software is still in heavy development and is not ready for production use; use at your own risk.**
 
-This is the GUI frontend that is disabled by default and enabled only if the user explicitly enables it in the configure script after manually being manually built with its corresponding build script. It will not be provided in prebuilt binaries.
+This is the GUI frontend that is disabled by default and enabled only if the user explicitly enables it in the configure script after manually being manually built with its corresponding build script. It will not be provided in prebuilt binaries. However, maybe, *just maybe*, it will be provided as a separate package for installation as a prebuilt for only a small fraction of the platforms I support. It *may* also be provided as a separate Homebrew package if I'm extra lenient. However, that is totally not guaranteed, and you should not depend on it right now.
 
 # License
 This project is licensed under the GNU General Public License v3.0 (GPLv3).  
