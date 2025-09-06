@@ -148,6 +148,12 @@ result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 process_button = tk.Button(button_frame, text="Process Data", command=run.process_data)
 process_button.pack(side=tk.BOTTOM, expand=True)
 
+sc1options = ["round", "deviate", "organize", "enumerate", "math", "solve"]
+sc1 = tk.StringVar(root)
+sc1.set(sc1options[0])
+selector1 = tk.OptionMenu(button_frame, sc1, *sc1options)
+selector1.pack(side=tk.LEFT, expand=True)
+
 menu = tk.Menu(root)
 root.config(menu=menu)
 
