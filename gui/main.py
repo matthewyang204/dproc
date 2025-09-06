@@ -259,6 +259,10 @@ menu.add_cascade(label="About", menu=about_menu)
 about_menu.add_command(label="About dproc GUI", command=about.about)
 about_menu.add_command(label="License", command=about.show_license)
 
+# Debug only
+# import code
+# code.interact(local=locals())
+
 selector2_updater.service()
 
 sc1.trace('w', selector2_updater.service)
