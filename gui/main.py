@@ -88,4 +88,15 @@ class changes():
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 
+edit_menu = tk.Menu(menu, tearoff=0)
+menu.add_cascade(label="Edit", menu=edit_menu)
+# edit_menu.add_command(label="Jump To Cursor [Debug]", command=text_scroll.to_cursor)
+edit_menu.add_command(label="Cut", command=cut_text)
+edit_menu.add_command(label="Copy", command=copy_text)
+edit_menu.add_command(label="Paste", command=paste_text)
+edit_menu.add_command(label="Select All", command=select_all_text)
+edit_menu.add_separator()
+edit_menu.add_command(label="Undo", command=undo)
+edit_menu.add_command(label="Redo", command=redo)
+
 root.mainloop()
