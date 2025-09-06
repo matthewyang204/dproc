@@ -117,7 +117,7 @@ class about():
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 process_button = tk.Button(button_frame, text="Process Data", command=run.process_data)
-process_button.pack(side=tk.BOTTOM)
+process_button.pack(side=tk.BOTTOM, expand=True)
 
 menu = tk.Menu(root)
 root.config(menu=menu)
