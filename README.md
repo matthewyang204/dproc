@@ -65,6 +65,12 @@ To build:
 2. Run `./configure`.
 3. Run `make`. Alternatively, to make it run a specified number of jobs, run `make -j{yournumberofjobs}`. Replace `{yournumberofjobs}` with the number of jobs you want to run. You can also specify your build target in the `BUILDTARGET` variable (optional) via `make BUILDTAGET={yourtarget}`, replacing `{yourtarget}` with your target, such as `x86_64-apple-darwin`. You can also specify the linker with `make BUILDLINKER={yourlinker}`, where `{yourlinker}` is your linker. These options can all be combined or used separately, and they are both completely optional.
 
+To build the GUI:
+1. Enter the `gui` directory
+2. Install the stuff in `requirements.txt` if applicable
+3. Run `build.py`
+4. Re-build the main program with GUI awareness
+
 # Installing
 Requirements:
 - `make`
