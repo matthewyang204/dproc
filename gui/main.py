@@ -242,12 +242,16 @@ selector1 = tk.OptionMenu(button_frame, sc1, *sc1options)
 sc2 = tk.StringVar(root)
 selector2 = tk.OptionMenu(button_frame, sc2, *roundOptions)
 
-toplabel = tk.Label(top_frame, text="Enter data to process:")
-midlabel = tk.Label(button_frame, text="Results:")
+toplabel = tk.Label(top_frame, text="Enter data to process ↓")
+midlabel = tk.Label(button_frame, text="Results ↓")
+categorylabel = tk.Label(button_frame, text="Category/SUBCMD1:")
+operationlabel = tk.Label(button_frame, text="Operation/SUBCMD2:")
 
 midlabel.pack(side=tk.LEFT)
 selector1.pack(side=tk.LEFT, expand=True)
 selector2.pack(side=tk.LEFT, expand=True)
+categorylabel.pack(side=tk.LEFT, before=selector1, expand=True)
+operationlabel.pack(side=tk.LEFT, before=selector2)
 toplabel.pack(side=tk.LEFT)
 
 menu = tk.Menu(root)
