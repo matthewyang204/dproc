@@ -10,12 +10,12 @@ print("Checking version info...")
 dprocVersionInfo = subprocess.run(['dproc', '--version'], capture_output=True, text=True)
 guiVersionInfo = """dproc GUI, version 1.0.0
 (C) 2025 Matthew Yang"""
-print("Retrieiving temporary directory...", end='')
 versionInfo = f"""dproc GUI:
 {guiVersionInfo}
 
 This program uses dproc:
 {dprocVersionInfo.stdout}"""
+print("Retrieiving temporary directory...", end='')
 if platform.system() == "Windows":
     temp = os.getenv('TEMP')
     print(temp)
