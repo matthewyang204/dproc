@@ -49,25 +49,25 @@ class clipboard():
         text_area.clipboard_clear()
         text_area.clipboard_append(text_area.get("sel.first", "sel.last"))
         text_area.delete("sel.first", "sel.last")
-        printlog("Cut option succeeded")
+        print("Cut option succeeded")
         return 'break'
 
     def copy_text(event=None):
         text_area.clipboard_clear()
         text_area.clipboard_append(text_area.get("sel.first", "sel.last"))
-        printlog("Text copied to clipboard")
+        print("Text copied to clipboard")
         return 'break'
 
 
     def paste_text(event=None):
         text_area.insert("insert", text_area.clipboard_get())
-        printlog("Text pasted from clipboard")
+        print("Text pasted from clipboard")
         return 'break'
 
 
     def select_all_text(event=None):
         text_area.tag_add("sel", "1.0", "end")
-        printlog("Text selected")
+        print("Text selected")
         return 'break'
 
 class changes():
@@ -76,7 +76,7 @@ class changes():
             text_area.edit_undo()
         except tk.TclError:
             pass
-        printlog("Edit undone")
+        print("Edit undone")
 
 
     def redo(event=None):
@@ -84,7 +84,7 @@ class changes():
             text_area.edit_redo()
         except tk.TclError:
             pass
-        printlog("Edit redone")
+        print("Edit redone")
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 
