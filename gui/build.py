@@ -13,7 +13,8 @@ def run_pyinstaller():
             main_script,
             '-w',  # Makes it windowed
             '--name', 'dproc-gui'
-            '--icon=icon.ico'
+            '--icon=icon.ico',
+            '--onefile'  # Bundle into a single executable
         ]
 
         # Run PyInstaller
