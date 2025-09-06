@@ -155,11 +155,39 @@ def mutResult(result):
     result_area.insert(tk.END, str(result))
     result_area.config(state="disabled")
 
-def updateSelector2(new_options):
-    menu = selector2['menu']
-    menu.delete(0, 'end')
-    for option in new_options:
-        menu.add_command(label=option, command=tk._setit(sc2, option))
+class selector2_updater:
+    def __init__(self, value):
+        self.value = value
+
+    def update(self, new_options):
+        menu = selector2['menu']
+        menu.delete(0, 'end')
+        for option in new_options:
+            menu.add_command(label=option, command=tk._setit(sc2, option))
+        if new_options:
+            sc2.set(new_options[0])
+        else:     
+            sc2.set("")
+    
+    def service(self, event=None):
+        category = sc1.get()
+
+        if category == "round":
+            self.update(roundOptions)
+        elif category == "deviate":
+            self.update(deviateOptions)
+        elif category == "organize":
+            self.update(organizeOptions)
+        elif category == "enumerate":
+            self.update(enumerateOptions)
+        elif category == "math":
+            self.update(mathOptions)
+        elif category == "solve":
+            self.update(solveOptions)
+        else:
+            self.update([])
+
+selector2_updater = selector2_updater(value=None)
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
@@ -230,5 +258,9 @@ about_menu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="About", menu=about_menu)
 about_menu.add_command(label="About dproc GUI", command=about.about)
 about_menu.add_command(label="License", command=about.show_license)
+
+selector2_updater.service()
+
+sc1.trace('w', selector2_updater.service)
 
 root.mainloop()
