@@ -5,6 +5,10 @@ import sys
 from tkinter import font
 
 # Initalize some variables
+print("Checking version info...")
+versionInfo = """dproc, version 1.1.1
+(C) 2013-2014 The Rust Project Developers
+(C) 2025 Matthew Yang"""
 print("Retrieiving temporary directory...", end='')
 if platform.system() == "Windows":
     temp = os.getenv('TEMP')
@@ -86,6 +90,13 @@ class changes():
             pass
         print("Edit redone")
 
+class about():
+    def about(event=None):
+        messagebox.showinfo("About dproc", versionInfo)
+
+    def show_license(event=None):
+        messagebox.showinfo("License", "This program is licensed under the GNU GPLv3. If you did not receive a copy with this program, go to https://github.com/matthewyang204/dproc or read the LICENSE file in your copy of the source code.")
+
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 
 menu = tk.Menu(root)
@@ -101,5 +112,10 @@ edit_menu.add_command(label="Select All", command=clipboard.select_all_text)
 edit_menu.add_separator()
 edit_menu.add_command(label="Undo", command=changes.undo)
 edit_menu.add_command(label="Redo", command=changes.redo)
+
+about_menu = tk.Menu(menu, tearoff=0)
+menu.add_cascade(label="About", menu=about_menu)
+about_menu.add_command(label="About dproc", command=about.about)
+about_menu.add_command(label="License", command=about.show_license)
 
 root.mainloop()
