@@ -51,20 +51,25 @@ root.minsize(800, 600)
 root.geometry("800x600")
 root.pack_propagate(False)
 
-root.grid_rowconfigure(0, weight=40)
-root.grid_rowconfigure(1, weight=0)
-root.grid_rowconfigure(2, weight=40)
+root.grid_rowconfigure(0, weight=0)
+root.grid_rowconfigure(1, weight=40)
+root.grid_rowconfigure(2, weight=0)
+root.grid_rowconfigure(3, weight=40)
 root.grid_columnconfigure(0, weight=1)
 
+top_frame = tk.Frame(root)
+top_frame.configure(height=30)
+top_frame.grid(row=0, column=0, sticky="nsew")
+
 text_frame = tk.Frame(root)
-text_frame.grid(row=0, column=0, sticky="nsew")
+text_frame.grid(row=1, column=0, sticky="nsew")
 
 button_frame = tk.Frame(root)
 button_frame.configure(height=60) 
-button_frame.grid(row=1, column=0, sticky="nsew")
+button_frame.grid(row=2, column=0, sticky="nsew")
 
 result_frame = tk.Frame(root)
-result_frame.grid(row=2, column=0, sticky="nsew")
+result_frame.grid(row=3, column=0, sticky="nsew")
 
 def get_font_for_platform():
     if os.name == 'nt':
@@ -150,6 +155,12 @@ def mutResult(result):
     result_area.insert(tk.END, str(result))
     result_area.config(state="disabled")
 
+def updateSelector2(new_options):
+    menu = selector2['menu']
+    menu.delete(0, 'end')
+    for option in new_options:
+        menu.add_command(label=option, command=tk._setit(sc2, option))
+
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 process_button = tk.Button(button_frame, text="Process Data", command=run.process_data)
@@ -190,7 +201,16 @@ solveOptions = [
 sc1 = tk.StringVar(root)
 sc1.set(sc1options[0])
 selector1 = tk.OptionMenu(button_frame, sc1, *sc1options)
+sc2 = tk.StringVar(root)
+selector2 = tk.OptionMenu(button_frame, sc2, *roundOptions)
+
+toplabel = tk.Label(top_frame, text="Enter data to process:")
+midlabel = tk.Label(button_frame, text="Results:")
+
+midlabel.pack(side=tk.LEFT)
 selector1.pack(side=tk.LEFT, expand=True)
+selector2.pack(side=tk.LEFT, expand=True)
+toplabel.pack(side=tk.LEFT)
 
 menu = tk.Menu(root)
 root.config(menu=menu)
