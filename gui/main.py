@@ -70,6 +70,22 @@ class clipboard():
         printlog("Text selected")
         return 'break'
 
+class changes():
+    def undo(event=None):
+        try:
+            text_area.edit_undo()
+        except tk.TclError:
+            pass
+        printlog("Edit undone")
+
+
+    def redo(event=None):
+        try:
+            text_area.edit_redo()
+        except tk.TclError:
+            pass
+        printlog("Edit redone")
+
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 
 root.mainloop()
