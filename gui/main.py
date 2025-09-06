@@ -144,6 +144,12 @@ class about():
     def show_license(event=None):
         messagebox.showinfo("License", "This program is licensed under the GNU GPLv3. If you did not receive a copy with this program, go to https://github.com/matthewyang204/dproc or read the LICENSE file in your copy of the source code.")
 
+def mutResult(result):
+    result_area.config(state="normal")
+    result_area.delete("1.0", tk.END)
+    result_area.insert(tk.END, str(result))
+    result_area.config(state="disabled")
+
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 process_button = tk.Button(button_frame, text="Process Data", command=run.process_data)
