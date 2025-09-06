@@ -48,6 +48,7 @@ else:
 root = tk.Tk()
 root.title("dproc GUI")
 root.minsize(800, 600)
+root.geometry("800x600")
 root.pack_propagate(False)
 
 root.grid_rowconfigure(0, weight=40)
