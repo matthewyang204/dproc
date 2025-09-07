@@ -75,10 +75,18 @@ build-libmysolvers:
 
 build-gui:
 ifeq ($(BUILD_GUI), TRUE)
+	$(MAKE) gui/venv
 	cd gui && \
 	python3 build.py --release && \
 	cd ..
 endif
+
+gui/venv:
+	cd gui && \
+	python3 -m venv venv && \
+	source venv/bin/activate && \
+	pip install -r requirements.txt && \
+	cd ..
 
 upgrade-c-libs:
 	cd lib && \
