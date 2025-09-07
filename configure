@@ -179,7 +179,7 @@ rm -rf build
 mkdir -p build/bin
 if command -v python3 &> /dev/null; then
     ln -s $(which python3) build/bin/python
-    if not command -v python &> /dev/null; then
+    if ! command -v python &> /dev/null; then
         export PATH=$(realpath build/bin):$PATH
     fi
 fi
