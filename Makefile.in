@@ -110,9 +110,17 @@ upgrade-c-libs:
 
 clean:
 	rm -rf $(BINDIR)
+	rm -rf build
 	rm -rf dist
 	rm -rf obj
 	rm -rf target
+	$(MAKE) clean-gui
+
+clean-gui:
+	rm -rf gui/build
+	rm -rf gui/dist
+	rm -rf gui/venv
+	rm -rf gui/*.spec
 
 install_libmysolvers:
 ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
