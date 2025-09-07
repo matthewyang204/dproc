@@ -154,6 +154,17 @@ else
     echo "Skipping python and tkinter checks since GUI is not being built."
 fi
 
+# Checking for realpath
+printf "Checking for realpath..."
+if command -v realpath &> /dev/null
+then
+    echo "found"
+else
+    echo "not found"
+    echo "realpath not found. Please install it to continue."
+    exit 1
+fi
+
 # Check OS type in order to determine proper sed
 # Detect OS and set sed -i syntax
 if [[ "$OSTYPE" == "darwin"* ]]; then
