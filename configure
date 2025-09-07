@@ -131,18 +131,18 @@ fi
 
 # Check for python
 if [ "$BUILD_GUI" = "TRUE" ]; then
-    printf "Checking for python3..."
-    if command -v python3 &> /dev/null
+    printf "Checking for python..."
+    if [ command -v python &> /dev/null ] || [ command -v python3 &> /dev/null ]
     then
         echo "found"
     else
         echo "not found"
-        echo "python3 not found. Please install it to continue."
+        echo "python not found. Please install it to continue."
         exit 1
     fi
 
     printf "Checking for tkinter..."
-    if python3 -c "import tkinter" &> /dev/null
+    if [ python -c "import tkinter" &> /dev/null ] || [ python3 -c "import tkinter" &> /dev/null ]
     then
         echo "found"
     else
@@ -151,7 +151,7 @@ if [ "$BUILD_GUI" = "TRUE" ]; then
         exit 1
     fi
 else
-    echo "Skipping python3 and tkinter checks since GUI is not being built."
+    echo "Skipping python and tkinter checks since GUI is not being built."
 fi
 
 # Check OS type in order to determine proper sed
