@@ -80,7 +80,7 @@ ifeq ($(BUILD_GUI), TRUE)
 	if [ -f venv/bin/activate ]; then \
 		. venv/bin/activate; \
 	elif [ -f venv/Scripts/activate ]; then \
-		cmd venv/Scripts/activate; \
+		. venv/Scripts/activate; \
 	else \
 		echo "No virtual environment found"; \
 		exit 1; \
