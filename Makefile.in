@@ -56,7 +56,7 @@ GUIBIN = bin/dproc-gui
 BINDIR = bin
 SRC = src/main.rs
 PREFIX ?= @PREFIX@
-NOREMOVELIBMYSOLVERSPREFIXES = /usr /usr/local /opt/local /opt/homebrew
+NOREMOVEPREFIXES = /usr /usr/local /opt/local /opt/homebrew
 GNSRCDIR ?= /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 all: build
@@ -151,9 +151,14 @@ install:
 uninstall:
 	rm -rf $(PREFIX)/$(BIN)
 ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
-ifeq ($(filter $(PREFIX),$(NOREMOVELIBMYSOLVERSPREFIXES)),)
+ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
 	rm -rf $(PREFIX)/include/libmysolvers.h
 	rm -rf $(PREFIX)/lib/libmysolvers.a
+endif
+endif
+ifeq ($(BUILD_GUI), TRUE)
+ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
+	rm -rf $(PREFIX)/$(GUIBIN)
 endif
 endif
 
