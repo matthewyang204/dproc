@@ -114,8 +114,10 @@ class run():
     
     def process_data(event=None):
         input_data = text_area.get("1.0", tk.END).strip()
+        process_button.config(text="Processing...")
         processed_data = run.run_dproc(input_data)
         mutResult(processed_data.stdout + processed_data.stderr)
+        process_button.config(text="Process Data")
 
 class clipboard():
     def cut_text(event=None):
@@ -209,7 +211,7 @@ class selector2_updater:
 
 selector2_updater = selector2_updater(value=None)
 def update_s2(*args):
-    selector2_updater.service()
+    selector2_updater.service()            
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
