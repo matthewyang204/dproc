@@ -24,6 +24,19 @@ if platform.system() == "Windows":
                 dproc = os.path.join(exe_dir, 'dproc.exe')
             else:
                 raise FileNotFoundError("Backend executable not found. Reinstalling the program may fix this issue.") from e
+elif platform.system() == "Darwin" or platform.system() == "Linux":
+    try:
+        executablePath = subprocess.run(['which', 'dproc'], capture_output=True, text=True, check=True)
+        dproc = executablePath.stdout.strip()
+    except Exception as e:
+        cwdexe = os.path.join(script_dir, 'dproc')
+        if os.path.isfile(cwdexe):
+            dproc = cwdexe
+        else:
+            if os.path.isfile(os.path.join(exe_dir, 'dproc')):
+                dproc = os.path.join(exe_dir, 'dproc')
+            else:
+                raise FileNotFoundError("Backend executable not found. Reinstalling the program may fix this issue.") from e
 else:
     print("ERROR: Platform not (yet) supported.")
     sys.exit(1)
