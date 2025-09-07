@@ -114,10 +114,13 @@ class run():
     
     def process_data(event=None):
         input_data = text_area.get("1.0", tk.END).strip()
-        process_button.config(text="Processing...")
         processed_data = run.run_dproc(input_data)
         mutResult(processed_data.stdout + processed_data.stderr)
-        process_button.config(text="Process Data")
+        process_button.config(text="Process Data", state="normal")
+
+def process_button_command(event=None):
+    process_button.config(text="Processing...", state="disabled")
+    root.after(100, run.process_data)
 
 class clipboard():
     def cut_text(event=None):
@@ -215,7 +218,7 @@ def update_s2(*args):
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
-process_button = tk.Button(button_frame, text="Process Data", command=run.process_data, font=text_font)
+process_button = tk.Button(button_frame, text="Process Data", command=process_button_command, font=text_font)
 process_button.pack(side=tk.RIGHT, expand=True)
 
 sc1options = ["round", "deviate", "organize", "enumerate", "math", "solve"]
