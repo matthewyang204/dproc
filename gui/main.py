@@ -163,6 +163,14 @@ class changes():
         except tk.TclError:
             pass
         print("Edit redone")
+    
+    def clear(event=None):
+        text_area.delete("1.0", tk.END)
+        print("Text area cleared")
+
+    def clear_results(event=None):
+        mutResult("")
+        print("Result area cleared")
 
 class about():
     def about(event=None):
@@ -287,6 +295,8 @@ edit_menu.add_command(label="Select All", command=clipboard.select_all_text)
 edit_menu.add_separator()
 edit_menu.add_command(label="Undo", command=changes.undo)
 edit_menu.add_command(label="Redo", command=changes.redo)
+edit_menu.add_command(label="Clear", command=changes.clear)
+edit_menu.add_command(label="Clear Results", command=changes.clear_results)
 
 about_menu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="About", menu=about_menu)
