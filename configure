@@ -132,7 +132,7 @@ fi
 # Check for python
 if [ "$BUILD_GUI" = "TRUE" ]; then
     printf "Checking for python..."
-    if [ command -v python &> /dev/null ] || [ command -v python3 &> /dev/null ]
+    if command -v python &> /dev/null || command -v python3 &> /dev/null
     then
         echo "found"
     else
@@ -142,7 +142,7 @@ if [ "$BUILD_GUI" = "TRUE" ]; then
     fi
 
     printf "Checking for tkinter..."
-    if [ python -c "import tkinter" &> /dev/null ] || [ python3 -c "import tkinter" &> /dev/null ]
+    if python -c "import tkinter" &> /dev/null || python3 -c "import tkinter" &> /dev/null
     then
         echo "found"
     else
