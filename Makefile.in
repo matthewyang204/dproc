@@ -66,6 +66,7 @@ build: src/*
 	RUSTFLAGS="$(RUSTFLAGS)" RUSTC="$(RC)" $(CARGO) build $(TARGETARG) $(CONFIG)
 	$(COPY_RESULT)
 	$(MAKE) build-gui
+	cp gui/dist/* bin/
 
 build-libmysolvers:
 	mkdir -p obj
