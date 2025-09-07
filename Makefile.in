@@ -92,7 +92,14 @@ endif
 gui/venv:
 	cd gui && \
 	python -m venv venv && \
-	. venv/bin/activate && \
+	if [ -f venv/bin/activate ]; then \
+		. venv/bin/activate; \
+	elif [ -f venv/Scripts/activate ]; then \
+		. venv/Scripts/activate; \
+	else \
+		echo "No virtual environment found"; \
+		exit 1; \
+	fi; \
 	pip install -r requirements.txt && \
 	cd ..
 
