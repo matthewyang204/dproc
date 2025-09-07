@@ -175,6 +175,14 @@ rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 # Setting up
 export CC="$CC"
+rm -rf build
+mkdir -p build/bin
+if command -v python3 &> /dev/null; then
+    ln -s $(which python3) build/bin/python
+    if not command -v python &> /dev/null; then
+        export PATH=$(realpath build/bin):$PATH
+    fi
+fi
 
 touch .configured
 echo "Configuration complete. Run 'make' to build."
