@@ -77,7 +77,14 @@ build-gui:
 ifeq ($(BUILD_GUI), TRUE)
 	$(MAKE) gui/venv
 	cd gui && \
-	. venv/bin/activate && \
+	if [ -f venv/bin/activate ]; then \
+		. venv/bin/activate; \
+	elif [ -f venv/Scripts/activate ]; then \
+		. venv/Scripts/activate; \
+	else \
+		echo "No virtual environment found"; \
+		exit 1; \
+	fi; \
 	python build.py --release && \
 	cd ..
 endif
