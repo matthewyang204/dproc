@@ -52,6 +52,7 @@ CPPFLAGS ?=
 CFLAGS ?=
 LDFLAGS ?=
 BIN = bin/dproc
+GUIBIN = bin/dproc-gui
 BINDIR = bin
 SRC = src/main.rs
 PREFIX ?= @PREFIX@
@@ -131,12 +132,21 @@ ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
 	cp obj/libmysolvers.a $(PREFIX)/lib/
 endif
 
+install_gui:
+ifeq ($(BUILD_GUI), TRUE)
+	echo "Installing dproc-gui to $(PREFIX)..."
+	mkdir -p $(PREFIX)/$(BINDIR)
+	rm -rf $(PREFIX)/$(GUIBIN)
+	cp $(GUIBIN) $(PREFIX)/$(GUIBIN)
+endif
+
 install:
 	echo "Installing dproc to $(PREFIX)..."
 	mkdir -p $(PREFIX)/$(BINDIR)
 	rm -rf $(PREFIX)/$(BIN)
 	cp $(BIN) $(PREFIX)/$(BIN)
 	$(MAKE) install_libmysolvers
+	$(MAKE) install_gui
 
 uninstall:
 	rm -rf $(PREFIX)/$(BIN)
