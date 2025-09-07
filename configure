@@ -119,6 +119,41 @@ else
     echo "$PREFIX"
 fi
 
+# Check whether to build GUI
+printf "Checking if GUI should be built..."
+if printf '%s\n' "$@" | grep -q -- "^--enable-gui$"; then
+    echo "yes"
+    BUILD_GUI="TRUE"
+else
+    echo "no"
+    BUILD_GUI="FALSE"
+fi
+
+# Check for python
+if [ "$BUILD_GUI" = "TRUE" ]; then
+    printf "Checking for python3..."
+    if command -v python3 &> /dev/null
+    then
+        echo "found"
+    else
+        echo "not found"
+        echo "python3 not found. Please install it to continue."
+        exit 1
+    fi
+
+    printf "Checking for tkinter..."
+    if python3 -c "import tkinter" &> /dev/null
+    then
+        echo "found"
+    else
+        echo "not found"
+        echo "tkinter not found. Please install it to continue."
+        exit 1
+    fi
+else
+    echo "Skipping python3 and tkinter checks since GUI is not being built."
+fi
+
 # Check OS type in order to determine proper sed
 # Detect OS and set sed -i syntax
 if [[ "$OSTYPE" == "darwin"* ]]; then
