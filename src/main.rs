@@ -44,7 +44,7 @@ fn userError() {
 }
 
 fn version() {
-	println!("dproc, version 1.1.1");
+	println!("dproc, version 1.2.0");
 	println!("(C) 2013-2014 The Rust Project Developers");
 	println!("(C) 2025 Matthew Yang");
 }
