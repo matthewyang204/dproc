@@ -58,6 +58,7 @@ Requirements:
 
 Additionally, if building the GUI program:
 - `python` 3.6 or later
+- If on Linux, something such as the `python-is-python3` package that links the `python` command to `python3`
 - the contents of `requirements.txt` installed in a fresh `venv` or directly in your python installation, noting that `pyinstaller` should be in PATH
 
 To build:

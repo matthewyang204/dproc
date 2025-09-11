@@ -116,6 +116,11 @@ class run():
         input_data = text_area.get("1.0", tk.END).strip()
         processed_data = run.run_dproc(input_data)
         mutResult(processed_data.stdout + processed_data.stderr)
+        process_button.config(text="Process Data", state="normal")
+
+def process_button_command(event=None):
+    process_button.config(text="Processing...", state="disabled")
+    root.after(100, run.process_data)
 
 class clipboard():
     def cut_text(event=None):
@@ -158,6 +163,14 @@ class changes():
         except tk.TclError:
             pass
         print("Edit redone")
+    
+    def clear(event=None):
+        text_area.delete("1.0", tk.END)
+        print("Text area cleared")
+
+    def clear_results(event=None):
+        mutResult("")
+        print("Result area cleared")
 
 class about():
     def about(event=None):
@@ -209,11 +222,11 @@ class selector2_updater:
 
 selector2_updater = selector2_updater(value=None)
 def update_s2(*args):
-    selector2_updater.service()
+    selector2_updater.service()            
 
 text_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
-process_button = tk.Button(button_frame, text="Process Data", command=run.process_data, font=text_font)
+process_button = tk.Button(button_frame, text="Process Data", command=process_button_command, font=text_font)
 process_button.pack(side=tk.RIGHT, expand=True)
 
 sc1options = ["round", "deviate", "organize", "enumerate", "math", "solve"]
@@ -282,6 +295,8 @@ edit_menu.add_command(label="Select All", command=clipboard.select_all_text)
 edit_menu.add_separator()
 edit_menu.add_command(label="Undo", command=changes.undo)
 edit_menu.add_command(label="Redo", command=changes.redo)
+edit_menu.add_command(label="Clear", command=changes.clear)
+edit_menu.add_command(label="Clear Results", command=changes.clear_results)
 
 about_menu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="About", menu=about_menu)
