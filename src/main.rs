@@ -6,6 +6,7 @@ use std::io::{self, BufRead};
 // Load modules
 mod enumerate;
 mod round;
+mod freq;
 mod sort;
 mod deviate;
 mod coreFuncs;
@@ -14,7 +15,7 @@ mod primes;
 // Use functions from modules
 use round::mean;
 use round::median;
-use round::mode;
+use freq::mode;
 use deviate::range;
 use deviate::variance;
 use deviate::sd;
@@ -189,6 +190,16 @@ fn main() {
                         help();
                         userError();
                 }
+	} else if args[1] == "freq" {
+		if args[2] == "mode" {
+			let result = mode(&data);
+			for value in result {
+				print!("{}", value);
+			}
+		} else {
+			help();
+			userError();
+		}
 	} else if args[1] == "deviate" {
 		if args[2] == "range" {
 			let result = range(&data);
