@@ -132,7 +132,7 @@ fi
 # Check for python
 if [ "$BUILD_GUI" = "TRUE" ]; then
     printf "Checking for python..."
-    if command -v python &> /dev/null || command -v python3 &> /dev/null
+    if command -v python3 &> /dev/null
     then
         echo "found"
     else
@@ -141,8 +141,19 @@ if [ "$BUILD_GUI" = "TRUE" ]; then
         exit 1
     fi
 
+    if ! command -v python &> /dev/null; then
+        printf "Checking for python-is-python3 package..."
+        if ! dpkg -l | grep python-is-python3 >/dev/null 2>&1; then
+            echo "not installed"
+            echo "python-is-python3 package is not installed. Please install it to continue, as your system does not have this command alias."
+            exit 1
+        else
+            echo "installed"
+        fi
+    fi
+
     printf "Checking for tkinter..."
-    if python -c "import tkinter" &> /dev/null || python3 -c "import tkinter" &> /dev/null
+    if python3 -c "import tkinter" &> /dev/null
     then
         echo "found"
     else
