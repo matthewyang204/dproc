@@ -69,9 +69,11 @@ fn help() {
 	println!("  When SUBCMD1 is round:");
 	println!("    mean           get the mean of the dataset");
 	println!("    median         get the median of the dataset");
-	println!("    mode           get the mode of the dataset");
 	println!("    decimal        round to a decimal place, with the value to be rounded supplied as the first value, and the number of decimal places maintained specified as the second");
 	println!("    integer        round the number to the nearest integer");
+	println!("");
+	println!("  When SUBCMD1 is freq:");
+	println!("    mode           get the mode of the dataset");
 	println!("");
 	println!("  When SUBCMD1 is deviate:");
 	println!("    range          get the range of the data");
@@ -164,12 +166,6 @@ fn main() {
 		} else if args[2] == "median" {
 			let result = median(&data);
 			println!("{}", result);
-		} else if args[2] == "mode" {
-			let result = mode(&data);
-			for value in result {
-				print!("{}", value);
-			}
-			println!();
 		} else if args[2] == "decimal" {
 			// let precisionString: f64 = args[4].parse().expect("Invalid number");
 			let precision: usize = args[4].parse().expect("Not a valid integer");
@@ -196,6 +192,7 @@ fn main() {
 			for value in result {
 				print!("{}", value);
 			}
+			println!();
 		} else {
 			help();
 			userError();
