@@ -40,6 +40,8 @@ See the [todo list](TODO.md) for more details.
 *When `SUBCMD1` is `enumerate`:*
 - `sum` get the sum of the data
 - `count` get the number of values in the data
+- `min` get the minimum value in the data
+- `max` get the maximum value of the data
 
 *When `SUBCMD1` is `math`:*
 - `lcm` get the LCM of a dataset

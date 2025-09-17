@@ -94,6 +94,8 @@ fn help() {
 	println!("  When SUBCMD1 is enumerate:");
 	println!("    sum            get the sum of the data");
 	println!("    count          get the number of values in the data");
+	println!("    min            get the minimum value in the data");
+	println!("    max            get the maximum value in the data");
 	println!("");
 	println!("  When SUBCMD1 is math:");
 	println!("    lcm            get the LCM of a dataset");
