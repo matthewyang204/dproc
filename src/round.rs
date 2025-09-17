@@ -23,6 +23,15 @@ pub fn geoMean(data: &[f64]) -> f64 {
 	product.powf(1.0 / data.len() as f64)
 }
 
+pub fn harMean(data: &[f64]) -> f64 {
+	if data.is_empty() {
+		eprintln!("WARNING: Your data is empty, so your value is also empty.");
+		return 0.0;
+	}
+	let reciprocalSum: f64 = data.iter().map(|&x| 1.0 / x).sum();
+	data.len() as f64 / reciprocalSum
+}
+
 pub fn median(data: &[f64]) -> f64 {
 	if data.is_empty() {
 		eprintln!("WARNING: Your data is empty, so your value is also empty.");
