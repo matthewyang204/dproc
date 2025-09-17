@@ -14,6 +14,15 @@ pub fn mean(data: &[f64]) -> f64 {
 	sum / data.len() as f64
 }
 
+pub fn geoMean(data: &[f64]) -> f64 {
+	if data.is_empty() {
+		eprintln!("WARNING: Your data is empty, so your value is also empty.");
+		return 0.0;
+	}
+	let product: f64 = data.iter().product();
+	product.powf(1.0 / data.len() as f64)
+}
+
 pub fn median(data: &[f64]) -> f64 {
 	if data.is_empty() {
 		eprintln!("WARNING: Your data is empty, so your value is also empty.");

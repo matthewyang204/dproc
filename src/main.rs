@@ -14,6 +14,7 @@ mod primes;
 
 // Use functions from modules
 use round::mean;
+use round::geoMean;
 use round::median;
 use freq::mode;
 use deviate::range;
@@ -162,6 +163,9 @@ fn main() {
 	if args[1] == "round" {
 		if args[2] == "mean" {
 			let result = mean(&data);
+			println!("{}", result);
+		} if args[2] == "geo-mean" {
+			let result = geoMean(&data);
 			println!("{}", result);
 		} else if args[2] == "median" {
 			let result = median(&data);
