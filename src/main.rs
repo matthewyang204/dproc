@@ -26,6 +26,8 @@ use deviate::medianAD;
 use sort::sort;
 use enumerate::sum;
 use enumerate::count;
+use enumerate::min;
+use enumerate::max;
 #[allow(unused_imports)]
 use primes::generate_primes;
 use primes::is_prime;
