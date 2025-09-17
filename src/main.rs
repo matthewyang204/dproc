@@ -69,6 +69,7 @@ fn help() {
 	println!("");
 	println!("  When SUBCMD1 is round:");
 	println!("    mean           get the mean of the dataset");
+	println!("    geo-mean       get the geometric mean of the dataset");
 	println!("    median         get the median of the dataset");
 	println!("    decimal        round to a decimal place, with the value to be rounded supplied as the first value, and the number of decimal places maintained specified as the second");
 	println!("    integer        round the number to the nearest integer");
