@@ -18,7 +18,8 @@ See the [todo list](TODO.md) for more details.
 
 *When `SUBCMD1` is `round`:*
 - `mean` get the mean of the dataset
-- `geo-mean` get the geoemtric mean of the data set
+- `geo-mean` get the geoemtric mean of the dataset
+- `harmonic-mean` get the harmonic mean of the dataset
 - `median` get the median of the dataset
 - `decimal` round to a decimal place, with the value to be rounded supplied as the first value, and the number of decimal places maintained specified as the second
 - `integer` round the number to the nearest integer
