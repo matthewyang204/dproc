@@ -247,6 +247,12 @@ fn main() {
 		} else if args[2] == "count" {
 			let result = count(&data);
 			println!("{}", result);
+		} else if args[2] == "min" {
+			let result = min(&data);
+			println!("{}", result);
+		} else if args[2] == "max" {
+			let result = max(&data);
+			println!("{}", result);
 		} else {
 			help();
 			userError();
