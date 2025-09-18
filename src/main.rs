@@ -24,6 +24,7 @@ use deviate::sd;
 use deviate::meanAD;
 use deviate::medianAD;
 use sort::sort;
+use sort::keepUnique;
 use enumerate::sum;
 use enumerate::count;
 use enumerate::min;
@@ -234,6 +235,12 @@ fn main() {
 	} else if args[1] == "organize" {
 		if args[2] == "sort" {
 			let result = sort(&data);
+			for value in result {
+				print!("{} ", value);
+			}
+			println!();
+		} else if args[2] == "keep-unique" {
+			let result = keepUnique(&data);
 			for value in result {
 				print!("{} ", value);
 			}
