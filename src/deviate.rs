@@ -86,3 +86,18 @@ pub fn iqr(data: &[f64]) -> f64 {
 	let q3_index = (sortedData.len() as f64 * 0.75).ceil() as usize - 1;
 	sortedData[q3_index] - sortedData[q1_index]
 }
+
+pub fn skewness(data: &[f64]) -> f64 {
+	mean = mean(data);
+	mode = mode(data);
+
+	skewness = mean - mode[0].parse::<f64>().unwrap();
+
+	if skewness > 0.0 {
+		return "pos";
+	} else if skewness < 0.0 {
+		return "neg";
+	} else {
+		return "sym";
+	}
+}

@@ -24,6 +24,7 @@ use deviate::sd;
 use deviate::meanAD;
 use deviate::medianAD;
 use deviate::iqr;
+use deviate::skewness;
 use sort::sort;
 use sort::keepUnique;
 use enumerate::sum;
@@ -233,6 +234,9 @@ fn main() {
 			println!("{}", result);
 		} else if args[2] == "iqr" {
 			let result = iqr(&data);
+			println!("{}", result);
+		} else if args[2] == "skewness" {
+			let result = skewness(&data);
 			println!("{}", result);
 		} else {
                         help();
