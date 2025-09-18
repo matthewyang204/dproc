@@ -102,7 +102,7 @@ However, for typical use, it is recommended to get familiar with the terminal an
 ## dproc GUI
 **This software is still in heavy development and is not ready for production use; use at your own risk.**
 
-This is the GUI frontend that is included in the source code and disabled by default. It is only enabled if the user chooses to enable it with the `--enable-gui` flag during configuration.
+This is the GUI frontend that is included in the source code and disabled by default. It is only enabled if the user chooses to enable it with the `--enable-gui` flag during configuration. It has a separate versioning system; I may or may not package a binary on every single separate release of the GUI
 
 # License
 This project is licensed under the GNU General Public License v3.0 (GPLv3).  
