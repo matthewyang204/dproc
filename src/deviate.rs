@@ -5,7 +5,6 @@ use std::process::exit;
 use crate::sort::sort;
 use crate::round::mean;
 use crate::round::median;
-use crate::freq::mode;
 use crate::coreFuncs::input;
 use crate::enumerate::sum;
 
