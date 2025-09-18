@@ -36,6 +36,7 @@ See the [todo list](TODO.md) for more details.
 
 *When `SUBCMD1` is `organize`:*
 - `sort` sort the data from smallest to largest
+- `keep-unique` remove duplicate values from the dataset
 
 *When `SUBCMD1` is `enumerate`:*
 - `sum` get the sum of the data

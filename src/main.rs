@@ -91,6 +91,7 @@ fn help() {
 	println!("");
 	println!("  When SUBCMD1 is organize:");
 	println!("    sort           sort the data from smallest to largest");
+	println!("    keep-unique    remove duplicate values from the dataset");
 	println!("");
 	println!("  When SUBCMD1 is enumerate:");
 	println!("    sum            get the sum of the data");
