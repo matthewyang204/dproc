@@ -17,13 +17,13 @@ use round::mean;
 use round::geoMean;
 use round::harMean;
 use round::median;
-use round::iqr;
 use freq::mode;
 use deviate::range;
 use deviate::variance;
 use deviate::sd;
 use deviate::meanAD;
 use deviate::medianAD;
+use deviate::iqr;
 use sort::sort;
 use sort::keepUnique;
 use enumerate::sum;
@@ -79,7 +79,6 @@ fn help() {
 	println!("    median         get the median of the dataset");
 	println!("    decimal        round to a decimal place, with the value to be rounded supplied as the first value, and the number of decimal places maintained specified as the second");
 	println!("    integer        round the number to the nearest integer");
-	println!("    iqr            get the interquartile range of the dataset");
 	println!("");
 	println!("  When SUBCMD1 is freq:");
 	println!("    mode           get the mode of the dataset");
@@ -90,6 +89,7 @@ fn help() {
 	println!("    standard       get the standard deviation of the data; the program will ask you if the data given is a sample or population");
 	println!("    meanAbsolute   get the mean absolute deviation");
 	println!("    medianAbsolute get the median absolute deviation");
+	println!("    iqr            get the interquartile range of the dataset");
 	println!("");
 	println!("  When SUBCMD1 is organize:");
 	println!("    sort           sort the data from smallest to largest");
@@ -200,9 +200,6 @@ fn main() {
 				print!("{} ", value);
 			}
 			println!();
-		} else if args[2] == "iqr" {
-			let result = iqr(&data);
-			println!("{}", result);
 		} else {
                         help();
                         userError();
@@ -233,6 +230,9 @@ fn main() {
 			println!("{}", result);
 		} else if args[2] == "medianAbsolute" {
 			let result = medianAD(&data);
+			println!("{}", result);
+		} else if args[2] == "iqr" {
+			let result = iqr(&data);
 			println!("{}", result);
 		} else {
                         help();
