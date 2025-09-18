@@ -105,3 +105,6 @@ This is the GUI frontend that is included in the source code and disabled by def
 This project is licensed under the GNU General Public License v3.0 (GPLv3).  
 All past and future versions of `dproc` are covered by this license.  
 See the LICENSE file for full details.
+
+**Note on GUI frontends:**
+Of course I'd prefer you to write FOSS GUI frontends, as this software is designed to follow the FSF's merits. However, I do not restrict the creation of non-open-source frontends, as frontends do not copy any code. Similarly, the API used could be considered a standard and I'm not going to force all software using same/similar API control (commands, subcommands, etc) to comply with the FOSS license of this program, so long as those programs do not copy or use extremely similar code originating from this program.
