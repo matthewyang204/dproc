@@ -17,6 +17,7 @@ use round::mean;
 use round::geoMean;
 use round::harMean;
 use round::median;
+use round::iqr;
 use freq::mode;
 use deviate::range;
 use deviate::variance;
@@ -78,6 +79,7 @@ fn help() {
 	println!("    median         get the median of the dataset");
 	println!("    decimal        round to a decimal place, with the value to be rounded supplied as the first value, and the number of decimal places maintained specified as the second");
 	println!("    integer        round the number to the nearest integer");
+	println!("    iqr            get the interquartile range of the dataset");
 	println!("");
 	println!("  When SUBCMD1 is freq:");
 	println!("    mode           get the mode of the dataset");
@@ -198,6 +200,9 @@ fn main() {
 				print!("{} ", value);
 			}
 			println!();
+		} else if args[2] == "iqr" {
+			let result = iqr(&data);
+			println!("{}", result);
 		} else {
                         help();
                         userError();

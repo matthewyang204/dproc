@@ -46,3 +46,14 @@ pub fn median(data: &[f64]) -> f64 {
 		return (mid1 + mid2) / 2.0;
 	}
 }
+
+pub fn iqr(data: &[f64]) -> f64 {
+	if data.is_empty() {
+		eprintln!("WARNING: Your data is empty, so your value is also empty.");
+		return 0.0;
+	}
+	let sortedData = sort(data);
+	let q1_index = (sortedData.len() as f64 * 0.25).ceil() as usize - 1;
+	let q3_index = (sortedData.len() as f64 * 0.75).ceil() as usize - 1;
+	sortedData[q3_index] - sortedData[q1_index]
+}
