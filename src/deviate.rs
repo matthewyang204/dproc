@@ -88,10 +88,10 @@ pub fn iqr(data: &[f64]) -> f64 {
 }
 
 pub fn skewness(data: &[f64]) -> f64 {
-	mean = mean(data);
-	mode = mode(data);
+	let mean = mean(data);
+	let mode = mode(data);
 
-	skewness = mean - mode[0].parse::<f64>().unwrap();
+	let skewness = mean - mode[0].parse::<f64>().unwrap();
 
 	if skewness > 0.0 {
 		return "pos";
