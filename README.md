@@ -23,6 +23,7 @@ See the [todo list](TODO.md) for more details.
 - `median` get the median of the dataset
 - `decimal` round to a decimal place, with the value to be rounded supplied as the first value, and the number of decimal places maintained specified as the second
 - `integer` round the number to the nearest integer
+- `iqr` get the interquartile range of the dataset
 
 *When `SUBCMD1` is `freq`:*
 - `mode` get the mode of the dataset
