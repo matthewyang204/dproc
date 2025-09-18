@@ -34,6 +34,7 @@ See the [todo list](TODO.md) for more details.
 - `meanAbsolute` get the mean absolute deviation
 - `medianAbsolute` get the median absolute deviation
 - `iqr` get the interquartile range of the dataset
+- `skewness` get the skewness of the dataset
 
 *When `SUBCMD1` is `organize`:*
 - `sort` sort the data from smallest to largest
