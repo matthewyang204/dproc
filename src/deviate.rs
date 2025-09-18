@@ -87,7 +87,7 @@ pub fn iqr(data: &[f64]) -> f64 {
 	sortedData[q3_index] - sortedData[q1_index]
 }
 
-pub fn skewness(data: &[f64]) -> f64 {
+pub fn skewness(data: &[f64]) -> &str {
 	let mean = mean(data);
 	let mode = mode(data);
 
