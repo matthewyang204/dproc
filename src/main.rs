@@ -11,6 +11,7 @@ mod sort;
 mod deviate;
 mod coreFuncs;
 mod primes;
+mod math;
 
 // Use functions from modules
 use round::mean;
@@ -34,6 +35,7 @@ use enumerate::max;
 #[allow(unused_imports)]
 use primes::generate_primes;
 use primes::is_prime;
+use math::factorial;
 
 // Load crates
 use num_integer;
@@ -297,6 +299,12 @@ fn main() {
 					result.push("False");
 				}
 			}
+			for value in result {
+				print!("{} ", value);
+			}
+			println!();
+		} else if args[2] == "factorial" {
+			let result = factorial(&data);
 			for value in result {
 				print!("{} ", value);
 			}
