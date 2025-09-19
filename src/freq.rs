@@ -1,10 +1,6 @@
 // Load required modules
 use std::collections::HashMap;
 
-// Load toplevel modules properly; this is a submodule
-use crate::enumerate::sum;
-use crate::sort::sort;
-
 pub fn mode(data: &[f64]) -> Vec<String> {
 	let stringData: Vec<String> = data.iter().map(|x| x.to_string()).collect();
 	let mut occurrences = HashMap::new();

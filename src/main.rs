@@ -11,6 +11,7 @@ mod sort;
 mod deviate;
 mod coreFuncs;
 mod primes;
+mod math;
 
 // Use functions from modules
 use round::mean;
@@ -34,9 +35,11 @@ use enumerate::max;
 #[allow(unused_imports)]
 use primes::generate_primes;
 use primes::is_prime;
+use math::factorial;
 
 // Load crates
 use num_integer;
+use num_bigint::BigUint;
 
 // Include C functions from libmysolvers
 unsafe extern "C" {
@@ -91,6 +94,7 @@ fn help() {
 	println!("    meanAbsolute   get the mean absolute deviation");
 	println!("    medianAbsolute get the median absolute deviation");
 	println!("    iqr            get the interquartile range of the dataset");
+	println!("    skewness      get the skewness of the dataset");
 	println!("");
 	println!("  When SUBCMD1 is organize:");
 	println!("    sort           sort the data from smallest to largest");
@@ -106,6 +110,7 @@ fn help() {
 	println!("    lcm            get the LCM of a dataset");
 	println!("    gcd, gcf       get the GCD/GCF of a dataset");
 	println!("    prime-check    check whether each number in the dataset is prime");
+	println!("    factorial      get the factorial of each number in the dataset");
 	println!("");
 	println!("  When SUBCMD1 is solve:");
 	println!("    quadratic-single {{a}} {{b}} {{c}}   solve a quadratic equation with the quadratic formula, where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0. Note that you may have to convert your equation; this does not accept != 0 on the other side of the equation.");
@@ -296,6 +301,12 @@ fn main() {
 					result.push("False");
 				}
 			}
+			for value in result {
+				print!("{} ", value);
+			}
+			println!();
+		} else if args[2] == "factorial" {
+			let result = factorial(&data);
 			for value in result {
 				print!("{} ", value);
 			}

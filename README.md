@@ -34,6 +34,7 @@ See the [todo list](TODO.md) for more details.
 - `meanAbsolute` get the mean absolute deviation
 - `medianAbsolute` get the median absolute deviation
 - `iqr` get the interquartile range of the dataset
+- `skewness` get the skewness of the dataset
 
 *When `SUBCMD1` is `organize`:*
 - `sort` sort the data from smallest to largest
@@ -49,6 +50,7 @@ See the [todo list](TODO.md) for more details.
 - `lcm` get the LCM of a dataset
 - `gcd`, `gcf` get the GCD/GCF of a dataset
 - `prime-check` check whether each number in the dataset is prime
+- `factorial` get the factorial of each number in the dataset
 
 *When `SUBCMD1` is `solve`:*
 - `quadratic-single {{a}} {{b}} {{c}}` solve a quadratic equation with the quadratic formula, where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0. Note that you may have to convert your equation; this does not accept != 0 on the other side of the equation.
@@ -101,7 +103,7 @@ However, for typical use, it is recommended to get familiar with the terminal an
 ## dproc GUI
 **This software is still in heavy development and is not ready for production use; use at your own risk.**
 
-This is the GUI frontend that is included in the source code and disabled by default. It is only enabled if the user chooses to enable it with the `--enable-gui` flag during configuration.
+This is the GUI frontend that is included in the source code and disabled by default. It is only enabled if the user chooses to enable it with the `--enable-gui` flag during configuration. It has a separate versioning system; I may or may not package a binary on every single separate release of the GUI
 
 # License
 This project is licensed under the GNU General Public License v3.0 (GPLv3).  

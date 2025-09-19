@@ -1,6 +1,3 @@
-// Load required modules
-use std::collections::HashMap;
-
 // Load toplevel modules properly; this is a submodule
 use crate::enumerate::sum;
 use crate::sort::sort;

@@ -87,17 +87,29 @@ pub fn iqr(data: &[f64]) -> f64 {
 	sortedData[q3_index] - sortedData[q1_index]
 }
 
-pub fn skewness(data: &[f64]) -> f64 {
-	mean = mean(data);
-	mode = mode(data);
+pub fn skewness(data: &[f64]) -> &str {
+    let n = data.len();
+    if n < 2 {
+        return "sym";
+    }
 
-	skewness = mean - mode[0].parse::<f64>().unwrap();
+    let n_f64 = n as f64;
+    let mean_val = mean(data);
+    let stddev = sd(data);
 
-	if skewness > 0.0 {
-		return "pos";
-	} else if skewness < 0.0 {
-		return "neg";
-	} else {
-		return "sym";
-	}
+    if stddev == 0.0 {
+        return "sym";
+    }
+
+    let m3: f64 = data.iter().map(|x| (x - mean_val).powi(3)).sum::<f64>() / n_f64;
+
+    let skew = m3 / stddev.powi(3);
+
+    if skew > 0.0 {
+        "pos"
+    } else if skew < 0.0 {
+        "neg"
+    } else {
+        "sym"
+    }
 }
