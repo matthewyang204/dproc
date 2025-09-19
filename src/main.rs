@@ -110,6 +110,7 @@ fn help() {
 	println!("    lcm            get the LCM of a dataset");
 	println!("    gcd, gcf       get the GCD/GCF of a dataset");
 	println!("    prime-check    check whether each number in the dataset is prime");
+	println!("    factorial      get the factorial of each number in the dataset");
 	println!("");
 	println!("  When SUBCMD1 is solve:");
 	println!("    quadratic-single {{a}} {{b}} {{c}}   solve a quadratic equation with the quadratic formula, where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0. Note that you may have to convert your equation; this does not accept != 0 on the other side of the equation.");
