@@ -44,7 +44,7 @@ print(dproc)
 print("Checking version info...")
 dprocVersionInfo = subprocess.run([dproc, '--version'], capture_output=True, text=True)
 dprocHelpInfo = subprocess.run([dproc, '--help'], capture_output=True, text=True)
-guiVersionInfo = """dproc GUI, version 1.0.0
+guiVersionInfo = """dproc GUI, rolling release
 (C) 2025 Matthew Yang"""
 versionInfo = f"""dproc GUI:
 {guiVersionInfo}
