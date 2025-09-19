@@ -1,4 +1,7 @@
-pub fn factorial(data: &[f64]) -> Vec<f64> {
+use num_bigint::BigUint;
+use num_traits::{One, FromPrimitive};
+
+pub fn factorial(data: &[f64]) -> Vec<BigUint> {
     if data.is_empty() {
         eprintln!("WARNING: Your data is empty, returning an empty vector.");
         return vec![];
@@ -11,9 +14,9 @@ pub fn factorial(data: &[f64]) -> Vec<f64> {
                     "WARNING: Factorial is only defined for non-negative integers. Skipping {}.",
                     n
                 );
-                0.0
+                BigUint::one()
             } else {
-                (1..=n as u64).map(|x| x as f64).product()
+                (1..=n as u64).map(BigUint::from).product()
             }
         })
         .collect()

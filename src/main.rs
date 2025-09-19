@@ -39,6 +39,7 @@ use math::factorial;
 
 // Load crates
 use num_integer;
+use num_bigint::BigUint;
 
 // Include C functions from libmysolvers
 unsafe extern "C" {
