@@ -181,7 +181,7 @@ fn main() {
 		if args[2] == "mean" {
 			let result = mean(&data);
 			println!("{}", result);
-		} if args[2] == "geo-mean" {
+		} else if args[2] == "geo-mean" {
 			let result = geoMean(&data);
 			println!("{}", result);
 		} else if args[2] == "harmonic-mean" {
