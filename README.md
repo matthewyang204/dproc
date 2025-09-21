@@ -77,10 +77,7 @@ To build:
 3. Run `make`. Alternatively, to make it run a specified number of jobs, run `make -j{yournumberofjobs}`. Replace `{yournumberofjobs}` with the number of jobs you want to run. You can also specify your build target in the `BUILDTARGET` variable (optional) via `make BUILDTAGET={yourtarget}`, replacing `{yourtarget}` with your target, such as `x86_64-apple-darwin`. You can also specify the linker with `make BUILDLINKER={yourlinker}`, where `{yourlinker}` is your linker. These options can all be combined or used separately, and they are both completely optional.
 
 To build the GUI:
-1. Enter the `gui` directory
-2. Install the stuff in `requirements.txt` if applicable
-3. Run `build.py`
-4. Re-build the main program with GUI awareness
+Simply re-run the configure script with `--enable-gui` (but no need to build the entire program again) and then run `make build-gui` to build the GUI. It will automatically be installed under `dproc-gui` in the prefix of your choice.
 
 # Installing
 Requirements:
