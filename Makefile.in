@@ -66,44 +66,44 @@ build: src/*
 	$(MAKE) build-libmysolvers
 	RUSTFLAGS="$(RUSTFLAGS)" RUSTC="$(RC)" $(CARGO) build $(TARGETARG) $(CONFIG)
 	$(COPY_RESULT)
-	$(MAKE) build-gui
+# 	$(MAKE) build-gui
 
 build-libmysolvers:
 	mkdir -p obj
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
 
-build-gui:
-ifeq ($(BUILD_GUI), TRUE)
-	$(MAKE) gui/venv
-	cd gui && \
-	if [ -f venv/bin/activate ]; then \
-		. venv/bin/activate; \
-	elif [ -f venv/Scripts/activate ]; then \
-		. venv/Scripts/activate; \
-	else \
-		echo "No virtual environment found"; \
-		exit 1; \
-	fi; \
-	python build.py --release && \
-	cd ..
-	mkdir -p bin
-	cp gui/dist/* bin/
-endif
+# build-gui:
+# ifeq ($(BUILD_GUI), TRUE)
+# 	$(MAKE) gui/venv
+# 	cd gui && \
+# 	if [ -f venv/bin/activate ]; then \
+# 		. venv/bin/activate; \
+# 	elif [ -f venv/Scripts/activate ]; then \
+# 		. venv/Scripts/activate; \
+# 	else \
+# 		echo "No virtual environment found"; \
+# 		exit 1; \
+# 	fi; \
+# 	python build.py --release && \
+# 	cd ..
+# 	mkdir -p bin
+# 	cp gui/dist/* bin/
+# endif
 
-gui/venv:
-	cd gui && \
-	python -m venv venv && \
-	if [ -f venv/bin/activate ]; then \
-		. venv/bin/activate; \
-	elif [ -f venv/Scripts/activate ]; then \
-		. venv/Scripts/activate; \
-	else \
-		echo "No virtual environment found"; \
-		exit 1; \
-	fi; \
-	pip install -r requirements.txt && \
-	cd ..
+# gui/venv:
+# 	cd gui && \
+# 	python -m venv venv && \
+# 	if [ -f venv/bin/activate ]; then \
+# 		. venv/bin/activate; \
+# 	elif [ -f venv/Scripts/activate ]; then \
+# 		. venv/Scripts/activate; \
+# 	else \
+# 		echo "No virtual environment found"; \
+# 		exit 1; \
+# 	fi; \
+# 	pip install -r requirements.txt && \
+# 	cd ..
 
 upgrade-c-libs:
 	cd lib && \
@@ -116,13 +116,13 @@ clean:
 	rm -rf dist
 	rm -rf obj
 	rm -rf target
-	$(MAKE) clean-gui
+# 	$(MAKE) clean-gui
 
-clean-gui:
-	rm -rf gui/build
-	rm -rf gui/dist
-	rm -rf gui/venv
-	rm -rf gui/*.spec
+# clean-gui:
+# 	rm -rf gui/build
+# 	rm -rf gui/dist
+# 	rm -rf gui/venv
+# 	rm -rf gui/*.spec
 
 install_libmysolvers:
 ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
@@ -133,13 +133,13 @@ ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
 	cp obj/libmysolvers.a $(PREFIX)/lib/
 endif
 
-install_gui:
-ifeq ($(BUILD_GUI), TRUE)
-	echo "Installing dproc-gui to $(PREFIX)..."
-	mkdir -p $(PREFIX)/$(BINDIR)
-	rm -rf $(PREFIX)/$(GUIBIN)
-	cp $(GUIBIN) $(PREFIX)/$(GUIBIN)
-endif
+# install_gui:
+# ifeq ($(BUILD_GUI), TRUE)
+# 	echo "Installing dproc-gui to $(PREFIX)..."
+# 	mkdir -p $(PREFIX)/$(BINDIR)
+# 	rm -rf $(PREFIX)/$(GUIBIN)
+# 	cp $(GUIBIN) $(PREFIX)/$(GUIBIN)
+# endif
 
 install:
 	echo "Installing dproc to $(PREFIX)..."
@@ -157,11 +157,11 @@ ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
 	rm -rf $(PREFIX)/lib/libmysolvers.a
 endif
 endif
-ifeq ($(BUILD_GUI), TRUE)
-ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
-	rm -rf $(PREFIX)/$(GUIBIN)
-endif
-endif
+# ifeq ($(BUILD_GUI), TRUE)
+# ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
+# 	rm -rf $(PREFIX)/$(GUIBIN)
+# endif
+# endif
 
 dist: clean
 	rm -rf $(GNSRCDIR)
