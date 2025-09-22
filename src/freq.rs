@@ -28,11 +28,9 @@ pub fn num(data: &[f64]) -> i64 {
 		return 0;
 	}
 
-	for searchTerm in data {
-		for value in data[1..].iter() {
-			if value == searchTerm {
-				occurrences += 1;
-			}
+	for value in data[1..].iter() {
+		if *value == searchTerm {
+			occurrences += 1;
 		}
 	}
 
