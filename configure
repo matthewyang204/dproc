@@ -150,6 +150,16 @@ if [ "$BUILD_GUI" = "TRUE" ]; then
         echo "tkinter not found. Please install it to continue."
         exit 1
     fi
+
+    printf "Checking for python-is-python3 or similar..."
+    if command -v python &> /dev/null
+    then
+        echo "found"
+    else
+        echo "not found"
+        echo "The 'python' command is not found. Please install a package like 'python-is-python3' that links the 'python' command to 'python3', or create a similar alias."
+        exit 1
+    fi
 else
     echo "Skipping python and tkinter checks since GUI is not being built."
 fi
