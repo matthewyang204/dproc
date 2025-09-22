@@ -66,18 +66,10 @@ Requirements:
 - `gcc`, `clang`, or some other C99-compliant C compiler
 - `ar` (usually comes with `binutils`, or more rarely, `coreutils`)
 
-Additionally, if building the GUI program:
-- `python` 3.6 or later
-- A `python-is-python3` package that links the `python` command to `python3` or anything else that does the same
-- the contents of `requirements.txt` installed in a fresh `venv` or directly in your python installation, noting that `pyinstaller` should be in PATH
-
 To build:
 1. Download the latest xzipped src tarball and unpack it, or clone the repo, and then `cd` into the resulting folder
 2. Run `./configure`.
 3. Run `make`. Alternatively, to make it run a specified number of jobs, run `make -j{yournumberofjobs}`. Replace `{yournumberofjobs}` with the number of jobs you want to run. You can also specify your build target in the `BUILDTARGET` variable (optional) via `make BUILDTAGET={yourtarget}`, replacing `{yourtarget}` with your target, such as `x86_64-apple-darwin`. You can also specify the linker with `make BUILDLINKER={yourlinker}`, where `{yourlinker}` is your linker. These options can all be combined or used separately, and they are both completely optional.
-
-To build the GUI:
-Simply re-run the configure script with `--enable-gui` (but no need to build the entire program again) and then run `make build-gui` to build the GUI. It will automatically be installed under `dproc-gui` in the prefix of your choice.
 
 # Installing
 Requirements:
@@ -99,6 +91,16 @@ However, for typical use, it is recommended to get familiar with the terminal an
 
 ## dproc GUI
 This is the GUI frontend that is included in the source code and disabled by default. It is only enabled if the user chooses to enable it with the `--enable-gui` flag during configuration. It has a separate versioning system; I may or may not package a binary on every single separate release of the GUI
+
+### Building
+Requirements:
+- `python` 3.6 or later
+
+To build:
+1. Enter the gui directory
+2. Install the contents of `requirements.txt` with `pip3`
+3. Run the build script with `python3 build.py` (UNIX systems) or `python build.py` (Windows systems)
+4. After installing the main program, put the GUI program in the same directory as main executable
 
 # License
 This project is licensed under the GNU General Public License v3.0 (GPLv3).  
