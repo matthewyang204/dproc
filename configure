@@ -186,14 +186,22 @@ rm -rf /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233ea
 
 # Setting up
 export CC="$CC"
-# rm -rf build
-# mkdir -p build/bin
-# if command -v python3 &> /dev/null; then
-#     ln -s $(command -v python3) build/bin/python
-#     if ! command -v python &> /dev/null; then
-#         export PATH=$(realpath build/bin):$PATH
-#     fi
-# fi
+if [ "$BUILD_GUI" = "TRUE" ]; then
+    echo "Setting up aliases..."
+    rm -rf build
+    mkdir -p build/bin
+    if command -v python3 &> /dev/null; then
+        echo '#!/usr/bin/env bash
+    python3 "$@"' > build/bin/python
+        chmod +x build/bin/python
+        BUILD_BIN=$(cd build/bin && pwd)
+        if ! command -v python &> /dev/null; then
+            printf "Adding $BUILD_BIN to PATH..."
+            export PATH=$BUILD_BIN:$PATH
+            echo "done"
+        fi
+    fi
+fi
 
 touch .configured
 echo "Configuration complete. Run 'make' to build."
