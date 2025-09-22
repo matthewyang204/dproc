@@ -87,7 +87,7 @@ fn help() {
 	println!("");
 	println!("  When SUBCMD1 is freq:");
 	println!("    mode           get the mode of the dataset");
-	println!("    num {search term} {data}  get the number of occurrences of the search term in the dataset");
+	println!("    num {{search term}} {{data}}  get the number of occurrences of the search term in the dataset");
 	println!("");
 	println!("  When SUBCMD1 is deviate:");
 	println!("    range          get the range of the data");
