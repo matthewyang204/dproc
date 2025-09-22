@@ -1,8 +1,6 @@
 # `dproc`
 `dproc` is a basic CLI data processor, designed to be fed data and output data directly from the commandline.
 
-See the [todo list](TODO.md) for more details.
-
 # Usage
 `dproc [SUBCMD1] [SUBCMD2] {yourdata}`
 
