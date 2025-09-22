@@ -87,6 +87,7 @@ ifeq ($(BUILD_GUI), TRUE)
 	fi; \
 	python build.py --release && \
 	cd ..
+	mkdir -p bin
 	cp gui/dist/* bin/
 endif
 
