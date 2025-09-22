@@ -96,7 +96,7 @@ fn help() {
 	println!("    meanAbsolute   get the mean absolute deviation");
 	println!("    medianAbsolute get the median absolute deviation");
 	println!("    iqr            get the interquartile range of the dataset");
-	println!("    skewness      get the skewness of the dataset");
+	println!("    skewness       get the skewness of the dataset");
 	println!("");
 	println!("  When SUBCMD1 is organize:");
 	println!("    sort           sort the data from smallest to largest");
