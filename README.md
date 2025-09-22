@@ -26,6 +26,7 @@ See the [todo list](TODO.md) for more details.
 
 *When `SUBCMD1` is `freq`:*
 - `mode` get the mode of the dataset
+- `num {search term} {data}`  get the number of occurrences of the search term in the dataset
 
 *When `SUBCMD1` is `deviate`:*
 - `range` get the range of the data
