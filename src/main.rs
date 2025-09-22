@@ -19,6 +19,7 @@ use round::geoMean;
 use round::harMean;
 use round::median;
 use freq::mode;
+use freq::num;
 use deviate::range;
 use deviate::variance;
 use deviate::sd;
@@ -217,6 +218,9 @@ fn main() {
 				print!("{}", value);
 			}
 			println!();
+		} else if args[2] == "num" {
+			let result = num(&data);
+			println!("{}", result);
 		} else {
 			help();
 			userError();

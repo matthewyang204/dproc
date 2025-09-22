@@ -19,3 +19,22 @@ pub fn mode(data: &[f64]) -> Vec<String> {
 	    .filter_map(|(val, count)| if count == max_count { Some(val) } else { None })
 	    .collect()
 }
+
+pub fn num(data: &[f64]) -> i64 {
+	let searchTerm = data[0];
+	let mut occurrences = 0;
+
+	if data.len() < 2 {
+		return 0;
+	}
+
+	for searchTerm in data {
+		for value in data[1..].iter() {
+			if value == searchTerm {
+				occurrences += 1;
+			}
+		}
+	}
+
+	occurrences
+}
