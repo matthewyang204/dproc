@@ -229,33 +229,44 @@ result_area.pack(fill=tk.BOTH, expand=tk.YES, side=tk.LEFT)
 process_button = tk.Button(button_frame, text="Process Data", command=process_button_command, font=text_font)
 process_button.pack(side=tk.RIGHT, expand=True)
 
-sc1options = ["round", "deviate", "organize", "enumerate", "math", "solve"]
+sc1options = ["round", "freq", "deviate", "organize", "enumerate", "math", "solve"]
 roundOptions = [
     "mean",
+    "geo-mean",
+    "harmonic-mean",
     "median",
-    "mode",
     "decimal",
     "integer"
+]
+freqOptions = [
+    "mode",
+    "num"
 ]
 deviateOptions = [
     "range",
     "variance",
     "standard",
     "meanAbsolute",
-    "medianAbsolute"
+    "medianAbsolute",
+    "iqr",
+    "skewness"
 ]
 organizeOptions = [
-    "sort"
+    "sort",
+    "keep-unique"
 ]
 enumerateOptions = [
     "sum",
-    "count"
+    "count",
+    "min",
+    "max"
 ]
 mathOptions = [
     "lcm",
     "gcd",
     "gcf",
-    "prime-check"
+    "prime-check",
+    "factorial"
 ]
 solveOptions = [
     "quadratic-single",
