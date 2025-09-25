@@ -69,6 +69,7 @@ fn help() {
 	println!("");
 	println!("SUBCMD1 options:");
 	println!("  round        functions for rounding, getting averages, etc");
+	println!("  freq         functions for getting frequencies of values, such as the mode or number of occurrences of a value");
 	println!("  deviate      functions for getting deviations and values related to deviations, such as the variance");
 	println!("  organize     functions for organizing the dataset");
 	println!("  enumerate    functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values");
