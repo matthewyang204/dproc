@@ -207,6 +207,8 @@ class selector2_updater:
 
         if category == "round":
             self.update(roundOptions)
+        elif category == "freq":
+            self.update(freqOptions)
         elif category == "deviate":
             self.update(deviateOptions)
         elif category == "organize":
