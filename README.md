@@ -6,6 +6,7 @@
 
 #### `SUBCMD1` can be:
 - `round` functions for rounding, getting averages, etc
+- `freq` functions for getting frequencies of values, such as the mode or number of occurrences of a value
 - `deviate` functions for getting deviations and values related to deviations, such as the variance
 - `organize` functions for organizing the dataset
 - `enumerate` functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values
