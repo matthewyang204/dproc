@@ -75,7 +75,7 @@ To build:
 ## Bundled Libraries
 This program uses libraries that are bundled, which means you don't need the development headers to be installed.
 
-- [`libmysolvers`](https://github.com/matthewyang204/libmysolvers)
+- [`libmysolvers`](https://github.com/matthewyang204/libmysolvers) `a155fcd`
 
 # Installing
 Requirements:
