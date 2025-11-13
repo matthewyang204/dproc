@@ -8,5 +8,6 @@
 double quadratic_single_neg_solver(double a, double b, double c);
 double quadratic_single_pos_solver(double a, double b, double c);
 double linear_solver(int val, double a1, double b1, double c1, double a2, double b2, double c2);
+double triangle_centroid(int val, double x1, double y1, double x2, double y2, double x3, double y3);
 
 #endif
