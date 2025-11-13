@@ -48,6 +48,8 @@ unsafe extern "C" {
     fn quadratic_single_pos_solver(a: f64, b: f64, c: f64) -> f64;
 
 	fn linear_solver(val: i64, a1: f64, b1: f64, c1: f64, a2: f64, b2: f64, c2: f64) -> f64;
+	
+	fn triangle_centroid(val: i64, x1: f64, y1: f64, x2: f64, y2:f64, x3: f64, y2:f64) -> f64;
 }
 
 fn userError() {
@@ -352,6 +354,23 @@ fn main() {
 			let c2: f64 = data[5];
 			let resultX = unsafe { linear_solver(0, a1, b1, c1, a2, b2, c2) };
 			let resultY = unsafe { linear_solver(1, a1, b1, c1, a2, b2, c2) };
+			print!("{} ", resultX);
+			println!("{}", resultY);
+		} else if args[2] == "triangle-centroid" {
+			if data.len() < 4 {
+				eprintln!("ERROR: Invalid usage of the linear solver");
+				eprintln!("Usage: dproc solve linear-dual {{a1}} {{b1}} {{c1}} {{a2}} {{b2}} {{c2}}");
+				eprintln!("Where a1, b1, c1 are the coefficients of the first linear equation a1x + b1y + c1 = 0 and a2, b2, c2 are the coefficients of the second linear equation a2x + b2y + c2 = 0");
+				exit(1);
+			}
+			let x1: f64 = data[0];
+			let y1: f64 = data[1];
+			let x2: f64 = data[2];
+			let y2: f64 = data[3];
+			let x3: f64 = data[4];
+			let y3: f64 = data[5];
+			let resultX = unsafe{triangle_centroid(0, x1, y1, x2, y2, x3, y3)};
+			let resultY = unsafe{triangle_centroid(1, x1, y1, x2, y2, x3, y3)};
 			print!("{} ", resultX);
 			println!("{}", resultY);
 		} else {
