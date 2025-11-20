@@ -61,7 +61,7 @@ GNSRCDIR ?= /tmp/e10b5eccac1ecb4e8706e3898719b197a1e9d10d65e860192d38155cb31233e
 
 all: build
 
-build: src/*
+build: $(wildcard src/*)
 	mkdir -p bin
 	$(MAKE) build-libmysolvers
 	RUSTFLAGS="$(RUSTFLAGS)" RUSTC="$(RC)" $(CARGO) build $(TARGETARG) $(CONFIG)
