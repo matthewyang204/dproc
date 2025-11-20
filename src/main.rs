@@ -51,6 +51,14 @@ unsafe extern "C" {
 	
 	fn triangle_centroid(val: i64, x1: f64, y1: f64, x2: f64, y2:f64, x3: f64, y2:f64) -> f64;
 }
+// Include C functions from libcharge
+unsafe extern "C" {
+	fn get_volt(I: f64, R: f64) -> f64;
+	fn get_R(V: f64, I: f64) -> f64;
+	fn get_I(V: f64, R: f64) -> f64;
+
+	fn get_watt(V: f64, IR: f64, IorR: *const char) -> f64;
+}
 
 fn userError() {
 	eprintln!("ERROR: Invalid usage");
