@@ -70,8 +70,8 @@ build: src/*
 
 build-libmysolvers:
 	mkdir -p obj
-	$(CC) $(CFLAGS) -c libmysolvers.c -o obj/libmysolvers.o
-	$(CC) $(CFLAGS) -c libcharge.c -o obj/libcharge.o
+	$(CC) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
+	$(CC) $(CFLAGS) -c lib/libcharge.c -o obj/libcharge.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
 	ar rcs obj/libcharge.a obj/libcharge.o
 
