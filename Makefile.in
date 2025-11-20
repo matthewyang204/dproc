@@ -108,7 +108,9 @@ build-libmysolvers:
 upgrade-c-libs:
 	cd lib && \
 	curl -LO https://raw.githubusercontent.com/matthewyang204/libmysolvers/refs/heads/main/libmysolvers.c && \
-	curl -LO https://raw.githubusercontent.com/matthewyang204/libmysolvers/refs/heads/main/libmysolvers.h
+	curl -LO https://raw.githubusercontent.com/matthewyang204/libmysolvers/refs/heads/main/libmysolvers.h && \
+	curl -LO https://raw.githubusercontent.com/matthewyang204/libmysolvers/refs/heads/main/libcharge.c && \
+	curl -LO https://raw.githubusercontent.com/matthewyang204/libmysolvers/refs/heads/main/libcharge.h
 
 clean:
 	rm -rf $(BINDIR)
