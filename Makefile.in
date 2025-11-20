@@ -70,8 +70,10 @@ build: src/*
 
 build-libmysolvers:
 	mkdir -p obj
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c lib/libmysolvers.c -o obj/libmysolvers.o
+	$(CC) $(CFLAGS) -c libmysolvers.c -o obj/libmysolvers.o
+	$(CC) $(CFLAGS) -c libcharge.c -o obj/libcharge.o
 	ar rcs obj/libmysolvers.a obj/libmysolvers.o
+	ar rcs obj/libcharge.a obj/libcharge.o
 
 # build-gui:
 # ifeq ($(BUILD_GUI), TRUE)
@@ -131,8 +133,10 @@ ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
 	echo "Installing libmysolvers to $(PREFIX)..."
 	mkdir -p $(PREFIX)/include
 	mkdir -p $(PREFIX)/lib
-	cp lib/libmysolvers.h $(PREFIX)/include/
+	cp libmysolvers.h $(PREFIX)/include/
+	cp libcharge.h $(PREFIX)/include/
 	cp obj/libmysolvers.a $(PREFIX)/lib/
+	cp obj/libcharge.a $(PREFIX)/lib/
 endif
 
 # install_gui:
@@ -156,7 +160,9 @@ uninstall:
 ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
 ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
 	rm -rf $(PREFIX)/include/libmysolvers.h
+	rm -rf $(PREFIX)/include/libcharge.h
 	rm -rf $(PREFIX)/lib/libmysolvers.a
+	rm -rf $(PREFIX)/lib/libcharge.a
 endif
 endif
 # ifeq ($(BUILD_GUI), TRUE)
