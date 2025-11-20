@@ -2,6 +2,8 @@
 use std::env;
 use std::process::exit;
 use std::io::{self, BufRead};
+use std::ffi::CString;
+use std::os::raw::c_char;
 
 // Load modules
 mod enumerate;
@@ -57,7 +59,7 @@ unsafe extern "C" {
 	fn get_R(V: f64, I: f64) -> f64;
 	fn get_I(V: f64, R: f64) -> f64;
 
-	fn get_watt(V: f64, IR: f64, IorR: *const char) -> f64;
+	fn get_watt(V: f64, IR: f64, IorR: c_char) -> f64;
 }
 
 fn userError() {
