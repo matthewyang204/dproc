@@ -87,6 +87,7 @@ fn help() {
 	println!("  enumerate    functions for enumerating (getting data about the dataset), such as getting their sum or counting how many values");
 	println!("  math         miscellaneous functions for arbitrary things about integers like gcd and lcm");
 	println!("  solve        functions for solving equations");
+	println!("  electrical   electrical engineering functions");
 	println!("");
 	println!("SUBCMD2 options:");
 	println!("");
@@ -131,6 +132,11 @@ fn help() {
 	println!("    quadratic-single {{a}} {{b}} {{c}}   solve a quadratic equation with the quadratic formula, where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0. Note that you may have to convert your equation; this does not accept != 0 on the other side of the equation.");
 	println!("    linear-dual {{a1}} {{b1}} {{c1}} {{a2}} {{b2}} {{c2}}   solve a system of two linear equations with the substitution method, where a1, b1, c1 are the coefficients of the first linear equation a1x + b1y = c1 and a2, b2, c2 are the coefficients of the second linear equation a2x + b2y = c2. Note that this is standard form and you may have to convert your equations to it.");
 	println!("    triangle-centroid {{x1}} {{y1}} {{x2}} {{y2}} {{x3}} {{y3}}   get the centroid of triangle A(x1, y1) B(x2, y2) C(x3, y3)");
+	println!("");
+	println!("  When SUBCMD1 is electrical:");
+	println!("    volt {{current}} {{resistance}}        get the voltage using Ohm's Law");
+	println!("    resistance {{voltage}} {{current}}     get the resistance using Ohm's Law");
+	println!("    current {{voltage}} {{resistance}}     get the current using Ohm's Law");
 	println!("");
 	println!("Place your data, values separated by spaces, in the place of {{yourdata}}. Alternatively, you may put `stdin` or `-` in the place of {{yourdata}} to read from stdin.");
 }
