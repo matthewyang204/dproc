@@ -388,6 +388,26 @@ fn main() {
 			help();
 			userError();
 		}
+	} else if args[1] == "electrical" {
+		if args[2] == "volt" {
+			let current: f64 = data[0];
+			let resistance: f64 = data[1];
+			let result = unsafe{get_volt(current, resistance)};
+			println!("{}", result);
+		} else if args[2] == "resistance" {
+			let voltage: f64 = data[0];
+			let current: f64 = data[1];
+			let result = unsafe{get_R(voltage, current)};
+			println!("{}", result);
+		} else if args[2] == "current" {
+			let voltage: f64 = data[0];
+			let resistance: f64 = data[1];
+			let result = unsafe{get_I(voltage, resistance)};
+			println!("{}", result);
+		} else {
+			help();
+			userError();
+		}
 	} else {
 		help();
 		userError();
