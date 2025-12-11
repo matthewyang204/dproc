@@ -73,7 +73,11 @@ Requirements:
 - `gcc`, `clang`, or some other C99-compliant C compiler
 - `ar` (usually comes with `binutils`, or more rarely, `coreutils`)
 
-To build:
+To build with cargo:
+1. Clone the repo or download the latest xzipped src tarball and unpack it, and then `cd` into the resulting folder
+2. Run `cargo build --release` (or without `--release` if you want a non-release debug-ready build)
+
+Or if you want your good old `./configure && make` style build:
 1. Download the latest xzipped src tarball and unpack it, or clone the repo, and then `cd` into the resulting folder
 2. Run `./configure`.
 3. Run `make`. Alternatively, to make it run a specified number of jobs, run `make -j{yournumberofjobs}`. Replace `{yournumberofjobs}` with the number of jobs you want to run. You can also specify your build target in the `BUILDTARGET` variable (optional) via `make BUILDTAGET={yourtarget}`, replacing `{yourtarget}` with your target, such as `x86_64-apple-darwin`. You can also specify the linker with `make BUILDLINKER={yourlinker}`, where `{yourlinker}` is your linker. These options can all be combined or used separately, and they are both completely optional.
@@ -88,7 +92,9 @@ Requirements:
 - `make`
 - A build from the previous section or a prebuilt binary
 
-To install a custom build, simply run `make install` in the root of the built binary's folder (root folder of a downloaded-and-built source folder). You can specify where you want to install with the `PREFIX` var. To do this, run `make install PREFIX={yourprefix}`. Replace `{yourprefix}` with your prefix. Use `sudo` where appropriate.
+The official way is to install via `cargo install dproc` from crates.io. You can usually install via `cargo install --path .` if you built from the source tree.
+
+To install a build done via the traditional UNIX-style build system, simply run `make install` in the root of the built binary's folder (root folder of a downloaded-and-built source folder). You can specify where you want to install with the `PREFIX` var. To do this, run `make install PREFIX={yourprefix}`. Replace `{yourprefix}` with your prefix. Use `sudo` where appropriate.
 
 If you want to install from a binary downloaded from the releases, simply move the binary to a folder of your choice in your PATH.
 
