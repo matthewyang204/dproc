@@ -1,6 +1,6 @@
 [package]
 name = "dproc"
-version = "1.2.3"
+version = "1.2.4"
 authors = ["Matthew Yang <matthew.yang204@gmail.com>"]
 edition = "2024"
 description = "A basic CLI data processor, designed to be fed data and output data directly from the commandline"
