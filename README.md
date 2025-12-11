@@ -67,8 +67,7 @@ Place your data, values separated by spaces, in the place of `{yourdata}`. Alter
 
 # Building
 Requirements:
-- `rustc`
-- `cargo`
+- Rust toolchain
 - `gcc`, `clang`, MSVC, or some other C99-compliant C compiler
 
 And to build with `./configure && make`:
