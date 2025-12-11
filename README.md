@@ -69,8 +69,10 @@ Place your data, values separated by spaces, in the place of `{yourdata}`. Alter
 Requirements:
 - `rustc`
 - `cargo`
+- `gcc`, `clang`, MSVC, or some other C99-compliant C compiler
+
+And to build with `./configure && make`:
 - `make`
-- `gcc`, `clang`, or some other C99-compliant C compiler
 - `ar` (usually comes with `binutils`, or more rarely, `coreutils`)
 
 To build with cargo:
