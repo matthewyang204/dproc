@@ -93,7 +93,7 @@ then
     echo "found"
 else
     echo "not found"
-    echo "ar not found. Please install it to continue. It usually comes with the coreutils package."
+    echo "ar not found. Please install it to continue. It usually comes with the binutils package."
     exit 1
 fi
 
