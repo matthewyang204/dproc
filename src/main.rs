@@ -43,6 +43,7 @@ use math::factorial;
 // Load crates
 use num_integer;
 use num_bigint::BigUint;
+use evalexpr::eval;
 
 // Include C functions from libmysolvers
 unsafe extern "C" {
