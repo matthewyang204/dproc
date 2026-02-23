@@ -169,6 +169,7 @@ fn main() {
         }
 	
 	let mut data: Vec<f64> = Vec::new();
+	let mut stringExpression: Vec<String> = Vec::new();
 	if args[3] == "stdin" || args[3] == "-" {
 		let stdin = io::stdin();
 		let mut lines: Vec<String> = Vec::new();
@@ -189,6 +190,8 @@ fn main() {
 				eprintln!("ERROR: There can only be valid numbers values in the dataset, exiting...");
 				exit(1);
 			});
+	} if args[2] == "eval" {
+		stringExpression = args[3..].to_vec();
 	} else {
 		data = args[3..]
 			.iter()
@@ -391,6 +394,10 @@ fn main() {
 			let resultY = unsafe{triangle_centroid(1, x1, y1, x2, y2, x3, y3)};
 			print!("{} ", resultX);
 			println!("{}", resultY);
+		} else if args[2] == "eval" {
+			let expression = stringExpression[0].clone();
+			let evaluated = eval(&expression);
+			println!("{}", evaluated.unwrap());
 		} else {
 			help();
 			userError();
