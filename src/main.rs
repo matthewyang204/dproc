@@ -43,6 +43,7 @@ use math::factorial;
 // Load crates
 use num_integer;
 use num_bigint::BigUint;
+use evalexpr::eval;
 
 // Include C functions from libmysolvers
 unsafe extern "C" {
@@ -132,6 +133,7 @@ fn help() {
 	println!("    quadratic-single {{a}} {{b}} {{c}}                            solve a quadratic equation with the quadratic formula, where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0. Note that you may have to convert your equation; this does not accept != 0 on the other side of the equation.");
 	println!("    linear-dual {{a1}} {{b1}} {{c1}} {{a2}} {{b2}} {{c2}}         solve a system of two linear equations with the substitution method, where a1, b1, c1 are the coefficients of the first linear equation a1x + b1y = c1 and a2, b2, c2 are the coefficients of the second linear equation a2x + b2y = c2. Note that this is standard form and you may have to convert your equations to it.");
 	println!("    triangle-centroid {{x1}} {{y1}} {{x2}} {{y2}} {{x3}} {{y3}}   get the centroid of triangle A(x1, y1) B(x2, y2) C(x3, y3)");
+	println!("    eval \"{{expression}}\"                                       evaluate a mathematical expression {{expression}}");
 	println!("");
 	println!("  When SUBCMD1 is electrical:");
 	println!("    volt {{current}} {{resistance}}        get the voltage using Ohm's Law");
@@ -168,6 +170,7 @@ fn main() {
         }
 	
 	let mut data: Vec<f64> = Vec::new();
+	let mut stringExpression: Vec<String> = Vec::new();
 	if args[3] == "stdin" || args[3] == "-" {
 		let stdin = io::stdin();
 		let mut lines: Vec<String> = Vec::new();
@@ -188,6 +191,8 @@ fn main() {
 				eprintln!("ERROR: There can only be valid numbers values in the dataset, exiting...");
 				exit(1);
 			});
+	} if args[2] == "eval" {
+		stringExpression = args[3..].to_vec();
 	} else {
 		data = args[3..]
 			.iter()
@@ -390,6 +395,10 @@ fn main() {
 			let resultY = unsafe{triangle_centroid(1, x1, y1, x2, y2, x3, y3)};
 			print!("{} ", resultX);
 			println!("{}", resultY);
+		} else if args[2] == "eval" {
+			let expression = stringExpression[0].clone();
+			let evaluated = eval(&expression);
+			println!("{}", evaluated.unwrap());
 		} else {
 			help();
 			userError();
