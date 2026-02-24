@@ -4,6 +4,7 @@ use std::process::exit;
 use std::io::{self, BufRead};
 use std::ffi::CString;
 use std::os::raw::c_char;
+use std::f64::consts::{PI, E};
 
 // Load modules
 mod enumerate;
@@ -43,7 +44,7 @@ use math::factorial;
 // Load crates
 use num_integer;
 use num_bigint::BigUint;
-use evalexpr::eval;
+use rhai::{Engine, Dynamic, Module};
 
 // Include C functions from libmysolvers
 unsafe extern "C" {
@@ -150,6 +151,7 @@ fn getArgs() -> Vec<String> {
 
 fn main() {
 	let args = getArgs();
+	let mut engine = Engine::new();
 	
 	if args.len() < 2 {
                 help();
@@ -397,8 +399,8 @@ fn main() {
 			println!("{}", resultY);
 		} else if args[2] == "eval" {
 			let expression = stringExpression[0].clone();
-			let evaluated = eval(&expression);
-			println!("{}", evaluated.unwrap());
+			let evaluated = engine.eval_expression::<Dynamic>(&expression);
+			println!("{}", evaluated.unwrap().to_string());
 		} else {
 			help();
 			userError();
