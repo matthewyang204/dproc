@@ -471,7 +471,10 @@ fn main() {
 		} else if args[2] == "eval" {
 			let expression = stringExpression[0].clone();
 			let evaluated = engine.eval_expression::<Dynamic>(&expression);
-			println!("{}", evaluated.unwrap().to_string());
+			match evaluated {
+				Ok(value) => println!("{}", value.to_string()),
+				Err(e) => eprintln!("ERROR: {}", e),
+			}
 		} else {
 			help();
 			userError();
