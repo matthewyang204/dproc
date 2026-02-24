@@ -152,7 +152,7 @@ install:
 	mkdir -p $(PREFIX)/$(BINDIR)
 	rm -rf $(PREFIX)/$(BIN)
 	cp $(BIN) $(PREFIX)/$(BIN)
-	$(MAKE) install_libmysolvers
+# 	$(MAKE) install_libmysolvers
 #	$(MAKE) install_gui
 
 uninstall:
