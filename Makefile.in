@@ -27,6 +27,7 @@ endif
 endif
 
 CONFIG ?=
+INSTALLCONFIG ?=
 
 ifneq ($(findstring --release,$(CONFIG)),)
 	ifeq ($(strip $(BUILDTARGET)),)
@@ -149,22 +150,25 @@ endif
 
 install:
 	echo "Installing dproc to $(PREFIX)..."
-	mkdir -p $(PREFIX)/$(BINDIR)
-	rm -rf $(PREFIX)/$(BIN)
-	cp $(BIN) $(PREFIX)/$(BIN)
+	RUSTFLAGS="$(RUSTFLAGS)" RUSTC="$(RC)" $(CARGO) install --path . --root $(PREFIX) $(TARGETARG) $(INSTALLCONFIG)
+#	mkdir -p $(PREFIX)/$(BINDIR)
+# 	rm -rf $(PREFIX)/$(BIN)
+# 	cp $(BIN) $(PREFIX)/$(BIN)
 # 	$(MAKE) install_libmysolvers
 #	$(MAKE) install_gui
 
 uninstall:
-	rm -rf $(PREFIX)/$(BIN)
-ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
-ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
-	rm -rf $(PREFIX)/include/libmysolvers.h
-	rm -rf $(PREFIX)/include/libcharge.h
-	rm -rf $(PREFIX)/lib/libmysolvers.a
-	rm -rf $(PREFIX)/lib/libcharge.a
-endif
-endif
+	echo "Uninstalling dproc from $(PREFIX)..."
+	cargo uninstall dproc --root $(PREFIX)
+# 	rm -rf $(PREFIX)/$(BIN)
+# ifeq ($(INCLUDE_LIBMYSOLVERS),TRUE)
+# ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
+# 	rm -rf $(PREFIX)/include/libmysolvers.h
+# 	rm -rf $(PREFIX)/include/libcharge.h
+# 	rm -rf $(PREFIX)/lib/libmysolvers.a
+# 	rm -rf $(PREFIX)/lib/libcharge.a
+# endif
+# endif
 # ifeq ($(BUILD_GUI), TRUE)
 # ifeq ($(filter $(PREFIX),$(NOREMOVEPREFIXES)),)
 # 	rm -rf $(PREFIX)/$(GUIBIN)
