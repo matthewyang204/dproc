@@ -28,7 +28,7 @@ endif
 
 CONFIG ?=
 
-ifeq ($(CONFIG),--release)
+ifneq ($(findstring --release,$(CONFIG)),)
 	ifeq ($(strip $(BUILDTARGET)),)
 		COPY_RESULT = cp target/release/dproc bin/dproc
 	else
@@ -63,7 +63,7 @@ all: build
 
 build: $(wildcard src/*)
 	mkdir -p bin
-	$(MAKE) build-libmysolvers
+# 	$(MAKE) build-libmysolvers
 	RUSTFLAGS="$(RUSTFLAGS)" RUSTC="$(RC)" $(CARGO) build $(TARGETARG) $(CONFIG)
 	$(COPY_RESULT)
 # 	$(MAKE) build-gui
