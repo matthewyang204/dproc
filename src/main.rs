@@ -206,6 +206,77 @@ fn main() {
 			});
 	}
 	
+	// Helper to convert Dynamic to f64 for int or float
+	fn as_f64(x: rhai::Dynamic) -> f64 {
+		if let Some(f) = x.clone().try_cast::<f64>() {
+			f
+		} else if let Ok(i) = x.clone().as_int() {
+			i as f64
+		} else {
+			0.0
+		}
+	}
+
+	// Create a module for constants
+	let mut constants = Module::new();
+	constants.set_var("pi", PI);
+	constants.set_var("e", E);
+
+	// Register module globally
+	engine.register_global_module(constants.into());
+
+	// Trig functions (degrees -> radians)
+	engine.register_fn("sin", |x: f64| -> f64 { x.to_radians().sin() });
+	engine.register_fn("sin", |x: i64| -> f64 { (x as f64).to_radians().sin() });
+	engine.register_fn("cos", |x: f64| -> f64 { x.to_radians().cos() });
+	engine.register_fn("cos", |x: i64| -> f64 { (x as f64).to_radians().cos() });
+	engine.register_fn("tan", |x: f64| -> f64 { x.to_radians().tan() });
+	engine.register_fn("tan", |x: i64| -> f64 { (x as f64).to_radians().tan() });
+	engine.register_fn("asin", |x: f64| -> f64 { x.asin().to_degrees() });
+	engine.register_fn("asin", |x: i64| -> f64 { (x as f64).asin().to_degrees() });
+	engine.register_fn("acos", |x: f64| -> f64 { x.acos().to_degrees() });
+	engine.register_fn("acos", |x: i64| -> f64 { (x as f64).acos().to_degrees() });
+	engine.register_fn("atan", |x: f64| -> f64 { x.atan().to_degrees() });
+	engine.register_fn("atan", |x: i64| -> f64 { (x as f64).atan().to_degrees() });
+
+	// Hyperbolic functions
+	engine.register_fn("sinh", |x: f64| -> f64 { x.sinh() });
+	engine.register_fn("sinh", |x: i64| -> f64 { (x as f64).sinh() });
+	engine.register_fn("cosh", |x: f64| -> f64 { x.cosh() });
+	engine.register_fn("cosh", |x: i64| -> f64 { (x as f64).cosh() });
+	engine.register_fn("tanh", |x: f64| -> f64 { x.tanh() });
+	engine.register_fn("tanh", |x: i64| -> f64 { (x as f64).tanh() });
+
+	// Logs and exponentials
+	engine.register_fn("ln", |x: f64| -> f64 { x.ln() });
+	engine.register_fn("ln", |x: i64| -> f64 { (x as f64).ln() });
+	engine.register_fn("log", |x: f64| -> f64 { x.log10() });
+	engine.register_fn("log", |x: i64| -> f64 { (x as f64).log10() });
+	engine.register_fn("log", |x: f64, base: f64| -> f64 { x.log(base) });
+	engine.register_fn("log", |x: f64, base: i64| -> f64 { x.log(base as f64) });
+	engine.register_fn("log", |x: i64, base: f64| -> f64 { (x as f64).log(base) });
+	engine.register_fn("log", |x: i64, base: i64| -> f64 { (x as f64).log(base as f64) });
+	engine.register_fn("log10", |x: f64| -> f64 { x.log10() });
+	engine.register_fn("log10", |x: i64| -> f64 { (x as f64).log10() });
+	engine.register_fn("exp", |x: f64| -> f64 { x.exp() });
+	engine.register_fn("exp", |x: i64| -> f64 { (x as f64).exp() });
+
+	// Misc
+	engine.register_fn("sqrt", |x: f64| -> f64 { x.sqrt() });
+	engine.register_fn("sqrt", |x: i64| -> f64 { (x as f64).sqrt() });
+	engine.register_fn("abs", |x: f64| -> f64 { x.abs() });
+	engine.register_fn("abs", |x: i64| -> i64 { x.abs() });
+	engine.register_fn("pow", |x: f64, y: f64| -> f64 { x.powf(y) });
+	engine.register_fn("pow", |x: f64, y: i64| -> f64 { x.powf(y as f64) });
+	engine.register_fn("pow", |x: i64, y: f64| -> f64 { (x as f64).powf(y) });
+	engine.register_fn("pow", |x: i64, y: i64| -> f64 { (x as f64).powf(y as f64) });
+	engine.register_fn("round", |x: f64| -> f64 { x.round() });
+	engine.register_fn("round", |x: i64| -> i64 { x });
+	engine.register_fn("floor", |x: f64| -> f64 { x.floor() });
+	engine.register_fn("floor", |x: i64| -> i64 { x });
+	engine.register_fn("ceil", |x: f64| -> f64 { x.ceil() });
+	engine.register_fn("ceil", |x: i64| -> i64 { x });
+
 	if args[1] == "round" {
 		if args[2] == "mean" {
 			let result = mean(&data);
