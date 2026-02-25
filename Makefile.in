@@ -116,6 +116,7 @@ upgrade-c-libs:
 	curl -LO https://raw.githubusercontent.com/matthewyang204/libmysolvers/refs/heads/main/libcharge.h
 
 clean:
+	cargo clean
 	rm -rf $(BINDIR)
 	rm -rf build
 	rm -rf dist
