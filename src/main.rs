@@ -5,6 +5,7 @@ use std::io::{self, BufRead};
 use std::ffi::CString;
 use std::os::raw::c_char;
 use std::f64::consts::{PI, E};
+use regex::Regex;
 
 // Load modules
 mod enumerate;
@@ -147,6 +148,28 @@ fn help() {
 fn getArgs() -> Vec<String> {
 	let args: Vec<String> = env::args().collect();
 	return args;
+}
+
+fn floatExpr(expr: &str) -> String {
+    let re = Regex::new(r"\b\d+(\.\d+)?\b").unwrap();
+    let mut result = String::new();
+    let mut last_end = 0;
+
+    for mat in re.find_iter(expr) {
+        let matched = mat.as_str();
+        result.push_str(&expr[last_end..mat.start()]);
+
+        if matched.contains('.') {
+            result.push_str(matched);
+        } else {
+            result.push_str(&format!("{}.0", matched));
+        }
+
+        last_end = mat.end();
+    }
+
+    result.push_str(&expr[last_end..]);
+    result
 }
 
 fn main() {
@@ -470,7 +493,8 @@ fn main() {
 			println!("{}", resultY);
 		} else if args[2] == "eval" {
 			let expression = stringExpression[0].clone();
-			let evaluated = engine.eval_expression::<Dynamic>(&expression);
+			let floated_expression = floatExpr(&expression);
+			let evaluated = engine.eval_expression::<Dynamic>(&floated_expression);
 			match evaluated {
 				Ok(value) => println!("{}", value.to_string()),
 				Err(e) => eprintln!("ERROR: {}", e),
