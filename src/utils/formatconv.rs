@@ -86,5 +86,10 @@ fn write_space_delimited_values(file_path: &str, values: &[String]) -> Result<()
 }
 
 fn main() {
-    println!("Hello, world!");
+    let file_path = "test-csv.csv";
+    let row_number = 0.0;
+    match read_csv_row(file_path, &row_number) {
+        Ok(data) => println!("Row data: {:?}", data),
+        Err(e) => eprintln!("ERROR: Failed to read CSV row: {}", e),
+    }
 }
