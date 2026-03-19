@@ -1,6 +1,7 @@
 use csv;
 use std::error::Error;
 use std::fs::File;
+use std::io::BufRead;
 
 fn read_csv_column(file_path: &str, column_number: &f64) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     let mut rdr = csv::Reader::from_path(file_path)?;
