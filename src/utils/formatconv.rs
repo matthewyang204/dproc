@@ -10,8 +10,7 @@ fn read_csv_column(file_path: &str, column_name: &str) -> Result<Vec<String>, Bo
     let col_index = headers.iter().position(|h| h == column_name).unwrap();
 
     for result in results {
-        let record = result?;
-        if let Some(value) = record.get(col_index) {
+        if let Some(value) = result?.get(col_index) {
             column_data.push(value.to_string());
         }
     }
