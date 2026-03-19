@@ -18,6 +18,16 @@ fn read_csv_column(file_path: &str, column_number: &f64) -> Result<Vec<String>, 
     Ok(column_data)
 }
 
+fn write_csv_column(file_path: &str, column_number: &f64, data: &[String]) -> Result<(), Box<dyn std::error::Error>> {
+    let mut wtr = csv::Writer::from_path(file_path)?;
+    let col_index = *column_number as usize;
+    for value in data {
+        wtr.write_record(&[value])?;
+    }
+    wtr.flush()?;
+    Ok(())
+}
+
 fn main() {
     println!("Hello, world!");
 }
