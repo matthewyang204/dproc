@@ -29,6 +29,41 @@ fn write_csv_column(file_path: &str, column_number: &f64, data: &[String]) -> Re
     Ok(())
 }
 
+fn read_csv_row(file_path: &str, row_number: &f64) -> Result<Vec<String>, Box<dyn std::error::Error>> {
+    let mut rdr = csv::Reader::from_path(file_path)?;
+    let mut row_data = Vec::new();
+    let results = rdr.records();
+    let row_index = *row_number as usize;
+
+    if *row_number == 0.0 {
+        return Ok(rdr.headers()?.iter().map(|s| s.to_string()).collect());
+    }
+
+    for (i, result) in results.enumerate() {
+        if i == row_index {
+            let record = result?;
+            for value in record.iter() {
+                row_data.push(value.to_string());
+            }
+            break;
+        }
+    }
+
+    Ok(row_data)
+}
+
+fn write_csv_row(file_path: &str, row_number: &f64, data: &[String]) -> Result<(), Box<dyn std::error::Error>> {
+    let mut wtr = csv::Writer::from_path(file_path)?;
+    let row_index = *row_number as usize;
+    for (i, value) in data.iter().enumerate() {
+        if i == row_index {
+            wtr.write_record(&[value])?;
+        }
+    }
+    wtr.flush()?;
+    Ok(())
+}
+
 fn read_space_delimited_values(file_path: &str) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     let mut values = Vec::new();
     let file = File::open(file_path)?;
