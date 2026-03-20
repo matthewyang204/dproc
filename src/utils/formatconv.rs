@@ -89,9 +89,14 @@ fn write_space_delimited_values(file_path: &str, values: &[String]) -> Result<()
     Ok(())
 }
 
+fn getArgs() -> Vec<String> {
+	let args: Vec<String> = env::args().collect();
+	return args;
+}
+
 fn main() {
-    let file_path = "test-csv.csv";
-    let row_number = 0.0;
-    let values = read_csv_row(file_path, &row_number).unwrap();
-    write_space_delimited_values("test-delimit.txt", &values).unwrap();
+    println!("WARNING: Unimplemented function");
+
+    let args = getArgs();
+    
 }
