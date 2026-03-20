@@ -99,7 +99,15 @@ fn main() {
 
     let args = getArgs();
     let call1 = &args[0];
-    if args.len() > 1 {
-        let cmdCall = &args[1];
+    let cmdCall: String;
+
+    if call1 != "formatconv" {
+        let options = &args[1..];
+        cmdCall = call1.to_string();
+    } else {
+        let options = &args[2..];
+        cmdCall = args[1].to_string();
     }
+
+    
 }
