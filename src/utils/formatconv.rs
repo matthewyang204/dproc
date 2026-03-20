@@ -98,5 +98,8 @@ fn main() {
     println!("WARNING: Unimplemented function");
 
     let args = getArgs();
-    
+    let call1 = &args[0];
+    if args.len() > 1 {
+        let cmdCall = &args[1];
+    }
 }
