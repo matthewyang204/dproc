@@ -100,24 +100,26 @@ fn main() {
     println!("WARNING: Unimplemented function");
 
     let args = getArgs();
-    let call1 = &args[0];
-    let cmdCall: String;
-
-    if call1 != "dfmtutils" {
-        let options = &args[2..];
-        cmdCall = args[1].to_string();
-    } else {
-        let options = &args[1..];
-        cmdCall = call1.to_string();
-    }
-
-    let cmdCallPath = Path::new(&cmdCall);
-    let baseCmdCall = cmdCallPath.file_name()
+    let argv0 = &args[0];
+    let mut base_argv0 = Path::new(argv0)
+        .file_stem()
         .and_then(OsStr::to_str)
         .unwrap_or("");
-    if let Some(index) = baseCmdCall.find('2') {
-        let from = &baseCmdCall[..index];
-        let to = &baseCmdCall[index + 1..];
+    println!("argv0: {}, base_argv0: {}", argv0, base_argv0);
+
+    let mut cmdCall = "";
+    let mut options: Vec<String>;
+    if base_argv0 == "dfmtutils"{
+        cmdCall = &args[1];
+        options = (&args[2..]).to_vec();
+    } else {
+        cmdCall = base_argv0;
+        options = (&args[1..]).to_vec();
+    }
+
+    if let Some(index) = cmdCall.find('2') {
+        let from = &cmdCall[..index];
+        let to = &cmdCall[index + 1..];
         println!("from: {}, to: {}", from, to);
     } else {
         println!("WARNING: Unimplemented function");
