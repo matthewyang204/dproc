@@ -103,13 +103,23 @@ fn main() {
     let call1 = &args[0];
     let cmdCall: String;
 
-    if call1 != "formatconv" {
-        let options = &args[1..];
-        cmdCall = call1.to_string();
-    } else {
+    if call1 != "dfmtutils" {
         let options = &args[2..];
         cmdCall = args[1].to_string();
+    } else {
+        let options = &args[1..];
+        cmdCall = call1.to_string();
     }
 
-    
+    let cmdCallPath = Path::new(&cmdCall);
+    let baseCmdCall = cmdCallPath.file_name()
+        .and_then(OsStr::to_str)
+        .unwrap_or("");
+    if let Some(index) = baseCmdCall.find('2') {
+        let from = &baseCmdCall[..index];
+        let to = &baseCmdCall[index + 1..];
+        println!("from: {}, to: {}", from, to);
+    } else {
+        println!("WARNING: Unimplemented function");
+    }
 }
