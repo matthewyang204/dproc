@@ -18,6 +18,7 @@ pub mod deviate;
 pub mod coreFuncs;
 pub mod primes;
 pub mod math;
+pub mod utils;
 
 // Use functions from modules
 use round::mean;
