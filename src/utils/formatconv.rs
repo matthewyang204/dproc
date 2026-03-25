@@ -91,10 +91,7 @@ fn write_space_delimited_values(file_path: &str, values: &[String]) -> Result<()
     Ok(())
 }
 
-fn getArgs() -> Vec<String> {
-	let args: Vec<String> = env::args().collect();
-	return args;
-}
+use dproc::getArgs;
 
 fn main() {
     println!("WARNING: Unimplemented function");
@@ -121,6 +118,18 @@ fn main() {
         let from = &cmdCall[..index];
         let to = &cmdCall[index + 1..];
         println!("from: {}, to: {}", from, to);
+    } else {
+        println!("WARNING: Unimplemented function");
+    }
+
+    if cmdCall == "csvcol2del" {
+        println!("WARNING: Unimplemented function");
+    } else if cmdCall == "csvrow2del" {
+        println!("WARNING: Unimplemented function");
+    } else if cmdCall == "del2csvcol" {
+        println!("WARNING: Unimplemented function");
+    } else if cmdCall == "del2csvrow" {
+        println!("WARNING: Unimplemented function");
     } else {
         println!("WARNING: Unimplemented function");
     }
