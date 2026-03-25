@@ -21,6 +21,9 @@ csv = "1.4.0"
 [build-dependencies]
 cc = "1.2.49"
 
+[lib]
+path = "src/lib.rs"
+
 [[bin]]
 name = "dfmtutils"
 path = "src/utils/formatconv.rs"

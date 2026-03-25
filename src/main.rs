@@ -8,14 +8,22 @@ use std::f64::consts::{PI, E};
 use regex::Regex;
 
 // Load modules
-mod enumerate;
-mod round;
-mod freq;
-mod sort;
-mod deviate;
-mod coreFuncs;
-mod primes;
-mod math;
+// mod enumerate;
+// mod round;
+// mod freq;
+// mod sort;
+// mod deviate;
+// mod coreFuncs;
+// mod primes;
+// mod math;
+use dproc::enumerate;
+use dproc::round;
+use dproc::freq;
+use dproc::crateSort;
+use dproc::deviate;
+use dproc::coreFuncs;
+use dproc::primes;
+use dproc::math;
 
 // Use functions from modules
 use round::mean;
@@ -31,8 +39,8 @@ use deviate::meanAD;
 use deviate::medianAD;
 use deviate::iqr;
 use deviate::skewness;
-use sort::sort;
-use sort::keepUnique;
+use crateSort::sort;
+use crateSort::keepUnique;
 use enumerate::sum;
 use enumerate::count;
 use enumerate::min;
@@ -145,32 +153,7 @@ fn help() {
 	println!("Place your data, values separated by spaces, in the place of {{yourdata}}. Alternatively, you may put `stdin` or `-` in the place of {{yourdata}} to read from stdin.");
 }
 
-fn getArgs() -> Vec<String> {
-	let args: Vec<String> = env::args().collect();
-	return args;
-}
-
-fn floatExpr(expr: &str) -> String {
-    let re = Regex::new(r"\b\d+(\.\d+)?\b").unwrap();
-    let mut result = String::new();
-    let mut last_end = 0;
-
-    for mat in re.find_iter(expr) {
-        let matched = mat.as_str();
-        result.push_str(&expr[last_end..mat.start()]);
-
-        if matched.contains('.') {
-            result.push_str(matched);
-        } else {
-            result.push_str(&format!("{}.0", matched));
-        }
-
-        last_end = mat.end();
-    }
-
-    result.push_str(&expr[last_end..]);
-    result
-}
+use dproc::{getArgs, floatExpr};
 
 fn main() {
 	let args = getArgs();
