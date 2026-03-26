@@ -5,6 +5,7 @@ use std::io::BufRead;
 use std::env;
 use std::path::Path;
 use std::ffi::OsStr;
+use std::process::exit;
 
 // Load crates
 use csv;
@@ -12,6 +13,7 @@ use csv;
 // Load internal modules
 use dproc::getArgs;
 use dproc::utils::csvext::*;
+use dproc::getStrFromVec;
 
 fn main() {
     println!("WARNING: Unimplemented function");
@@ -43,7 +45,24 @@ fn main() {
     }
 
     if cmdCall == "csvcol2del" {
-        println!("WARNING: Unimplemented function");
+        let (mut optIndex, mut trueOrFalse) = getStrFromVec(options.clone(), "--index".to_string());
+        if trueOrFalse == false {
+        	(optIndex, trueOrFalse) = getStrFromVec(options.clone(), "-i".to_string());
+        	if trueOrFalse == false {
+        	    println!("Error: -i or --index not passed (UNIMPLEMENTED HANDLER)");
+        		exit(1);
+        	}
+        }
+        let index = optIndex + 1;
+        let uIndex = index as usize;
+        let col = options.clone()[uIndex].parse::<i64>().unwrap_or(-1);
+        println!("{}", col);
+        let filename = options[options.len() - 1].clone();
+        let file_contents: Vec<String> = read_csv_column(&filename, &(col as f64)).expect("REASON");
+        for element in file_contents {
+        	print!("{} ", element);
+        }
+        println!();
     } else if cmdCall == "csvrow2del" {
         println!("WARNING: Unimplemented function");
     } else if cmdCall == "del2csvcol" {
