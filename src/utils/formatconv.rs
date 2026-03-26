@@ -56,6 +56,10 @@ fn main() {
         let index = optIndex + 1;
         let uIndex = index as usize;
         let col = options.clone()[uIndex].parse::<i64>().unwrap_or(-1);
+        if col == -1 {
+        	println!("Error: Failed to get index, index does not exist, or index is negative (cannot be negative)");
+        	exit(1);
+        }
         println!("{}", col);
         let filename = options[options.len() - 1].clone();
         let file_contents: Vec<String> = read_csv_column(&filename, &(col as f64)).expect("REASON");
@@ -75,6 +79,10 @@ fn main() {
         let index = optIndex + 1;
         let uIndex = index as usize;
         let row = options.clone()[uIndex].parse::<i64>().unwrap_or(-1);
+        if row == -1 {
+        	println!("Error: Failed to get index, index does not exist, or index is negative (cannot be negative)");
+        	exit(1);
+        }
         println!("{}", row);
         let filename = options[options.len() - 1].clone();
         let file_contents: Vec<String> = read_csv_row(&filename, &(row as f64)).expect("REASON");
