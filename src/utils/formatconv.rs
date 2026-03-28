@@ -16,6 +16,50 @@ use dproc::utils::csvext::*;
 use dproc::utils::delext::*;
 use dproc::getStrFromVec;
 
+fn csvcol2del(options: Vec<String>) -> Vec<String> {
+    let (mut optIndex, mut trueOrFalse) = getStrFromVec(options.clone(), "--index".to_string());
+    if trueOrFalse == false {
+        (optIndex, trueOrFalse) = getStrFromVec(options.clone(), "-i".to_string());
+        if trueOrFalse == false {
+            println!("Error: -i or --index not passed (UNIMPLEMENTED HANDLER)");
+            exit(1);
+        }
+    }
+    let index = optIndex + 1;
+    let uIndex = index as usize;
+    let col = options.clone()[uIndex].parse::<i64>().unwrap_or(-1);
+    if col == -1 {
+        println!("Error: Failed to get index, index does not exist, or index is negative (cannot be negative)");
+        exit(1);
+    }
+    println!("{}", col);
+    let filename = options[options.len() - 1].clone();
+    let file_contents: Vec<String> = read_csv_column(&filename, &(col as f64)).expect("REASON");
+    return file_contents;
+}
+
+fn csvrow2del(options: Vec<String>)  -> Vec<String> {
+    let (mut optIndex, mut trueOrFalse) = getStrFromVec(options.clone(), "--index".to_string());
+    if trueOrFalse == false {
+        (optIndex, trueOrFalse) = getStrFromVec(options.clone(), "-i".to_string());
+        if trueOrFalse == false {
+            println!("Error: -i or --index not passed (UNIMPLEMENTED HANDLER)");
+            exit(1);
+        }
+    }
+    let index = optIndex + 1;
+    let uIndex = index as usize;
+    let row = options.clone()[uIndex].parse::<i64>().unwrap_or(-1);
+    if row == -1 {
+        println!("Error: Failed to get index, index does not exist, or index is negative (cannot be negative)");
+        exit(1);
+    }
+    println!("{}", row);
+    let filename = options[options.len() - 1].clone();
+    let file_contents: Vec<String> = read_csv_row(&filename, &(row as f64)).expect("REASON");
+    return file_contents;
+}
+
 fn main() {
     println!("WARNING: Unimplemented function");
 
@@ -46,6 +90,18 @@ fn main() {
     }
 
     if cmdCall == "csvcol2del" {
+        let file_contents = csvcol2del(options);
+        for element in file_contents {
+            print!("{} ", element);
+        }
+        println!();
+    } else if cmdCall == "csvrow2del" {
+        let file_contents = csvrow2del(options);
+        for element in file_contents {
+            print!("{} ", element);
+        }
+        println!();
+    } else if cmdCall == "del2csvcol" {
         let (mut optIndex, mut trueOrFalse) = getStrFromVec(options.clone(), "--index".to_string());
         if trueOrFalse == false {
         	(optIndex, trueOrFalse) = getStrFromVec(options.clone(), "-i".to_string());
