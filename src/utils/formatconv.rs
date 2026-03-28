@@ -123,7 +123,7 @@ fn main() {
         }
         println!();
     } else if cmdCall == "del2csvcol" {
-        del2csvcol(options);
+        let file_contents = del2csvcol(options);
         for element in file_contents {
             print!("{} ", element);
         }
