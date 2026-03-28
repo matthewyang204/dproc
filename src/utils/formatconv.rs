@@ -13,6 +13,7 @@ use csv;
 // Load internal modules
 use dproc::getArgs;
 use dproc::utils::csvext::*;
+use dproc::utils::delext::*;
 use dproc::getStrFromVec;
 
 fn main() {
