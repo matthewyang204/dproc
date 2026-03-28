@@ -124,6 +124,10 @@ fn main() {
         println!();
     } else if cmdCall == "del2csvcol" {
         del2csvcol(options);
+        for element in file_contents {
+            print!("{} ", element);
+        }
+        println!();
     } else if cmdCall == "del2csvrow" {
         println!("WARNING: Unimplemented function");
     } else {
