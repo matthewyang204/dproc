@@ -60,7 +60,7 @@ fn csvrow2del(options: Vec<String>)  -> Vec<String> {
     return file_contents;
 }
 
-fn del2csvcol(options: Vec<String>) -> Vec<String> {
+fn del2csvcol(options: Vec<String>) -> (Vec<String>, i64) {
     let (mut optIndex, mut trueOrFalse) = getStrFromVec(options.clone(), "--index".to_string());
     if trueOrFalse == false {
         (optIndex, trueOrFalse) = getStrFromVec(options.clone(), "-i".to_string());
@@ -76,12 +76,12 @@ fn del2csvcol(options: Vec<String>) -> Vec<String> {
         println!("Error: Failed to get index, index does not exist, or index is negative (cannot be negative)");
         exit(1);
     }
-    let filename = options[options.len() - 1].clone();
+    let filename = options[options.len() - 2].clone();
     let file_contents: Vec<String> = read_space_delimited_values(&filename).expect("REASON");
-    return file_contents;
+    return (file_contents, index);
 }
 
-fn del2csvrow(options: Vec<String>) -> Vec<String> {
+fn del2csvrow(options: Vec<String>) -> (Vec<String>, i64) {
     let (mut optIndex, mut trueOrFalse) = getStrFromVec(options.clone(), "--index".to_string());
     if trueOrFalse == false {
         (optIndex, trueOrFalse) = getStrFromVec(options.clone(), "-i".to_string());
@@ -97,9 +97,9 @@ fn del2csvrow(options: Vec<String>) -> Vec<String> {
         println!("Error: Failed to get index, index does not exist, or index is negative (cannot be negative)");
         exit(1);
     }
-    let filename = options[options.len() - 1].clone();
+    let filename = options[options.len() - 2].clone();
     let file_contents: Vec<String> = read_space_delimited_values(&filename).expect("REASON");
-    return file_contents;
+    return (file_contents, index);
 }
 
 fn main() {
@@ -144,17 +144,15 @@ fn main() {
         }
         println!();
     } else if cmdCall == "del2csvcol" {
-        let file_contents = del2csvcol(options);
-        for element in file_contents {
-            print!("{} ", element);
-        }
-        println!();
+        let (file_contents, index) = del2csvcol(options.clone());
+        let outfile = options[options.len() - 1].clone();
+        let slicedContents = file_contents.as_slice();
+        write_csv_column(&outfile, &(index as f64), &slicedContents);
     } else if cmdCall == "del2csvrow" {
-        let file_contents = del2csvrow(options);
-        for element in file_contents {
-            print!("{} ", element);
-        }
-        println!();
+        let (file_contents, index) = del2csvrow(options.clone());
+        let outfile = options[options.len() - 1].clone();
+        let slicedContents = file_contents.as_slice();
+        write_csv_row(&outfile, &(index as f64), &slicedContents);
     } else {
         println!("WARNING: Unimplemented function");
     }
