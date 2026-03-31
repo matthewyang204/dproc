@@ -1,3 +1,0 @@
-[submodule "lib/num"]
-	path = lib/num
-	url = https://github.com/rust-num/num.git
