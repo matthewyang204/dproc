@@ -9,63 +9,47 @@ use std::ffi::OsStr;
 // Load crates
 use csv;
 
-pub fn read_csv_column(file_path: &str, column_number: &f64) -> Result<Vec<String>, Box<dyn std::error::Error>> {
-    let mut rdr = csv::Reader::from_path(file_path)?;
-    let mut column_data = Vec::new();
-    let headers = rdr.headers()?.clone();
-    let results = rdr.records();
-    let col_index = *column_number as usize;
+pub fn read_csv_matrix(path: &str) -> Result<Vec<Vec<String>>, Box<dyn Error>> {
+    let mut rdr = csv::Reader::from_path(path)?;
+    let mut rows = Vec::new();
 
-    for result in results {
-        if let Some(value) = result?.get(col_index) {
-            column_data.push(value.to_string());
-        }
+    for result in rdr.records() {
+        let record = result?;
+        rows.push(record.iter().map(|s| s.to_string()).collect());
     }
 
-    Ok(column_data)
+    Ok(rows)
 }
 
-pub fn write_csv_column(file_path: &str, column_number: &f64, data: &[String]) -> Result<(), Box<dyn std::error::Error>> {
-    let mut wtr = csv::Writer::from_path(file_path)?;
-    let col_index = *column_number as usize;
-    for value in data {
-        wtr.write_record(&[value])?;
-    }
-    wtr.flush()?;
-    Ok(())
-}
-
-pub fn read_csv_row(file_path: &str, row_number: &f64) -> Result<Vec<String>, Box<dyn std::error::Error>> {
-    let mut rdr = csv::Reader::from_path(file_path)?;
-    let mut row_data = Vec::new();
-    let results = rdr.records();
-    let row_index = *row_number as usize;
-
-    if *row_number == 0.0 {
-        return Ok(rdr.headers()?.iter().map(|s| s.to_string()).collect());
-    }
-
-    for (i, result) in results.enumerate() {
-        if i == row_index {
-            let record = result?;
-            for value in record.iter() {
-                row_data.push(value.to_string());
-            }
-            break;
+pub fn modify_column(
+    rows: &mut Vec<Vec<String>>,
+    col: usize,
+    new_values: &[String]
+) {
+    for (i, row) in rows.iter_mut().enumerate() {
+        if i < new_values.len() && col < row.len() {
+            row[col] = new_values[i].clone();
         }
     }
-
-    Ok(row_data)
 }
 
-pub fn write_csv_row(file_path: &str, row_number: &f64, data: &[String]) -> Result<(), Box<dyn std::error::Error>> {
-    let mut wtr = csv::Writer::from_path(file_path)?;
-    let row_index = *row_number as usize;
-    for (i, value) in data.iter().enumerate() {
-        if i == row_index {
-            wtr.write_record(&[value])?;
-        }
+pub fn modify_row(
+    rows: &mut Vec<Vec<String>>,
+    row_index: usize,
+    new_values: &[String]
+) {
+    if row_index < rows.len() {
+        rows[row_index] = new_values.to_vec();
     }
+}
+
+pub fn write_csv_matrix(path: &str, rows: &[Vec<String>]) -> Result<(), Box<dyn Error>> {
+    let mut wtr = csv::Writer::from_path(path)?;
+
+    for row in rows {
+        wtr.write_record(row)?;
+    }
+
     wtr.flush()?;
     Ok(())
 }
