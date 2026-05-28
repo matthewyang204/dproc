@@ -145,7 +145,6 @@ fn main() {
         .file_stem()
         .and_then(OsStr::to_str)
         .unwrap_or("");
-    println!("argv0: {}, base_argv0: {}", argv0, base_argv0);
     if args.contains(&"--help".to_string()) || args.contains(&"-h".to_string()) {
         help();
         exit(0);
