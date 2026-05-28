@@ -107,9 +107,38 @@ fn del2csvrow(options: Vec<String>) -> (Vec<String>, i64) {
     (file_contents, row)
 }
 
-fn main() {
-    println!("WARNING: Unimplemented function");
+fn version() {
+    println!("dfmtutils, version 1.2.4");
+    println!("Copyright (C) 2024 Matthew Yang (杨佳明)");
+    println!("Format conversion utility for dproc");
+}
 
+fn help() {
+    println!("dfmtutils — format conversion utility for dproc");
+    println!();
+    println!("Usage:");
+    println!("  dfmtutils <command> [options] <input> <output>");
+    println!();
+    println!("Commands:");
+    println!("  csvcol2del      Extract a CSV column into space-delimited format");
+    println!("  csvrow2del      Extract a CSV row into space-delimited format");
+    println!("  del2csvcol      Insert space-delimited values into a CSV column");
+    println!("  del2csvrow      Insert space-delimited values into a CSV row");
+    println!();
+    println!("Options:");
+    println!("  -h, --help      Show this help message and exit");
+    println!("  -v, --version   Show version information and exit");
+    println!("  -i, --index N   Select the row or column index (0-based)");
+    println!();
+    println!("Examples:");
+    println!("  dfmtutils csvcol2del -i 3 input.csv");
+    println!("  dfmtutils csvrow2del -i 0 input.csv");
+    println!("  dfmtutils del2csvcol -i 2 values.txt output.csv");
+    println!("  dfmtutils del2csvrow -i 1 values.txt output.csv");
+}
+
+
+fn main() {
     let args = getArgs();
     let argv0 = &args[0];
     let mut base_argv0 = Path::new(argv0)
@@ -117,6 +146,13 @@ fn main() {
         .and_then(OsStr::to_str)
         .unwrap_or("");
     println!("argv0: {}, base_argv0: {}", argv0, base_argv0);
+    if args.contains(&"--help".to_string()) || args.contains(&"-h".to_string()) {
+        help();
+        exit(0);
+    } else if args.contains(&"--version".to_string()) || args.contains(&"-v".to_string()) {
+        version();
+        exit(0);
+    }
 
     let mut cmdCall = "";
     let mut options: Vec<String>;
@@ -133,7 +169,8 @@ fn main() {
         let to = &cmdCall[index + 1..];
         println!("from: {}, to: {}", from, to);
     } else {
-        println!("WARNING: Unimplemented function");
+        help();
+        exit(1);
     }
 
     if cmdCall == "csvcol2del" {
@@ -161,6 +198,7 @@ fn main() {
         modify_row(&mut rows, index as usize, &file_contents);
         write_csv_matrix(&outfile, &rows).expect("REASON");
     } else {
-        println!("WARNING: Unimplemented function");
+        help();
+        exit(1);
     }
 }
