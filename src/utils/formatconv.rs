@@ -61,45 +61,45 @@ fn csvrow2del(options: Vec<String>)  -> Vec<String> {
 }
 
 fn del2csvcol(options: Vec<String>) -> (Vec<String>, i64) {
-    let (mut optIndex, mut trueOrFalse) = getStrFromVec(options.clone(), "--index".to_string());
-    if trueOrFalse == false {
-        (optIndex, trueOrFalse) = getStrFromVec(options.clone(), "-i".to_string());
-        if trueOrFalse == false {
-            println!("Error: -i or --index not passed (UNIMPLEMENTED HANDLER)");
+    let (mut optIndex, mut found) = getStrFromVec(options.clone(), "--index".to_string());
+    if !found {
+        (optIndex, found) = getStrFromVec(options.clone(), "-i".to_string());
+        if !found {
+            println!("Error: -i or --index not passed");
             exit(1);
         }
     }
-    let index = optIndex + 1;
-    let uIndex = index as usize;
-    let col = options.clone()[uIndex].parse::<i64>().unwrap_or(-1);
-    if col == -1 {
-        println!("Error: Failed to get index, index does not exist, or index is negative (cannot be negative)");
+    let numeric_index_pos = optIndex + 1;
+    let col = options[numeric_index_pos as usize].parse::<i64>().unwrap_or(-1);
+
+    if col < 0 {
+        println!("Error: Invalid index");
         exit(1);
     }
-    let filename = options[options.len() - 2].clone();
-    let file_contents: Vec<String> = read_space_delimited_values(&filename).expect("REASON");
-    return (file_contents, index);
+    let infile = options[options.len() - 2].clone();
+    let file_contents = read_space_delimited_values(&infile).expect("REASON");
+    (file_contents, col)
 }
 
 fn del2csvrow(options: Vec<String>) -> (Vec<String>, i64) {
-    let (mut optIndex, mut trueOrFalse) = getStrFromVec(options.clone(), "--index".to_string());
-    if trueOrFalse == false {
-        (optIndex, trueOrFalse) = getStrFromVec(options.clone(), "-i".to_string());
-        if trueOrFalse == false {
-            println!("Error: -i or --index not passed (UNIMPLEMENTED HANDLER)");
+    let (mut optIndex, mut found) = getStrFromVec(options.clone(), "--index".to_string());
+    if !found {
+        (optIndex, found) = getStrFromVec(options.clone(), "-i".to_string());
+        if !found {
+            println!("Error: -i or --index not passed");
             exit(1);
         }
     }
-    let index = optIndex + 1;
-    let uIndex = index as usize;
-    let row = options.clone()[uIndex].parse::<i64>().unwrap_or(-1);
-    if row == -1 {
-        println!("Error: Failed to get index, index does not exist, or index is negative (cannot be negative)");
+    let numeric_index_pos = optIndex + 1;
+    let row = options[numeric_index_pos as usize].parse::<i64>().unwrap_or(-1);
+
+    if row < 0 {
+        println!("Error: Invalid index");
         exit(1);
     }
-    let filename = options[options.len() - 2].clone();
-    let file_contents: Vec<String> = read_space_delimited_values(&filename).expect("REASON");
-    return (file_contents, index);
+    let infile = options[options.len() - 2].clone();
+    let file_contents = read_space_delimited_values(&infile).expect("REASON");
+    (file_contents, row)
 }
 
 fn main() {
