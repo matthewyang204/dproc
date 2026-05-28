@@ -149,13 +149,15 @@ fn main() {
     } else if cmdCall == "del2csvcol" {
         let (file_contents, index) = del2csvcol(options.clone());
         let outfile = options[options.len() - 1].clone();
-        let slicedContents = file_contents.as_slice();
-        write_csv_column(&outfile, &(index as f64), &slicedContents);
+        let mut rows = read_csv_matrix(&outfile).expect("REASON");
+        modify_column(&mut rows, index as usize, &file_contents);
+        write_csv_matrix(&outfile, &rows).expect("REASON");
     } else if cmdCall == "del2csvrow" {
         let (file_contents, index) = del2csvrow(options.clone());
         let outfile = options[options.len() - 1].clone();
-        let slicedContents = file_contents.as_slice();
-        write_csv_row(&outfile, &(index as f64), &slicedContents);
+        let mut rows = read_csv_matrix(&outfile).expect("REASON");
+        modify_row(&mut rows, index as usize, &file_contents);
+        write_csv_matrix(&outfile, &rows).expect("REASON");
     } else {
         println!("WARNING: Unimplemented function");
     }
