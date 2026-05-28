@@ -34,7 +34,8 @@ fn csvcol2del(options: Vec<String>) -> Vec<String> {
     }
     println!("{}", col);
     let filename = options[options.len() - 1].clone();
-    let file_contents: Vec<String> = read_csv_column(&filename, &(col as f64)).expect("REASON");
+    let rows = read_csv_matrix(&filename).expect("REASON");
+    let file_contents: Vec<String> = rows.iter().map(|r| r[col as usize].clone()).collect();
     return file_contents;
 }
 
@@ -56,9 +57,11 @@ fn csvrow2del(options: Vec<String>)  -> Vec<String> {
     }
     println!("{}", row);
     let filename = options[options.len() - 1].clone();
-    let file_contents: Vec<String> = read_csv_row(&filename, &(row as f64)).expect("REASON");
+    let rows = read_csv_matrix(&filename).expect("REASON");
+    let file_contents: Vec<String> = rows[row as usize].clone();
     return file_contents;
 }
+
 
 fn del2csvcol(options: Vec<String>) -> (Vec<String>, i64) {
     let (mut optIndex, mut found) = getStrFromVec(options.clone(), "--index".to_string());
