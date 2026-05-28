@@ -80,7 +80,8 @@ fn del2csvcol(options: Vec<String>) -> (Vec<String>, i64) {
         exit(1);
     }
     let infile = options[options.len() - 2].clone();
-    let file_contents = read_space_delimited_values(&infile).expect("REASON");
+    let raw = read_space_delimited_values(&infile).expect("REASON");
+    let file_contents: Vec<String> = raw[0].split_whitespace().map(|s| s.to_string()).collect();
     (file_contents, col)
 }
 
@@ -101,7 +102,8 @@ fn del2csvrow(options: Vec<String>) -> (Vec<String>, i64) {
         exit(1);
     }
     let infile = options[options.len() - 2].clone();
-    let file_contents = read_space_delimited_values(&infile).expect("REASON");
+    let raw = read_space_delimited_values(&infile).expect("REASON");
+    let file_contents: Vec<String> = raw[0].split_whitespace().map(|s| s.to_string()).collect();
     (file_contents, row)
 }
 
