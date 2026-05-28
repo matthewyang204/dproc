@@ -108,7 +108,7 @@ fn del2csvrow(options: Vec<String>) -> (Vec<String>, i64) {
 }
 
 fn version() {
-    println!("dfmtutils, version 1.2.4");
+    println!("dfmtutils, version 1.3.0");
     println!("Copyright (C) 2024 Matthew Yang (杨佳明)");
     println!("Format conversion utility for dproc");
 }
