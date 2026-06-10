@@ -1,2 +1,3 @@
 [build]
 target-dir = "target"
+rustflags = ["-Anon_snake_case"]
