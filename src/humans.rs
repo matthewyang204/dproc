@@ -19,8 +19,6 @@ pub fn format_float_with_precision(value: f64, precision: usize) -> String {
     };
 
     format!("{:.*}", precision, rounded)
-        .trim_end_matches('0')
-        .trim_end_matches('.')
         .to_string()
 }
 
