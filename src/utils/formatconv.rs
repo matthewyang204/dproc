@@ -1,14 +1,9 @@
 // Standard library imports
-use std::error::Error;
-use std::fs::File;
-use std::io::BufRead;
-use std::env;
 use std::path::Path;
 use std::ffi::OsStr;
 use std::process::exit;
 
 // Load crates
-use csv;
 
 // Load internal modules
 use dproc::getArgs;
@@ -141,7 +136,7 @@ fn help() {
 fn main() {
     let args = getArgs();
     let argv0 = &args[0];
-    let mut base_argv0 = Path::new(argv0)
+    let base_argv0 = Path::new(argv0)
         .file_stem()
         .and_then(OsStr::to_str)
         .unwrap_or("");
@@ -154,7 +149,7 @@ fn main() {
     }
 
     let mut cmdCall = "";
-    let mut options: Vec<String>;
+    let options: Vec<String>;
     if base_argv0 == "dfmtutils"{
         cmdCall = &args[1];
         options = (&args[2..]).to_vec();
