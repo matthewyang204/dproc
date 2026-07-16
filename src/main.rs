@@ -373,16 +373,16 @@ fn main() {
 	} else if args[1] == "enumerate" {
 		if args[2] == "sum" {
 			let result = sum(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "count" {
 			let result = count(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "min" {
 			let result = min(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "max" {
 			let result = max(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else {
 			help();
 			userError();
@@ -435,8 +435,8 @@ fn main() {
 			let c: f64 = data[2];
 			let root1 = unsafe { quadratic_single_pos_solver(a, b, c) };
 			let root2 = unsafe { quadratic_single_neg_solver(a, b, c) };
-			print!("{} ", root1);
-			println!("{}", root2);
+			print!("{} ", format_float_listbased(&data, root1));
+			println!("{}", format_float_listbased(&data, root2));
 		} else if args[2] == "linear-dual" {
 			if data.len() < 4 {
 				eprintln!("ERROR: Invalid usage of the linear solver");
@@ -452,8 +452,10 @@ fn main() {
 			let c2: f64 = data[5];
 			let resultX = unsafe { linear_solver(0, a1, b1, c1, a2, b2, c2) };
 			let resultY = unsafe { linear_solver(1, a1, b1, c1, a2, b2, c2) };
-			print!("{} ", resultX);
-			println!("{}", resultY);
+			let cleanedX = format_float_listbased(&data, resultX);
+			let cleanedY = format_float_listbased(&data, resultY);
+			print!("{} ", cleanedX);
+			println!("{}", cleanedY);
 		} else if args[2] == "triangle-centroid" {
 			if data.len() < 4 {
 				eprintln!("ERROR: Invalid usage of the linear solver");
@@ -469,8 +471,10 @@ fn main() {
 			let y3: f64 = data[5];
 			let resultX = unsafe{triangle_centroid(0, x1, y1, x2, y2, x3, y3)};
 			let resultY = unsafe{triangle_centroid(1, x1, y1, x2, y2, x3, y3)};
-			print!("{} ", resultX);
-			println!("{}", resultY);
+			let cleanedX = format_float_listbased(&data, resultX);
+			let cleanedY = format_float_listbased(&data, resultY);
+			print!("{} ", cleanedX);
+			println!("{}", cleanedY);
 		} else if args[2] == "eval" {
 			let expression = stringExpression[0].clone();
 			let floated_expression = floatExpr(&expression);
@@ -488,17 +492,17 @@ fn main() {
 			let current: f64 = data[0];
 			let resistance: f64 = data[1];
 			let result = unsafe{get_volt(current, resistance)};
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "resistance" {
 			let voltage: f64 = data[0];
 			let current: f64 = data[1];
 			let result = unsafe{get_R(voltage, current)};
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "current" {
 			let voltage: f64 = data[0];
 			let resistance: f64 = data[1];
 			let result = unsafe{get_I(voltage, resistance)};
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else {
 			help();
 			userError();
