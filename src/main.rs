@@ -330,22 +330,22 @@ fn main() {
 	} else if args[1] == "deviate" {
 		if args[2] == "range" {
 			let result = range(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "variance" {
 			let result = variance(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "standard" {
 			let result = sd(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "meanAbsolute" {
 			let result = meanAD(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "medianAbsolute" {
 			let result = medianAD(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "iqr" {
 			let result = iqr(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "skewness" {
 			let result = skewness(&data);
 			println!("{}", result);
