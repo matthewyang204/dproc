@@ -1,10 +1,5 @@
 // Standard library imports
 use std::error::Error;
-use std::fs::File;
-use std::io::BufRead;
-use std::env;
-use std::path::Path;
-use std::ffi::OsStr;
 
 // Load crates
 use csv;

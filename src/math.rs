@@ -1,5 +1,5 @@
 use num_bigint::BigUint;
-use num_traits::{One, FromPrimitive};
+use num_traits::One;
 
 pub fn factorial(data: &[f64]) -> Vec<BigUint> {
     if data.is_empty() {

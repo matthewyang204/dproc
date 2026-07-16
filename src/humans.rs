@@ -1,6 +1,3 @@
-use std::fmt;
-use std::process::exit;
-
 pub fn format_float(value: f64) -> String {
     let rounded = if value.abs() < 1e-12 {
         0.0

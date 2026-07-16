@@ -1,11 +1,8 @@
 // Regular imports
-use std::env;
 use std::process::exit;
 use std::io::{self, BufRead};
-use std::ffi::CString;
 use std::os::raw::c_char;
 use std::f64::consts::{PI, E};
-use regex::Regex;
 
 // Load modules
 // mod enumerate;
@@ -21,7 +18,6 @@ use dproc::round;
 use dproc::freq;
 use dproc::crateSort;
 use dproc::deviate;
-use dproc::coreFuncs;
 use dproc::primes;
 use dproc::math;
 
@@ -52,7 +48,6 @@ use math::factorial;
 
 // Load crates
 use num_integer;
-use num_bigint::BigUint;
 use rhai::{Engine, Dynamic, Module};
 
 // Include C functions from libmysolvers

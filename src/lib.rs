@@ -1,12 +1,7 @@
 // Regular imports
 use std::env;
-use std::process::exit;
-use std::io::{self, BufRead};
-use std::ffi::CString;
 use std::os::raw::c_char;
-use std::f64::consts::{PI, E};
 use regex::Regex;
-use std::convert::TryInto;
 
 // Load modules
 pub mod enumerate;
@@ -22,37 +17,11 @@ pub mod utils;
 pub mod humans;
 
 // Use functions from modules
-use round::mean;
-use round::geoMean;
-use round::harMean;
-use round::median;
-use freq::mode;
-use freq::num;
-use deviate::range;
-use deviate::variance;
-use deviate::sd;
-use deviate::meanAD;
-use deviate::medianAD;
-use deviate::iqr;
-use deviate::skewness;
 use crateSort::sort;
-use crateSort::keepUnique;
-use enumerate::sum;
-use enumerate::count;
-use enumerate::min;
-use enumerate::max;
 #[allow(unused_imports)]
 use primes::generate_primes;
-use primes::is_prime;
-use math::factorial;
-use humans::format_float;
-use humans::format_float_with_precision;
-use humans::get_precision_from_list;
 
 // Load crates
-use num_integer;
-use num_bigint::BigUint;
-use rhai::{Engine, Dynamic, Module};
 
 // Include C functions from libmysolvers
 unsafe extern "C" {

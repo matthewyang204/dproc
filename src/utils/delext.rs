@@ -1,10 +1,6 @@
 // Standard library imports
-use std::error::Error;
 use std::fs::File;
 use std::io::BufRead;
-use std::env;
-use std::path::Path;
-use std::ffi::OsStr;
 
 pub fn read_space_delimited_values(file_path: &str) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     let mut values = Vec::new();
