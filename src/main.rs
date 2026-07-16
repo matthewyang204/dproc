@@ -20,6 +20,7 @@ use dproc::crateSort;
 use dproc::deviate;
 use dproc::primes;
 use dproc::math;
+use dproc::humans;
 
 // Use functions from modules
 use round::mean;
@@ -45,6 +46,7 @@ use enumerate::max;
 use primes::generate_primes;
 use primes::is_prime;
 use math::factorial;
+use humans::{format_float_with_precision, format_float_listbased, format_floatlist};
 
 // Load crates
 use num_integer;
@@ -281,21 +283,21 @@ fn main() {
 	if args[1] == "round" {
 		if args[2] == "mean" {
 			let result = mean(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "geo-mean" {
 			let result = geoMean(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "harmonic-mean" {
 			let result = harMean(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "median" {
 			let result = median(&data);
-			println!("{}", result);
+			println!("{}", format_float_listbased(&data, result));
 		} else if args[2] == "decimal" {
 			// let precisionString: f64 = args[4].parse().expect("Invalid number");
 			let precision: usize = args[4].parse().expect("Not a valid integer");
 			let value: f64 = args[3].parse().expect("Not a valid floating point number");
-			let result = format!("{:.1$}", value, precision);
+			let result = format_float_with_precision(value, precision);
 			println!("{}", result);
 		} else if args[2] == "integer" {
 			let mut result = vec![];
