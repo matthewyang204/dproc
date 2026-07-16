@@ -19,6 +19,7 @@ pub mod coreFuncs;
 pub mod primes;
 pub mod math;
 pub mod utils;
+pub mod humans;
 
 // Use functions from modules
 use round::mean;
@@ -44,6 +45,9 @@ use enumerate::max;
 use primes::generate_primes;
 use primes::is_prime;
 use math::factorial;
+use humans::format_float;
+use humans::format_float_with_precision;
+use humans::get_precision_from_list;
 
 // Load crates
 use num_integer;
