@@ -22,7 +22,7 @@ pub fn format_float_with_precision(value: f64, precision: usize) -> String {
         .to_string()
 }
 
-pub fn get_precision_from_list(values: &[f64]) -> usize {
+pub fn get_max_precision_from_list(values: &[f64]) -> usize {
     let mut max_precision = 0;
 
     for &value in values {
