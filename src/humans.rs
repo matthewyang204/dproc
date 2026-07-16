@@ -1,14 +1,12 @@
-pub fn format_float(value: f64) -> String {
-    let rounded = if value.abs() < 1e-12 {
-        0.0
+pub fn format_float(value: String) -> String {
+    if let Some(_) = value.find('.') {
+        value
+            .trim_end_matches('0')
+            .trim_end_matches('.')
+            .to_string()
     } else {
         value
-    };
-
-    format!("{:.12}", rounded)
-        .trim_end_matches('0')
-        .trim_end_matches('.')
-        .to_string()
+    }
 }
 
 pub fn format_float_with_precision(value: f64, precision: usize) -> String {
