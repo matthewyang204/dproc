@@ -3,7 +3,6 @@ pub fn trim_stringfloat(value: String) -> String {
         value
             .trim_end_matches('0')
             .trim_end_matches('.')
-            .to_string()
     } else {
         value
     }
