@@ -46,7 +46,7 @@ use enumerate::max;
 use primes::generate_primes;
 use primes::is_prime;
 use math::factorial;
-use humans::{format_float_with_precision, format_float_listbased, format_floatlist};
+use humans::{format_float_with_precision, format_float_listbased};
 
 // Load crates
 use num_integer;
