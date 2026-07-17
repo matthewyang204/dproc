@@ -102,6 +102,9 @@ If you want to install from a binary downloaded from the releases, simply move t
 
 On macOS, you can also use Homebrew. To install using Homebrew, first tap my self-hosted tap via `brew tap matthewyang204/homebrew-formulae-casks`. Then, simply install with `brew install dproc`.
 
+# Bundled tools
+- `dfmtutils` is a bundled tool that can be used to convert between CSV and other formats, such as space-delimited text files and XLSX files. It is included in the source code and built by default. You can use it convert data so that it is ingestable by dproc. It is also a standalone tool that can be used for other purposes, such as converting between CSV and XLSX.
+
 # GUI Frontends
 It's very easy to build a GUI frontend for this program. You can build your own or use the one that comes with it. This processor can be integrated with multiple different types of graphical frontends or even middlemen. Some examples:
 - Manual user interaction frontends - i,e  in similar nature to Git GUI, very close to bare stuff, basic entry boxes, buttons, etc
