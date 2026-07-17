@@ -9,6 +9,7 @@ use std::process::exit;
 use dproc::getArgs;
 use dproc::utils::csvext::*;
 use dproc::utils::delext::*;
+use dproc::utils::xlsxext::*;
 use dproc::getStrFromVec;
 
 fn csvcol2del(options: Vec<String>) -> Vec<String> {
@@ -102,6 +103,23 @@ fn del2csvrow(options: Vec<String>) -> (Vec<String>, i64) {
     (file_contents, row)
 }
 
+fn singlexlsx2csv(options: Vec<String>) {
+    let infile = options[0].clone();
+    let outfile = options[1].clone();
+    let sheet_name = options[2].clone();
+
+    let mut workbook = load_workbook(&infile).expect("Failed to load workbook");
+    write_single_xlsx(&mut workbook, &sheet_name, &outfile).expect("Failed to write CSV");
+}
+
+fn xlsxcontainer2csv(options: Vec<String>) {
+    let infile = options[0].clone();
+    let output_dir = options[1].clone();
+
+    let mut workbook = load_workbook(&infile).expect("Failed to load workbook");
+    write_xlsxcontainer(&mut workbook, &output_dir).expect("Failed to write CSV files");
+}
+
 fn version() {
     println!("dfmtutils (dproc package utilities), version 1.3.0");
     println!("Copyright (C) 2025-2026 Matthew Yang (杨佳明)");
@@ -191,6 +209,10 @@ fn main() {
         let mut rows = read_csv_matrix(&outfile).expect("REASON");
         modify_row(&mut rows, index as usize, &file_contents);
         write_csv_matrix(&outfile, &rows).expect("REASON");
+    } else if cmdCall == "singlexlsx2csv" {
+        singlexlsx2csv(options);
+    } else if cmdCall == "xlsxcontainer2csv" {
+        xlsxcontainer2csv(options);
     } else {
         help();
         exit(1);
