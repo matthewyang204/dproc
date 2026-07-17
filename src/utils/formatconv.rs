@@ -152,8 +152,8 @@ fn help() {
     println!("  csvrow2del      Extract a CSV row into space-delimited format");
     println!("  del2csvcol      Insert space-delimited values into a CSV column");
     println!("  del2csvrow      Insert space-delimited values into a CSV row");
-    println!("  singlexlsx2csv  Convert a single sheet from an XLSX file to CSV");
-    println!("  xlsxcontainer2csv Convert all sheets from an XLSX file to CSV files in a directory");
+    println!("  singlexlsx2csv  <standard options> <sheet_name>  Convert a single sheet from an XLSX file to CSV");
+    println!("  xlsxcontainer2csv  Convert all sheets from an XLSX file to CSV files in a directory");
     println!("  xlsx2csv        Convert an XLSX file to CSV format (single sheet or multiple sheets)");
     println!();
     println!("Options:");
