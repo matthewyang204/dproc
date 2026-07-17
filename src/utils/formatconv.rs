@@ -152,6 +152,9 @@ fn help() {
     println!("  csvrow2del      Extract a CSV row into space-delimited format");
     println!("  del2csvcol      Insert space-delimited values into a CSV column");
     println!("  del2csvrow      Insert space-delimited values into a CSV row");
+    println!("  singlexlsx2csv  Convert a single sheet from an XLSX file to CSV");
+    println!("  xlsxcontainer2csv Convert all sheets from an XLSX file to CSV files in a directory");
+    println!("  xlsx2csv        Convert an XLSX file to CSV format (single sheet or multiple sheets)");
     println!();
     println!("Options:");
     println!("  -h, --help      Show this help message and exit");
@@ -163,8 +166,8 @@ fn help() {
     println!("  dfmtutils csvrow2del -i 0 input.csv");
     println!("  dfmtutils del2csvcol -i 2 values.txt output.csv");
     println!("  dfmtutils del2csvrow -i 1 values.txt output.csv");
+    println!("  dfmtutils xlsx2csv input.xlsx output.csv");
 }
-
 
 fn main() {
     let args = getArgs();
@@ -228,6 +231,8 @@ fn main() {
         singlexlsx2csv(options);
     } else if cmdCall == "xlsxcontainer2csv" {
         xlsxcontainer2csv(options);
+    } else if cmdCall == "xlsx2csv" {
+        xlsx2csv(options);
     } else {
         help();
         exit(1);
