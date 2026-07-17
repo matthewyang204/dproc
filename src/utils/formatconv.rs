@@ -120,6 +120,21 @@ fn xlsxcontainer2csv(options: Vec<String>) {
     write_xlsxcontainer(&mut workbook, &output_dir).expect("Failed to write CSV files");
 }
 
+fn xlsx2csv(options: Vec<String>){
+    let infile = options[0].clone();
+    let outfile = options[1].clone();
+
+    let mut workbook = load_workbook(&infile).expect("Failed to load workbook");
+    let mut sheet_names = get_sheet_names(&mut workbook);
+
+    if sheet_names.len() == 1 {
+        let sheet_name = sheet_names[0].clone();
+        write_single_xlsx(&mut workbook, &sheet_name, &outfile).expect("Failed to write CSV");
+    } else {
+        write_xlsxcontainer(&mut workbook, &outfile).expect("Failed to write CSV files");
+    }
+}
+
 fn version() {
     println!("dfmtutils (dproc package utilities), version 1.3.0");
     println!("Copyright (C) 2025-2026 Matthew Yang (杨佳明)");
