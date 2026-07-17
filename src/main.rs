@@ -317,7 +317,7 @@ fn main() {
 		if args[2] == "mode" {
 			let result = mode(&data);
 			for value in result {
-				print!("{}", value);
+				print!("{} ", value);
 			}
 			println!();
 		} else if args[2] == "num" {
