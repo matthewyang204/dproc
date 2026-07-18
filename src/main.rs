@@ -420,6 +420,7 @@ fn main() {
 			userError();
 		}
 	} else if args[1] == "solve" {
+		flags.push("--exact".to_string());
 		if args[2] == "quadratic-single" {
 			if data.len() < 3 {
 				eprintln!("ERROR: Invalid usage of the quadratic solver");
