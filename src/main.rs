@@ -52,6 +52,7 @@ use humans::{format_float_with_precision, format_float_listbased};
 // Load crates
 use num_integer;
 use rhai::{Engine, Dynamic, Module};
+use num_bigint::BigUint;
 
 // Include C functions from libmysolvers
 unsafe extern "C" {
@@ -302,154 +303,127 @@ fn main() {
 	engine.register_fn("ceil", |x: f64| -> f64 { x.ceil() });
 	engine.register_fn("ceil", |x: i64| -> i64 { x });
 
+	// Define an enum to hold the raw output variant dynamically
+	#[derive(Debug)]
+	enum Output {
+		SingleFloat(f64),
+		FloatList(Vec<f64>),
+		SingleInt(u32),
+		SingleSignedInt(i64),
+		StringList(Vec<String>),
+		SingleString(String),
+		SingleBigInt(BigUint),
+		BigIntList(Vec<BigUint>),
+		None,
+	}
+
+	let mut result_output = Output::None;
+
 	if args[1] == "round" {
 		if args[2] == "mean" {
-			let result = mean(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(mean(&data));
 		} else if args[2] == "geo-mean" {
-			let result = geoMean(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(geoMean(&data));
 		} else if args[2] == "harmonic-mean" {
-			let result = harMean(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(harMean(&data));
 		} else if args[2] == "median" {
-			let result = median(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(median(&data));
 		} else if args[2] == "decimal" {
-			// let precisionString: f64 = args[4].parse().expect("Invalid number");
 			let precision: usize = args[4].parse().expect("Not a valid integer");
 			let value: f64 = args[3].parse().expect("Not a valid floating point number");
-			let result = format_float_with_precision(value, precision);
-			println!("{}", result);
+			result_output = Output::SingleString(format_float_with_precision(value, precision));
 		} else if args[2] == "integer" {
 			let mut result = vec![];
-			for value in data {
-				let rounded = value.round();
-				result.push(rounded);
+			for value in &data {
+				result.push(value.round());
 			}
-			for value in result {
-				print!("{} ", value);
-			}
-			println!();
+			result_output = Output::FloatList(result);
 		} else {
-                        help();
-                        userError();
-                }
+			help();
+			userError();
+		}
 	} else if args[1] == "freq" {
 		if args[2] == "mode" {
-			let result = mode(&data);
-			for value in result {
-				print!("{} ", value);
-			}
-			println!();
+			result_output = Output::StringList(mode(&data));
 		} else if args[2] == "num" {
-			let result = num(&data);
-			println!("{}", result);
+			result_output = Output::SingleSignedInt(num(&data)); // or whatever type num() returns
 		} else {
 			help();
 			userError();
 		}
 	} else if args[1] == "deviate" {
 		if args[2] == "range" {
-			let result = range(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(range(&data));
 		} else if args[2] == "variance" {
-			let result = variance(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(variance(&data));
 		} else if args[2] == "standard" {
-			let result = sd(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(sd(&data));
 		} else if args[2] == "meanAbsolute" {
-			let result = meanAD(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(meanAD(&data));
 		} else if args[2] == "medianAbsolute" {
-			let result = medianAD(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(medianAD(&data));
 		} else if args[2] == "iqr" {
-			let result = iqr(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(iqr(&data));
 		} else if args[2] == "skewness" {
-			let result = skewness(&data);
-			println!("{}", result);
-		} else {
-                        help();
-                        userError();
-                }
-	} else if args[1] == "organize" {
-		if args[2] == "sort" {
-			let result = sort(&data);
-			for value in result {
-				print!("{} ", value);
-			}
-			println!();
-		} else if args[2] == "keep-unique" {
-			let result = keepUnique(&data);
-			for value in result {
-				print!("{} ", value);
-			}
-			println!();
-		} else {
-                        help();
-                        userError();
-                }
-	} else if args[1] == "enumerate" {
-		if args[2] == "sum" {
-			let result = sum(&data);
-			println!("{}", format_float_listbased(&data, result));
-		} else if args[2] == "count" {
-			let result = count(&data);
-			println!("{}", format_float_listbased(&data, result));
-		} else if args[2] == "min" {
-			let result = min(&data);
-			println!("{}", format_float_listbased(&data, result));
-		} else if args[2] == "max" {
-			let result = max(&data);
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleString(skewness(&data).to_string()); // assuming f64 output
 		} else {
 			help();
 			userError();
 		}
-	} else if args[1] == "math"{
+	} else if args[1] == "organize" {
+		if args[2] == "sort" {
+			result_output = Output::FloatList(sort(&data));
+		} else if args[2] == "keep-unique" {
+			result_output = Output::FloatList(keepUnique(&data));
+		} else {
+			help();
+			userError();
+		}
+	} else if args[1] == "enumerate" {
+		if args[2] == "sum" {
+			result_output = Output::SingleFloat(sum(&data));
+		} else if args[2] == "count" {
+			result_output = Output::SingleFloat(count(&data));
+		} else if args[2] == "min" {
+			result_output = Output::SingleFloat(min(&data));
+		} else if args[2] == "max" {
+			result_output = Output::SingleFloat(max(&data));
+		} else {
+			help();
+			userError();
+		}
+	} else if args[1] == "math" {
 		let data_integer: Vec<u32> = data
 			.iter()
 			.map(|x| *x as u32)
 			.collect::<Vec<_>>();
 		if args[2] == "lcm" {
 			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::lcm(a, b)).unwrap();
-			println!("{}", result);
+			result_output = Output::SingleInt(result);
 		} else if args[2] == "gcd" || args[2] == "gcf" {
 			let result = data_integer.iter().cloned().reduce(|a, b| num_integer::gcd(a, b)).unwrap();
-			println!("{}", result);
+			result_output = Output::SingleInt(result);
 		} else if args[2] == "prime-check" {
 			let mut result = vec![];
 			for value in data_integer {
 				if is_prime(value as u32) {
-					result.push("True");
+					result.push("True".to_string());
 				} else {
-					result.push("False");
+					result.push("False".to_string());
 				}
 			}
-			for value in result {
-				print!("{} ", value);
-			}
-			println!();
+			result_output = Output::StringList(result);
 		} else if args[2] == "factorial" {
-			let result = factorial(&data);
-			for value in result {
-				print!("{} ", value);
-			}
-			println!();
+			result_output = Output::BigIntList(factorial(&data));
 		} else {
 			help();
 			userError();
 		}
-	} else if args[1] == "solve"{
+	} else if args[1] == "solve" {
 		if args[2] == "quadratic-single" {
 			if data.len() < 3 {
 				eprintln!("ERROR: Invalid usage of the quadratic solver");
 				eprintln!("Usage: dproc solve quadratic {{a}} {{b}} {{c}}");
-				eprintln!("Where a, b, and c are the coefficients of the quadratic equation ax^2 + bx + c = 0");
-				eprintln!("WARNING: You may have to convert your equation; this does not accept != 0 on the other side of the equation.");
 				exit(1);
 			}
 			let a: f64 = data[0];
@@ -457,53 +431,38 @@ fn main() {
 			let c: f64 = data[2];
 			let root1 = unsafe { quadratic_single_pos_solver(a, b, c) };
 			let root2 = unsafe { quadratic_single_neg_solver(a, b, c) };
-			print!("{} ", format_float_listbased(&data, root1));
-			println!("{}", format_float_listbased(&data, root2));
+			result_output = Output::FloatList(vec![root1, root2]);
 		} else if args[2] == "linear-dual" {
 			if data.len() < 4 {
 				eprintln!("ERROR: Invalid usage of the linear solver");
-				eprintln!("Usage: dproc solve linear-dual {{a1}} {{b1}} {{c1}} {{a2}} {{b2}} {{c2}}");
-				eprintln!("Where a1, b1, c1 are the coefficients of the first linear equation a1x + b1y + c1 = 0 and a2, b2, c2 are the coefficients of the second linear equation a2x + b2y + c2 = 0");
 				exit(1);
 			}
-			let a1: f64 = data[0];
-			let b1: f64 = data[1];
-			let c1: f64 = data[2];
-			let a2: f64 = data[3];
-			let b2: f64 = data[4];
-			let c2: f64 = data[5];
-			let resultX = unsafe { linear_solver(0, a1, b1, c1, a2, b2, c2) };
-			let resultY = unsafe { linear_solver(1, a1, b1, c1, a2, b2, c2) };
-			let cleanedX = format_float_listbased(&data, resultX);
-			let cleanedY = format_float_listbased(&data, resultY);
-			print!("{} ", cleanedX);
-			println!("{}", cleanedY);
+			let a1: f64 = data[0]; let b1: f64 = data[1]; let c1: f64 = data[2];
+			let a2: f64 = data[3]; let b2: f64 = data[4]; let c2: f64 = data[5];
+			let result_x = unsafe { linear_solver(0, a1, b1, c1, a2, b2, c2) };
+			let result_y = unsafe { linear_solver(1, a1, b1, c1, a2, b2, c2) };
+			result_output = Output::FloatList(vec![result_x, result_y]);
 		} else if args[2] == "triangle-centroid" {
 			if data.len() < 4 {
 				eprintln!("ERROR: Invalid usage of the linear solver");
-				eprintln!("Usage: dproc solve linear-dual {{a1}} {{b1}} {{c1}} {{a2}} {{b2}} {{c2}}");
-				eprintln!("Where a1, b1, c1 are the coefficients of the first linear equation a1x + b1y + c1 = 0 and a2, b2, c2 are the coefficients of the second linear equation a2x + b2y + c2 = 0");
 				exit(1);
 			}
-			let x1: f64 = data[0];
-			let y1: f64 = data[1];
-			let x2: f64 = data[2];
-			let y2: f64 = data[3];
-			let x3: f64 = data[4];
-			let y3: f64 = data[5];
-			let resultX = unsafe{triangle_centroid(0, x1, y1, x2, y2, x3, y3)};
-			let resultY = unsafe{triangle_centroid(1, x1, y1, x2, y2, x3, y3)};
-			let cleanedX = format_float_listbased(&data, resultX);
-			let cleanedY = format_float_listbased(&data, resultY);
-			print!("{} ", cleanedX);
-			println!("{}", cleanedY);
+			let x1: f64 = data[0]; let y1: f64 = data[1];
+			let x2: f64 = data[2]; let y2: f64 = data[3];
+			let x3: f64 = data[4]; let y3: f64 = data[5];
+			let result_x = unsafe { triangle_centroid(0, x1, y1, x2, y2, x3, y3) };
+			let result_y = unsafe { triangle_centroid(1, x1, y1, x2, y2, x3, y3) };
+			result_output = Output::FloatList(vec![result_x, result_y]);
 		} else if args[2] == "eval" {
 			let expression = stringExpression[0].clone();
 			let floated_expression = floatExpr(&expression);
 			let evaluated = engine.eval_expression::<Dynamic>(&floated_expression);
 			match evaluated {
-				Ok(value) => println!("{}", value.to_string()),
-				Err(e) => eprintln!("ERROR: {}", e),
+				Ok(value) => result_output = Output::SingleString(value.to_string()),
+				Err(e) => {
+					eprintln!("ERROR: {}", e);
+					exit(1);
+				}
 			}
 		} else {
 			help();
@@ -513,18 +472,15 @@ fn main() {
 		if args[2] == "volt" {
 			let current: f64 = data[0];
 			let resistance: f64 = data[1];
-			let result = unsafe{get_volt(current, resistance)};
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(unsafe { get_volt(current, resistance) });
 		} else if args[2] == "resistance" {
 			let voltage: f64 = data[0];
 			let current: f64 = data[1];
-			let result = unsafe{get_R(voltage, current)};
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(unsafe { get_R(voltage, current) });
 		} else if args[2] == "current" {
 			let voltage: f64 = data[0];
 			let resistance: f64 = data[1];
-			let result = unsafe{get_I(voltage, resistance)};
-			println!("{}", format_float_listbased(&data, result));
+			result_output = Output::SingleFloat(unsafe { get_I(voltage, resistance) });
 		} else {
 			help();
 			userError();
@@ -532,5 +488,51 @@ fn main() {
 	} else {
 		help();
 		userError();
+	}
+	
+	match result_output {
+		Output::SingleFloat(val) => {
+			println!("{}", format_float_listbased(&data, val));
+		}
+		Output::FloatList(list) => {
+			// If it's a structural vector pair like roots/centroids, print together; otherwise list-base format them
+			if args[1] == "solve" {
+				for (idx, val) in list.iter().enumerate() {
+					print!("{}", format_float_listbased(&data, *val));
+					if idx < list.len() - 1 { print!(" "); }
+				}
+				println!();
+			} else {
+				for val in list {
+					print!("{} ", val);
+				}
+				println!();
+			}
+		}
+		Output::SingleInt(val) => {
+			println!("{}", val);
+		}
+		Output::SingleSignedInt(val) => {
+			println!("{}", val);
+		}
+		Output::StringList(list) => {
+			for val in list {
+				print!("{} ", val);
+			}
+			println!();
+		}
+		Output::SingleString(val) => {
+			println!("{}", val);
+		}
+		Output::SingleBigInt(val) => {
+			println!("{}", val);
+		}
+		Output::BigIntList(list) => {
+			for val in list {
+				print!("{} ", val);
+			}
+			println!();
+		}
+		Output::None => {}
 	}
 }
