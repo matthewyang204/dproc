@@ -155,7 +155,7 @@ fn help() {
 use dproc::{getArgs, floatExpr};
 
 fn main() {
-	let args = getArgs();
+	let mut args = getArgs();
 	let mut engine = Engine::new();
 	
 	if args.len() < 2 {
@@ -173,7 +173,7 @@ fn main() {
 
 	let mut flags = Vec::new();
 	let knownFlags = vec!["--exact", "-e", "--precision", "-p"];
-	let flagValues = HashMap::new();
+	let mut flagValues = HashMap::new();
 	let mut i = 1;
 	while i < args.len() {
 		if knownFlags.contains(&args[i].as_str()) {
