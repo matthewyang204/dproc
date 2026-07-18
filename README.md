@@ -2,7 +2,7 @@
 `dproc` is a basic CLI data processor, designed to be fed data and output data directly from the commandline.
 
 # Usage
-`dproc [SUBCMD1] [SUBCMD2] {yourdata}`
+`dproc [SUBCMD1] [SUBCMD2] {yourdata} [--exact/-e] [--precision/-p <precision>]`
 
 #### `SUBCMD1` can be:
 - `round` functions for rounding, getting averages, etc
