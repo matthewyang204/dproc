@@ -47,7 +47,7 @@ use enumerate::max;
 use primes::generate_primes;
 use primes::is_prime;
 use math::factorial;
-use humans::{format_float_with_precision, format_float_listbased};
+use humans::{format_float_with_precision, format_float_listbased, get_max_precision_from_list};
 
 // Load crates
 use num_integer;
@@ -503,19 +503,29 @@ fn main() {
 			}
 		}
 		Output::FloatList(list) => {
-			// If it's a structural vector pair like roots/centroids, print together; otherwise list-base format them
+			let mut precision: usize = 0;
+			if flags.contains(&"--exact".to_string()) || flags.contains(&"-e".to_string()) {
+				precision = usize::MAX;
+			} else if let Some(precision_str) = flagValues.get("--precision").or(flagValues.get("-p")) {
+				precision = precision_str.parse().expect("Not a valid integer");
+			} else {
+				precision = get_max_precision_from_list(&data);
+			}
 			if args[1] == "solve" {
 				for (idx, val) in list.iter().enumerate() {
-					print!("{}", format_float_listbased(&data, *val));
+					if precision == usize::MAX {
+						print!("{}", val);
+					} else {
+						print!("{}", format_float_with_precision(*val, precision));
+					}
 					if idx < list.len() - 1 { print!(" "); }
 				}
-				println!();
 			} else {
 				for val in list {
-					print!("{} ", val);
+					print!("{} ", format_float_with_precision(val, precision));
 				}
-				println!();
 			}
+			println!();
 		}
 		Output::SingleInt(val) => {
 			println!("{}", val);
