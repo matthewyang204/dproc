@@ -493,7 +493,14 @@ fn main() {
 	
 	match result_output {
 		Output::SingleFloat(val) => {
-			println!("{}", format_float_listbased(&data, val));
+			if flags.contains(&"--exact".to_string()) || flags.contains(&"-e".to_string()) {
+				println!("{}", val);
+			} else if let Some(precision) = flagValues.get("--precision").or(flagValues.get("-p")) {
+				let precision: usize = precision.parse().expect("Not a valid integer");
+				println!("{}", format_float_with_precision(val, precision));
+			} else {
+				println!("{}", format_float_listbased(&data, val));
+			}
 		}
 		Output::FloatList(list) => {
 			// If it's a structural vector pair like roots/centroids, print together; otherwise list-base format them
