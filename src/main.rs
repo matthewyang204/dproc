@@ -87,7 +87,7 @@ fn help() {
 	version();
 	
 	println!();
-	println!("Usage: dproc [SUBCMD1] [SUBCMD2] {{yourdata}}");
+	println!("Usage: dproc [SUBCMD1] [SUBCMD2] {{yourdata}} [--exact/-e] [--precision/-p {{precision}}]");
 	println!("");
 	println!("SUBCMD1 options:");
 	println!("  round        functions for rounding, getting averages, etc");
