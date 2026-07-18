@@ -168,6 +168,18 @@ fn main() {
 		help();
 		exit(0);
 	}
+
+	let mut flags = Vec::new();
+	let knownFlags = vec!["--exact", "-e", "--precision", "-p"];
+	let mut i = 1;
+	while i < args.len() {
+		if knownFlags.contains(&args[i].as_str()) {
+			flags.push(args[i].clone());
+			args.remove(i);
+		} else {
+			i += 1;
+		}
+	}
 	
 	if args.len() < 4 {
 		help();
