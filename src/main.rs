@@ -3,6 +3,7 @@ use std::process::exit;
 use std::io::{self, BufRead};
 use std::os::raw::c_char;
 use std::f64::consts::{PI, E};
+use std::collections::HashMap;
 
 // Load modules
 // mod enumerate;
@@ -171,9 +172,18 @@ fn main() {
 
 	let mut flags = Vec::new();
 	let knownFlags = vec!["--exact", "-e", "--precision", "-p"];
+	let flagValues = HashMap::new();
 	let mut i = 1;
 	while i < args.len() {
 		if knownFlags.contains(&args[i].as_str()) {
+			if args[i] == "--precision" || args[i] == "-p" {
+				if i + 1 >= args.len() {
+					eprintln!("ERROR: Missing precision value after --precision or -p flag");
+					exit(1);
+				}
+				flagValues.insert(args[i].clone(), args[i + 1].clone());
+				args.remove(i + 1);
+			}
 			flags.push(args[i].clone());
 			args.remove(i);
 		} else {
