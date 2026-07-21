@@ -125,7 +125,7 @@ fn xlsx2csv(options: Vec<String>){
     let outfile = options[1].clone();
 
     let mut workbook = load_workbook(&infile).expect("Failed to load workbook");
-    let mut sheet_names = get_sheet_names(&mut workbook);
+    let sheet_names = get_sheet_names(&mut workbook);
 
     if sheet_names.len() == 1 {
         let sheet_name = sheet_names[0].clone();
