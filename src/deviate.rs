@@ -9,6 +9,10 @@ use crate::coreFuncs::input;
 use crate::enumerate::sum;
 
 pub fn range(data: &[f64]) -> f64 {
+	if data.is_empty() {
+		eprintln!("WARNING: Your data is empty, so your value is also empty.");
+		return 0.0;
+	}
 	let sortedData = sort(data);
 	let max = sortedData[sortedData.len() - 1];
 	let min = sortedData[0];
@@ -17,6 +21,10 @@ pub fn range(data: &[f64]) -> f64 {
 }
 
 pub fn variance(data: &[f64]) -> f64 {
+	if data.is_empty() {
+		eprintln!("WARNING: Your data is empty, so your value is also empty.");
+		return 0.0;
+	}
 	let meanData = mean(data);
 	let mut diff = vec![];
 	let mut tempStore: f64 = 0.0;
@@ -35,6 +43,10 @@ pub fn variance(data: &[f64]) -> f64 {
 		let sum = sum(&diffSq);
 		varianceVal = sum / diffSq.len() as f64;
 	} else if response1.to_lowercase() == "s" {
+		if data.len() < 2 {
+			eprintln!("ERROR: Sample size must be greater than 1 for sample variance, exiting...");
+			exit(1);
+		}
 		let sum = sum(&diffSq);
 		varianceVal = sum / (diffSq.len() as f64 - 1.0);
 	} else {
@@ -59,6 +71,10 @@ pub fn meanAD(data: &[f64]) -> f64 {
 		tempStore = tempStore.abs();
 		deviations.push(tempStore);
 	}
+	if deviations.is_empty() {
+		eprintln!("WARNING: Your data is empty, so your value is also empty.");
+		return 0.0;
+	}
 	let MAD = sum(&deviations) / deviations.len() as f64;
 	return MAD;
 }
@@ -71,6 +87,10 @@ pub fn medianAD(data: &[f64]) -> f64 {
                 tempStore = value - medianData;
                 tempStore = tempStore.abs();
                 deviations.push(tempStore);
+        }
+        if deviations.is_empty() {
+                eprintln!("WARNING: Your data is empty, so your value is also empty.");
+                return 0.0;
         }
         let MAD = median(&deviations);
         return MAD;
@@ -105,11 +125,13 @@ pub fn skewness(data: &[f64]) -> &str {
 
     let skew = m3 / stddev.powi(3);
 
-    if skew > 0.0 {
-        "pos"
-    } else if skew < 0.0 {
-        "neg"
-    } else {
-        "sym"
-    }
+    const EPSILON: f64 = 1e-10;
+
+	if skew.abs() < EPSILON {
+		"sym"
+	} else if skew > 0.0 {
+		"pos"
+	} else {
+		"neg"
+	}
 }
