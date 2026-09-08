@@ -219,7 +219,7 @@ fn main() {
 				eprintln!("ERROR: There can only be valid numbers values in the dataset, exiting...");
 				exit(1);
 			});
-	} if args[2] == "eval" {
+	} else if args[2] == "eval" {
 		stringExpression = args[3..].to_vec();
 	} else {
 		data = args[3..]
