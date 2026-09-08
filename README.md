@@ -100,7 +100,7 @@ To install a build done via the traditional UNIX-style build system, simply run 
 
 If you want to install from a binary downloaded from the releases, simply move the binary to a folder of your choice in your PATH.
 
-On macOS, you can also use Homebrew. To install using Homebrew, first tap my self-hosted tap via `brew tap matthewyang204/homebrew-formulae-casks`. Then, simply install with `brew install dproc`.
+On macOS, you can also use Homebrew. To install using Homebrew, first tap my self-hosted tap via `brew tap matthewyang204/homebrew-formulae-casks && brew trust matthewyang204/formulae-casks`. Then, simply install with `brew install dproc`.
 
 # Bundled tools
 - `dfmtutils` is a bundled tool that can be used to convert between CSV and other formats, such as space-delimited text files and XLSX files. It is included in the source code and built by default. You can use it convert data so that it is ingestable by dproc. It is also a standalone tool that can be used for other purposes, such as converting between CSV and XLSX.
